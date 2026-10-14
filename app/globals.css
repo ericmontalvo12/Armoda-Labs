@@ -3,36 +3,39 @@
 
 @theme {
   /* ------------------------------------------------------------------
-     Armoda Labs — white & gold.
-     Two-tier gold is deliberate and not cosmetic. Bright gold on white
-     measures 2.42:1, which fails WCAG for text, but ink on that same gold
-     is 7.78:1 (AAA). So --color-gold is a FILL you put dark text on, and
-     --color-gold-deep (5.06:1 on white) is the only gold allowed to BE
-     text. Never set --color-gold as a text color on a light surface.
+     Armoda Labs — white & champagne gold.
+     The gold is deliberately desaturated and light: saturated yellow-golds
+     read costume, soft champagne reads metal. Lightening it also improves
+     the contrast, because gold here is a FILL carrying dark text — ink on
+     --color-gold measures 9.02:1, up from 7.78:1 on the earlier brighter
+     value. The tradeoff is that light gold is even less usable AS text
+     (2.09:1 on white, a clear fail), so --color-gold-deep (5.25:1) stays
+     the only gold permitted to be text. Never set --color-gold as a text
+     color on a light surface.
      ------------------------------------------------------------------ */
 
   /* Surfaces — warm off-whites tinted toward gold rather than neutral
      grays, so the palette reads as one system instead of white + an accent. */
   --color-background: #ffffff;
-  --color-surface: #fdfcf9;
-  --color-surface-elevated: #faf7f0;
-  --color-surface-accent: #f5f0e4;
-  --color-border: #e8e2d4;
-  --color-border-subtle: #f0ebe0;
+  --color-surface: #fdfcfa;
+  --color-surface-elevated: #faf8f3;
+  --color-surface-accent: #f3eee3;
+  --color-border: #e9e4d9;
+  --color-border-subtle: #f2ede4;
 
   /* Gold — see the contrast note above before using either. */
-  --color-gold: #c9a227;         /* fills, rules, hairlines, badges */
-  --color-gold-hover: #b8912b;
-  --color-gold-deep: #8a6a14;    /* text-safe gold: links, small accents */
-  --color-gold-muted: #e8d9a8;   /* dividers, inactive states */
+  --color-gold: #c8b273;         /* fills, rules, hairlines, badges */
+  --color-gold-hover: #bca462;
+  --color-gold-deep: #7e6a33;    /* text-safe gold: links, small accents */
+  --color-gold-muted: #ece3cd;   /* dividers, inactive states */
 
   /* Primary action = ink, not gold. A gold button with white text is
      unreadable; ink with a gold hover keeps the brand and the contrast. */
   --color-primary: #14110e;
   --color-primary-hover: #2a251e;
-  --color-secondary: #c9a227;
-  --color-secondary-hover: #b8912b;
-  --color-accent: #c9a227;
+  --color-secondary: #c8b273;
+  --color-secondary-hover: #bca462;
+  --color-accent: #c8b273;
 
   /* Text — warm-neutral ramp to match the warm surfaces. */
   --color-text-primary: #14110e;   /* 18.81:1 on white */
@@ -40,12 +43,12 @@
   --color-text-muted: #7d7467;     /*  4.60:1 — lowest that still passes AA */
   --color-text-on-dark: #ffffff;
   --color-text-on-dark-muted: #c9c2b4;
-  --color-text-on-gold: #14110e;   /*  7.78:1 on --color-gold */
+  --color-text-on-gold: #14110e;   /*  9.02:1 on --color-gold */
 
   --color-dark-bg: #14110e;
   --color-dark-surface: #221e18;
 
-  --color-star: #c9a227;
+  --color-star: #c8b273;
   --color-success: #2f7d55;
   --color-danger: #b3261e;         /*  6.54:1 — urgency only, never decoration */
 
