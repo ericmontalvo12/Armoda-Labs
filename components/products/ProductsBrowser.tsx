@@ -41,6 +41,9 @@ function sortProducts(list: Product[], key: SortKey): Product[] {
   }
 }
 
+const labelClass =
+  "mb-1 block text-[10px] font-heading font-bold uppercase tracking-wider text-text-muted";
+
 const selectClass =
   "w-full appearance-none rounded-[10px] border border-border bg-background px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-gold";
 
@@ -74,23 +77,34 @@ export function ProductsBrowser({
   return (
     <>
       <div className="rounded-[20px] border border-border bg-surface p-4 sm:p-5">
-        <div className="grid gap-3 lg:grid-cols-[1fr_auto_auto]">
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products…"
-              aria-label="Search products"
-              className="w-full rounded-[10px] border border-border bg-background py-2.5 pl-9 pr-3 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold"
-            />
+        {/* Every column is label-over-control so the three share a baseline.
+            The search field previously carried only an aria-label, so it sat
+            one label-height higher than the two selects. */}
+        <div className="grid items-end gap-3 lg:grid-cols-[1fr_auto_auto]">
+          <div>
+            <label
+              htmlFor="product-search"
+              className={labelClass}
+            >
+              Search
+            </label>
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
+              <input
+                id="product-search"
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search products…"
+                className="w-full rounded-[10px] border border-border bg-background py-2.5 pl-9 pr-3 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold"
+              />
+            </div>
           </div>
 
           <div className="lg:w-56">
             <label
               htmlFor="category"
-              className="mb-1 block text-[10px] font-heading font-bold uppercase tracking-wider text-text-muted"
+              className={labelClass}
             >
               Category
             </label>
@@ -112,7 +126,7 @@ export function ProductsBrowser({
           <div className="lg:w-52">
             <label
               htmlFor="sort"
-              className="mb-1 block text-[10px] font-heading font-bold uppercase tracking-wider text-text-muted"
+              className={labelClass}
             >
               Sort by
             </label>
