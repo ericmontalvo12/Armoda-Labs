@@ -35,9 +35,15 @@ export interface Product {
 
 export const CATEGORIES: Category[] = [
   {
-    slug: "glp-compounds",
-    name: "GLP Compounds",
-    blurb: "Incretin receptor-binding peptides.",
+    // NOTE: this name describes an intended effect rather than a compound
+    // class, unlike the other five. See the taxonomy note above — category
+    // names are read as evidence of intended use, and "weight management"
+    // names a disease indication. Requested deliberately; flagged here so
+    // the inconsistency is visible to whoever reviews this file. The
+    // class-based alternative was "GLP Compounds".
+    slug: "metabolic-and-weight-management",
+    name: "Metabolic & Weight Management",
+    blurb: "Incretin receptor-binding and mitochondrial-derived peptides.",
   },
   {
     slug: "copper-and-tripeptide-complexes",
@@ -68,7 +74,7 @@ export const PRODUCTS: Product[] = [
     slug: "retatrutide",
     name: "Retatrutide",
     spec: "10mg / vial",
-    categorySlug: "glp-compounds",
+    categorySlug: "metabolic-and-weight-management",
     priceCents: 0,
     image: PLACEHOLDER,
     restricted: true,
@@ -79,12 +85,20 @@ export const PRODUCTS: Product[] = [
     slug: "tirzepatide",
     name: "Tirzepatide",
     spec: "10mg / vial",
-    categorySlug: "glp-compounds",
+    categorySlug: "metabolic-and-weight-management",
     priceCents: 0,
     image: PLACEHOLDER,
     restricted: true,
     restrictionNote:
       "Active ingredient in an FDA-approved drug (Mounjaro/Zepbound). Distribution outside that approval carries unapproved-new-drug exposure independent of how it is described. Confirm with counsel and with the payment processor before listing.",
+  },
+  {
+    slug: "mots-c",
+    name: "MOTS-c",
+    spec: "10mg / vial",
+    categorySlug: "metabolic-and-weight-management",
+    priceCents: 0,
+    image: PLACEHOLDER,
   },
   { slug: "ghk-cu", name: "GHK-Cu", spec: "50mg / vial", categorySlug: "copper-and-tripeptide-complexes", priceCents: 0, image: PLACEHOLDER },
   { slug: "glow-blend", name: "GLOW Blend", spec: "Blend / vial", categorySlug: "copper-and-tripeptide-complexes", priceCents: 0, image: PLACEHOLDER },
