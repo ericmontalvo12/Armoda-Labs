@@ -2,21 +2,189 @@
 
 ---
 
-## Armoda Labs — open engineering items
+## Armoda Labs — launch plan
 
-### Add a "Popularity" sort to the shop page
+Ordered by what blocks what, not by priority. The three gates on everything
+else are: the **name**, a **supplier whose material passes blind testing**,
+and **influencer/UGC content rules**.
 
-`components/products/ProductsBrowser.tsx` deliberately omits it. The
-reference site defaults to sorting by popularity, but there is no order data
-to rank by, and a dropdown option that silently does nothing is worse than an
-absent one — so the sort list is currently name and price only.
+**The tension to keep in view:** the marketing workstreams (6, 8, 9) are what
+generate revenue, and are also what manufacture evidence of human-use intent
+— which is what costs you the trademark (3) and the processor (5). Content
+rules are not paperwork to do later; they are a precondition for the
+marketing existing at all.
 
-**Blocked on:** order volume in the `orders` table worth ranking by.
+Not legal advice. Formation, trademark and labelling each need counsel.
 
-**When unblocked:** derive a rank from line items in `orders` (count of units
-sold per SKU over a trailing window, not all-time, or new products can never
-surface), expose it as a sort key, and make it the default — it is the most
-useful default once it is real.
+---
+
+### Website
+
+- [ ] **Finish the website**
+  - [x] Catalog model, `/products`, `/products/category/[slug]`, `/products/[slug]`
+  - [x] Homepage, `/about`, `/how-to-pay`, `/how-to-profit`, `/help`, footer
+  - [ ] Retire `/product` and `ProductPageClient.tsx` (the single-product path)
+  - [ ] Dark-theme pass on legacy routes: `/cart`, `/success`, `/blog`, `/manage`
+  - [ ] Rebrand `/terms-of-service`, `/privacy-policy`, `/refund-policy` —
+        still Rock Mountain's, and where the real restrictions belong
+  - [ ] Real prices per SKU and per variant (all currently `0` →
+        "Price on request")
+  - [ ] Decide fonts — Poppins/Outfit are inherited and wrong for the palette
+  - [ ] Checkout rebuild once the processor is confirmed; price must be
+        re-resolved server-side from `lib/catalog.ts`, never taken from the client
+
+- [ ] **AI image mockups**
+  - [ ] Vial renders per SKU — `public/` images were deleted (~182MB) and every
+        card currently shows `product-placeholder.svg`
+  - [ ] Label artwork mockups, which double as the supplier proof for item 7
+  - [ ] Hero and lab/facility imagery for the homepage and `/about`
+  - [ ] Keep renders consistent: one angle, one lighting setup, one background,
+        or the grid looks like a marketplace rather than a brand
+  - [ ] Do not render anything implying human use — no syringes staged for
+        injection, no body imagery, no clinical-administration scenes
+
+- [ ] **Add a "Popularity" sort to the shop page**
+      `components/products/ProductsBrowser.tsx` omits it deliberately: there is
+      no order data to rank by, and a sort that silently does nothing is worse
+      than an absent one.
+      **Blocked on:** order volume worth ranking.
+      **When unblocked:** rank by units sold per SKU over a trailing window
+      (not all-time, or new products can never surface), then make it default.
+
+---
+
+### 1. Name — blocks everything
+
+- [ ] USPTO TESS conflict search, classes 1 and 5
+- [ ] `.com` available, or pick again
+- [ ] State business registry clear
+- [ ] Social handles: IG, X, Reddit, Telegram, Discord
+- [ ] Lock it, then set the real domain in `SITE_URL` (`app/layout.tsx`),
+      currently the placeholder `https://www.armodalabs.com`
+
+### 2. LLC
+
+- [ ] Formation state (home state unless there is a reason — Delaware/Wyoming
+      add foreign qualification and protect you from nothing here)
+- [ ] Registered agent — not your home address, it becomes public
+- [ ] EIN direct from the IRS, free, never pay a service
+- [ ] Operating agreement, even single-member — banks and processors ask
+- [ ] Business bank account
+- [ ] Ask counsel about a two-entity split: IP holding company owns the brand
+      and licenses it to the operating company, so the brand survives anything
+      that happens to the operating entity
+
+### 3. Trademark — expect a lawfulness problem
+
+- [ ] Clearance search (start now, long lead time)
+- [ ] Trademark attorney consult **specifically on registrability**
+
+USPTO requires lawful use in commerce and refuses marks for goods unlawful
+under federal law — settled in the CBD context (*In re Stanley Brothers*, Fed.
+Cir. 2020). Research peptides are plausibly unapproved new drugs, so filing for
+"peptides for research use" invites a refusal. Ask counsel about registering
+for unambiguously lawful goods/services instead. Common-law rights exist from
+use regardless of registration.
+
+### 4. COAs and third-party testing — the actual product
+
+- [ ] Blind-qualify 3–4 suppliers: order as an anonymous buyer, send samples to
+      your own lab, compare. Expect at least one to come back off-spec. This is
+      the step that separates vendors who last from vendors who don't
+- [ ] Select an ISO 17025-accredited lab
+- [ ] Price the panel: HPLC purity, mass spec identity, peptide content, water
+      content, residual solvents (TFA), endotoxin if positioning warrants
+- [ ] Build into unit economics — $150–400 per compound per lot, recurring,
+      across 16 SKUs
+- [ ] COA publishing workflow: PDF named by lot → lot printed on vial →
+      `/lab-results` entry. The route exists; the discipline has to be real
+
+Mass spec matters as much as purity: purity alone does not confirm identity.
+
+### 5. Payment processing — have one, protect it
+
+- [ ] Confirm rolling reserve percentage and hold period — this sets working capital
+- [ ] Confirm chargeback threshold (usually ~0.9%); monitor weekly
+- [ ] Get written answers on what triggers termination
+- [ ] **Underwrite a backup processor before you need it.** Single processor is
+      a single point of failure and termination in this category is routine
+- [ ] Crypto as a secondary rail only — non-reversible, but a conversion killer
+- [ ] Keep the site underwriteable: class-based categories, no efficacy claims,
+      research-use notices. Processors re-review periodically
+
+### 6. Influencer payouts — highest-risk item
+
+- [ ] Payout model: coupon-code attribution by default (ties to the promo code
+      infrastructure already built); flat fee for known quantities; 10–20% rev
+      share for long-term partners
+- [ ] **Contract terms, non-negotiable:** no human-use claims, no dosing, no
+      before/after, no condition language, with examples of prohibited phrasing
+- [ ] Pre-approval of content before posting
+- [ ] FTC disclosure required — `#ad`, clear and conspicuous (16 CFR Part 255)
+- [ ] Immediate termination and clawback for violation
+- [ ] Keep an approved-content log
+- [ ] Budget monitoring time, not just payouts
+
+You are liable for what affiliates say. A creator improvising a testimonial has
+made a drug claim with your name on it, and your processor may see it first.
+
+### 7. Vial packaging
+
+- [ ] Label must carry: "For Laboratory Research Use Only — Not for Human
+      Consumption", compound name, net quantity, lot number, CAS where
+      applicable, storage conditions, entity name and contact
+- [ ] Label must NOT carry: dosing, reconstitution-for-injection instructions,
+      any indication, or a pharmaceutical-looking presentation
+- [ ] Negotiate: MOQ, tiered per-unit, tooling/plate fees, lead time, who holds
+      the artwork
+- [ ] Sample run and a physical proof before full production
+
+The label travels, gets photographed, and is the artefact most likely to end up
+as an enforcement exhibit.
+
+### 8. Thank-you cards / UGC
+
+- [ ] Reconsider the mechanic. Incentivised social posts are material
+      connections requiring FTC disclosure, and Meta/TikTok prohibit this
+      category — so driving customers to post branded vials there generates the
+      content that gets your accounts banned and hands a reviewer a gallery of
+      consumer use
+- [ ] **Safer version of the same idea:** incentivise reviews on your own site
+      (reviews with photo upload are already built). Same social proof, you
+      control the surface, disclosure is manageable
+- [ ] If social anyway: "no human-use content" printed on the card, and reject
+      submissions showing it
+- [ ] Card copy must itself carry the disclosure requirement
+
+### 9. Marketing
+
+- [ ] **Closed, do not spend time on:** Google Ads (Unapproved Substances
+      policy), Meta and TikTok ads (prohibited category)
+- [ ] **Open:** SEO/content (technical and handling only — articles are
+      intended-use evidence), email (yours, unbannable, highest ROI, capture
+      already built), Discord/Telegram (where the buyers are), influencer
+      (primary paid channel by default since the others are closed), affiliate
+- [ ] Reddit: organic reputation only. Most relevant subs ban vendor
+      self-promotion, and astroturfing gets found — worse than nothing
+- [ ] Allocation: influencer + Discord/Telegram for immediate volume, SEO and
+      email as the compounding base, affiliate once creatives convert
+
+---
+
+### First 30 days, in order
+
+1. [ ] Lock the name; buy domain and handles
+2. [ ] File LLC, EIN, bank account
+3. [ ] Trademark clearance search → attorney consult
+4. [ ] Order blind samples from 3–4 suppliers *(start day 1 — longest lead time)*
+5. [ ] Select lab, price the panel
+6. [ ] Confirm processor reserve terms; start backup underwriting
+7. [ ] Draft influencer content rules *(before any outreach)*
+8. [ ] Packaging artwork → supplier proof
+9. [ ] Sample results → select supplier → first production lot
+
+Start today, because they gate everything downstream: **supplier samples** and
+the **trademark clearance search**.
 
 ---
 
