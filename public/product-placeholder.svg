@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294 260" role="img" aria-label="Product image pending">
   <rect width="294" height="260" fill="#1b1815"/>
-  <rect x="117" y="60" width="60" height="140" rx="10" fill="none" stroke="#6e6a3a" stroke-width="2"/>
-  <rect x="131" y="44" width="32" height="20" rx="5" fill="#6e6a3a"/>
+  <rect x="117" y="60" width="60" height="140" rx="10" fill="none" stroke="#6b4f12" stroke-width="2"/>
+  <rect x="131" y="44" width="32" height="20" rx="5" fill="#6b4f12"/>
   <text x="147" y="228" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#8f8d87">Image pending</text>
 </svg>
