@@ -19,7 +19,7 @@ export function JoinCommunity() {
     setLoading(true);
     try {
       setCustomerEmail(email);
-      localStorage.setItem("promoCode", "WELCOME10");
+      localStorage.setItem("promoCode", "ARMODA10");
       await fetch(EMAIL_SUBSCRIBE_API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -50,7 +50,7 @@ export function JoinCommunity() {
                 <span className="font-heading font-bold">You&apos;re in!</span>
               </div>
               <p className="text-white/70 text-sm">
-                Use code <span className="font-bold text-white">WELCOME10</span> for 10% off your first order.
+                Use code <span className="font-bold text-white">ARMODA10</span> for 10% off your first order.
               </p>
             </div>
           ) : (

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check } from "lucide-react";
-import Image from "next/image";
 import { useCart } from "@/lib/cart-context";
 import { Button } from "@/components/ui/button";
 
@@ -66,7 +65,7 @@ export function EmailPopup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      localStorage.setItem("promoCode", "WELCOME10");
+      localStorage.setItem("promoCode", "ARMODA10");
       setCustomerEmail(email);
       setIsSubmitted(true);
       try {
@@ -82,7 +81,7 @@ export function EmailPopup() {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("WELCOME10");
+    navigator.clipboard.writeText("ARMODA10");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -115,13 +114,9 @@ export function EmailPopup() {
             {!isSubmitted ? (
               <>
                 <div className="mb-8 flex justify-center">
-                  <Image
-                    src="/logo-new.png"
-                    alt="Rock Mountain Performance"
-                    width={180}
-                    height={54}
-                    className="h-10 w-auto"
-                  />
+                  <span className="font-heading text-xl font-extrabold tracking-tight text-text-primary">
+                    ARMODA<span className="text-gold">LABS</span>
+                  </span>
                 </div>
 
                 <p className="text-[11px] font-heading font-bold uppercase tracking-widest text-primary mb-3">
@@ -131,7 +126,7 @@ export function EmailPopup() {
                   Get 10% Off<br />Your First Order
                 </h2>
                 <p className="text-sm text-text-muted mb-8 leading-relaxed">
-                  Peak Performance is in stock now. Enter your email to claim your code and get your first bottle.
+                  Enter your email to claim your code and receive new lot and certificate notifications.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-3">
@@ -171,7 +166,7 @@ export function EmailPopup() {
                   className="w-full flex items-center justify-between px-5 py-4 rounded-[5px] border-2 border-dashed border-primary bg-primary/5 hover:bg-primary/10 transition-colors group mb-4"
                 >
                   <span className="font-heading text-2xl font-bold text-primary tracking-widest">
-                    WELCOME10
+                    ARMODA10
                   </span>
                   <span className="text-sm text-primary/70 group-hover:text-primary transition-colors ml-3">
                     {copied ? "Copied!" : "Copy"}
