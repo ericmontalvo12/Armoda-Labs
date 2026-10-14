@@ -28,9 +28,13 @@ export interface Product {
   priceCents: number;
   comparePriceCents?: number;
   image: string;
-  /** Marks SKUs needing a legal/processor decision before they go live. */
-  restricted?: boolean;
-  restrictionNote?: string;
+  /**
+  * Known regulatory exposure for this SKU, kept with the product rather than
+  * in a doc so it travels with the data. These SKUs are listed and sellable;
+  * the note records what was understood when that decision was made, and is
+  * what to re-read if a processor or counsel asks.
+  */
+  complianceNote?: string;
 }
 
 export const CATEGORIES: Category[] = [
@@ -77,9 +81,8 @@ export const PRODUCTS: Product[] = [
     categorySlug: "metabolic-and-weight-management",
     priceCents: 0,
     image: PLACEHOLDER,
-    restricted: true,
-    restrictionNote:
-      "Investigational compound, not approved in any jurisdiction. Confirm with counsel and with the payment processor before listing.",
+    complianceNote:
+      "Investigational compound, not approved in any jurisdiction.",
   },
   {
     slug: "tirzepatide",
@@ -88,9 +91,8 @@ export const PRODUCTS: Product[] = [
     categorySlug: "metabolic-and-weight-management",
     priceCents: 0,
     image: PLACEHOLDER,
-    restricted: true,
-    restrictionNote:
-      "Active ingredient in an FDA-approved drug (Mounjaro/Zepbound). Distribution outside that approval carries unapproved-new-drug exposure independent of how it is described. Confirm with counsel and with the payment processor before listing.",
+    complianceNote:
+      "Active ingredient in an FDA-approved drug (Mounjaro/Zepbound). Distribution outside that approval carries unapproved-new-drug exposure independent of how the product is described, and is a common trigger for merchant-account termination.",
   },
   {
     slug: "mots-c",
@@ -115,8 +117,13 @@ export const PRODUCTS: Product[] = [
   { slug: "glutathione", name: "Glutathione", spec: "600mg / vial", categorySlug: "copper-and-tripeptide-complexes", priceCents: 0, image: PLACEHOLDER },
 ];
 
-/** Products safe to render today — restricted SKUs stay out until cleared. */
-export const LISTED_PRODUCTS = PRODUCTS.filter((p) => !p.restricted);
+/**
+ * Everything in the catalog renders. This was previously filtered to hold
+ * back the two SKUs carrying complianceNote; they are now listed by
+ * instruction. Kept as a named export so there is still one place to
+ * reintroduce a filter if a processor requires it.
+ */
+export const LISTED_PRODUCTS = PRODUCTS;
 
 export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);

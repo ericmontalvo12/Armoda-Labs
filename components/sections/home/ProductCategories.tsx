@@ -13,7 +13,7 @@ import { CATEGORIES, LISTED_PRODUCTS } from "@/lib/catalog";
  * the same places twice.
  *
  * Categories with no listed products are dropped rather than shown empty,
- * so a class whose only SKUs are restricted does not render a dead tab.
+ * so adding a class before its SKUs exist does not render a dead tab.
  */
 export function ProductCategories() {
   const populated = CATEGORIES.filter((c) =>
