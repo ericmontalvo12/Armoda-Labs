@@ -148,10 +148,10 @@ export default function LabResults() {
 
           <div className="mt-10">
             <Link
-              href="/formula"
+              href="/products"
               className="text-primary text-sm font-medium hover:underline"
             >
-              See every ingredient and the research behind it →
+              Browse the catalog →
             </Link>
           </div>
         </div>

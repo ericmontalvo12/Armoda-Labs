@@ -34,7 +34,7 @@ export function ProductRail({
           <div className="mt-10 text-center">
             <Link
               href={cta.href}
-              className="inline-flex h-11 items-center rounded-[10px] bg-primary px-7 font-heading text-base font-bold text-white transition-colors hover:bg-primary-hover"
+              className="inline-flex h-11 items-center rounded-[10px] bg-primary px-7 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover"
             >
               {cta.label}
             </Link>

@@ -3,57 +3,59 @@
 
 @theme {
   /* ------------------------------------------------------------------
-     Armoda Labs — white & champagne gold.
-     The gold is deliberately desaturated and light: saturated yellow-golds
-     read costume, soft champagne reads metal. Lightening it also improves
-     the contrast, because gold here is a FILL carrying dark text — ink on
-     --color-gold measures 9.02:1, up from 7.78:1 on the earlier brighter
-     value. The tradeoff is that light gold is even less usable AS text
-     (2.09:1 on white, a clear fail), so --color-gold-deep (5.25:1) stays
-     the only gold permitted to be text. Never set --color-gold as a text
-     color on a light surface.
+     Armoda Labs — dark, with champagne gold.
+     Going dark inverts the gold problem rather than inheriting it. On white
+     this gold measured 2.09:1 and could not be used for text at all; on
+     #0d0c0a it measures 9.38:1 (AAA), so the same value now works as BOTH
+     fill and text. That is why gold-on-black is the luxury pairing and
+     gold-on-white is not.
+     The old --color-gold-deep (a dark bronze for text on white) is the
+     casualty: at 3.72:1 on this background it now fails, so it is gone.
+     Use --color-gold-text for gold type, --color-gold for fills and rules.
+     Backgrounds are warm near-blacks, not neutral greys — a cool grey under
+     a warm gold reads cheap.
      ------------------------------------------------------------------ */
 
-  /* Surfaces — warm off-whites tinted toward gold rather than neutral
-     grays, so the palette reads as one system instead of white + an accent. */
-  --color-background: #ffffff;
-  --color-surface: #fdfcfa;
-  --color-surface-elevated: #faf8f3;
-  --color-surface-accent: #f3eee3;
-  --color-border: #e9e4d9;
-  --color-border-subtle: #f2ede4;
+  --color-background: #0d0c0a;
+  --color-surface: #141210;
+  --color-surface-elevated: #1b1815;
+  --color-surface-accent: #232019;
+  --color-border: #2a2621;
+  --color-border-subtle: #211e1a;
 
-  /* Gold — see the contrast note above before using either. */
-  --color-gold: #c8b273;         /* fills, rules, hairlines, badges */
-  --color-gold-hover: #bca462;
-  --color-gold-deep: #7e6a33;    /* text-safe gold: links, small accents */
-  --color-gold-muted: #ece3cd;   /* dividers, inactive states */
+  /* Gold — usable as text on these backgrounds, unlike the light theme. */
+  --color-gold: #c8b273;         /* fills, rules, icons        9.38:1 */
+  --color-gold-text: #d3be86;    /* gold type, slightly lifted       */
+  --color-gold-hover: #d9c795;
+  --color-gold-muted: #6b5f3f;   /* dividers, inactive, hairlines    */
 
-  /* Primary action = ink, not gold. A gold button with white text is
-     unreadable; ink with a gold hover keeps the brand and the contrast. */
-  --color-primary: #14110e;
-  --color-primary-hover: #2a251e;
-  --color-secondary: #c8b273;
-  --color-secondary-hover: #bca462;
+  /* Primary action is a gold fill carrying ink text (9.02:1). White on gold
+     would fail, so --color-on-primary exists to stop that happening. */
+  --color-primary: #c8b273;
+  --color-primary-hover: #d3be86;
+  --color-on-primary: #14110e;
+  --color-secondary: #1b1815;
+  --color-secondary-hover: #232019;
   --color-accent: #c8b273;
 
-  /* Text — warm-neutral ramp to match the warm surfaces. */
-  --color-text-primary: #14110e;   /* 18.81:1 on white */
-  --color-text-secondary: #5a5247; /*  7.68:1 */
-  --color-text-muted: #7d7467;     /*  4.60:1 — lowest that still passes AA */
-  --color-text-on-dark: #ffffff;
-  --color-text-on-dark-muted: #c9c2b4;
+  /* Text — warm off-whites. Pure #fff on a warm black glares. */
+  --color-text-primary: #f5f2ec;   /* 17.50:1 */
+  --color-text-secondary: #b5aea2; /*  8.88:1 */
+  --color-text-muted: #948b7d;     /*  5.82:1 — AA floor, do not go lighter */
+  --color-text-on-dark: #f5f2ec;
+  --color-text-on-dark-muted: #b5aea2;
   --color-text-on-gold: #14110e;   /*  9.02:1 on --color-gold */
 
-  --color-dark-bg: #14110e;
-  --color-dark-surface: #221e18;
+  --color-dark-bg: #0d0c0a;
+  --color-dark-surface: #1b1815;
 
   --color-star: #c8b273;
-  --color-success: #2f7d55;
-  --color-danger: #b3261e;         /*  6.54:1 — urgency only, never decoration */
+  --color-success: #5fa37c;        /*  6.53:1 */
+  --color-danger: #e26b63;         /*  6.07:1 — the light theme's #b3261e
+                                      drops to 2.99:1 here and cannot be
+                                      carried over */
 
-  /* Catalog geometry, measured from a dense multi-product grid: flat
-     surfaces, generous radii, hairline borders instead of shadows. */
+  /* Catalog geometry: flat surfaces, hairline borders, generous radii. */
   --radius-card: 20px;
   --radius-control: 10px;
   --container-max: 1280px;

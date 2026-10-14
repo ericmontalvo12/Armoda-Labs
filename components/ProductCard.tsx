@@ -33,7 +33,7 @@ export function ProductCard({ product }: { product: Product }) {
 
       <div className="flex flex-1 flex-col gap-1 p-4">
         <h3 className="font-heading text-sm font-extrabold leading-snug text-text-primary">
-          <Link href={`/products/${product.slug}`} className="hover:text-gold-deep">
+          <Link href={`/products/${product.slug}`} className="hover:text-gold-text">
             {product.name}
           </Link>
         </h3>
@@ -55,14 +55,14 @@ export function ProductCard({ product }: { product: Product }) {
                   image: product.image,
                 })
               }
-              className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-primary text-white transition-colors hover:bg-gold hover:text-text-on-gold"
+              className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-primary text-on-primary transition-colors hover:bg-gold-hover"
             >
               <ShoppingCart className="h-4 w-4" />
             </button>
           ) : (
             <Link
               href={`/products/${product.slug}`}
-              className="rounded-[10px] bg-surface-accent px-3 py-2 text-xs font-heading font-bold text-gold-deep transition-colors hover:bg-gold hover:text-text-on-gold"
+              className="rounded-[10px] border border-border px-3 py-2 text-xs font-heading font-bold text-gold-text transition-colors hover:border-gold"
             >
               Details
             </Link>

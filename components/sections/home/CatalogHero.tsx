@@ -12,7 +12,7 @@ export function CatalogHero() {
     <section className="bg-surface-elevated">
       <div className="mx-auto grid max-w-[1280px] items-center gap-10 px-4 py-14 lg:grid-cols-2 lg:py-20">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-gold-muted bg-background px-3 py-1.5 text-xs font-heading font-bold uppercase tracking-wider text-gold-deep">
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold-muted bg-background px-3 py-1.5 text-xs font-heading font-bold uppercase tracking-wider text-gold-text">
             <ShieldCheck className="h-3.5 w-3.5" />
             Third-party tested
           </span>
@@ -20,7 +20,7 @@ export function CatalogHero() {
           <h1 className="mt-5 font-heading text-4xl font-extrabold leading-[1.1] text-text-primary sm:text-5xl">
             Research peptides,
             <br />
-            <span className="text-gold-deep">independently verified</span>
+            <span className="text-gold-text">independently verified</span>
           </h1>
 
           <p className="mt-5 max-w-md text-sm leading-relaxed text-text-secondary">
@@ -32,13 +32,13 @@ export function CatalogHero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/products"
-              className="inline-flex h-11 items-center rounded-[10px] bg-primary px-6 font-heading text-base font-bold text-white transition-colors hover:bg-primary-hover"
+              className="inline-flex h-11 items-center rounded-[10px] bg-primary px-6 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover"
             >
               Browse catalog
             </Link>
             <Link
               href="/lab-results"
-              className="inline-flex h-11 items-center rounded-[10px] border border-border bg-background px-6 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold-deep"
+              className="inline-flex h-11 items-center rounded-[10px] border border-border bg-background px-6 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold-text"
             >
               View test results
             </Link>

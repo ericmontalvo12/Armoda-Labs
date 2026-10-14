@@ -16,7 +16,7 @@ export function SectionHeading({
   return (
     <div className={centered ? "text-center" : "text-left"}>
       {eyebrow && (
-        <p className="mb-3 text-xs font-heading font-bold uppercase tracking-[0.14em] text-gold-deep">
+        <p className="mb-3 text-xs font-heading font-bold uppercase tracking-[0.14em] text-gold-text">
           <span aria-hidden="true">— </span>
           {eyebrow}
         </p>

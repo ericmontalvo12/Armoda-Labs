@@ -11,10 +11,11 @@ import { SaleCountdown } from "@/components/SaleCountdown";
 
 const navLinks = [
   { href: "/product", label: "Shop" },
-  { href: "/formula", label: "Ingredients" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Articles" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/how-to-pay", label: "How to Pay" },
+  { href: "/how-to-profit", label: "How to Profit" },
+  { href: "/help", label: "Help" },
 ];
 
 export function Header() {

@@ -48,7 +48,7 @@ export function ProductCategories() {
                 className={`rounded-full px-4 py-2 font-heading text-xs font-bold transition-colors ${
                   selected
                     ? "bg-gold text-text-on-gold"
-                    : "border border-border bg-background text-text-secondary hover:border-gold hover:text-gold-deep"
+                    : "border border-border bg-background text-text-secondary hover:border-gold hover:text-gold-text"
                 }`}
               >
                 {c.name}
@@ -72,7 +72,7 @@ export function ProductCategories() {
         <div className="mt-10 text-center">
           <Link
             href={`/products/category/${active}`}
-            className="inline-flex h-11 items-center rounded-[10px] border border-border bg-background px-6 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold-deep"
+            className="inline-flex h-11 items-center rounded-[10px] border border-border bg-background px-6 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold-text"
           >
             View all {activeCategory?.name}
           </Link>

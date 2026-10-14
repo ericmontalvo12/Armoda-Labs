@@ -32,7 +32,7 @@ export function TestingPromise() {
           </p>
           <Link
             href="/lab-results"
-            className="mt-7 inline-flex h-11 items-center rounded-[10px] border border-border bg-background px-6 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold-deep"
+            className="mt-7 inline-flex h-11 items-center rounded-[10px] border border-border bg-background px-6 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold-text"
           >
             Browse certificates
           </Link>
