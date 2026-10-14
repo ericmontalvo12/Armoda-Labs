@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
-import { formatPrice, type Product } from "@/lib/catalog";
+import { priceRange, type Product } from "@/lib/catalog";
 
 /**
  * Catalog card. Geometry follows the measured reference: flat surface, hairline
@@ -14,7 +14,9 @@ import { formatPrice, type Product } from "@/lib/catalog";
  */
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
-  const purchasable = product.priceCents > 0;
+  // Cards link through to the PDP to choose a format, so they show the
+  // range across variants rather than a single price.
+  const purchasable = product.variants.some((v) => v.priceCents > 0);
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-[20px] border border-border bg-background transition-colors hover:border-gold">
@@ -41,20 +43,21 @@ export function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-auto flex items-end justify-between pt-4">
           <span className="font-heading text-lg font-extrabold text-text-primary">
-            {formatPrice(product.priceCents)}
+            {priceRange(product)}
           </span>
           {purchasable ? (
             <button
               type="button"
               aria-label={`Add ${product.name} to cart`}
-              onClick={() =>
+              onClick={() => {
+                const v = product.variants[0];
                 addToCart({
-                  id: product.slug,
-                  name: product.name,
-                  price: product.priceCents / 100,
+                  id: `${product.sku}${v.skuSuffix}`,
+                  name: `${product.name} — ${v.label}`,
+                  price: v.priceCents / 100,
                   image: product.image,
-                })
-              }
+                });
+              }}
               className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-primary text-on-primary transition-colors hover:bg-gold-hover"
             >
               <ShoppingCart className="h-4 w-4" />
