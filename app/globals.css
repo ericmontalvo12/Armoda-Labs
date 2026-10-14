@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-surface: #f8f8fc;
+  --color-surface-elevated: #f0f0f4;
+  --color-border: #e4e4e7;
+  --color-border-subtle: #ebebef;
+
+  --color-primary: #43ade1;
+  --color-primary-hover: #3899c9;
+  --color-secondary: #202020;
+  --color-secondary-hover: #333333;
+  --color-accent: #43ade1;
+
+  --color-text-primary: #18181b;
+  --color-text-secondary: #52525b;
+  --color-text-muted: #a1a1aa;
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-muted: #c4c4c4;
+
+  --color-dark-bg: #202020;
+  --color-dark-surface: #2a2a2a;
+
+  --color-star: #f5a623;
+  --color-success: #22c55e;
+
+  --font-sans: "Outfit", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Mobile-only overflow protection */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, span, li {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+/* Mobile announcement bar marquee */
+@media (max-width: 640px) {
+  .announceBar {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .announceTrack {
+    display: inline-flex;
+    gap: 0;
+    will-change: transform;
+    animation: marquee 40s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+  .announceTrack {
+    animation: none;
+  }
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gallery crossfade. Pure CSS so the LCP image never depends on JS to paint. */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

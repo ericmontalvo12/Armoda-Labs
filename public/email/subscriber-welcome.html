@@ -1,0 +1,312 @@
+<!-- Subject: Your subscription is active - {{contact.order_id}} -->
+<!-- Preview: Order details and how your monthly delivery works -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<meta name="supported-color-schemes" content="light" />
+<title>Subscription Confirmed — Rock Mountain Performance</title>
+<!--[if mso]>
+<noscript>
+<xml>
+<o:OfficeDocumentSettings>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+</noscript>
+<![endif]-->
+<!-- outlook-fixes-applied --></head>
+<body style="margin:0; padding:0; background-color:#f2f2f2; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100;">
+
+<!-- OUTER WRAPPER -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f2f2f2;">
+<tr>
+<td align="center" style="padding:20px 10px;">
+
+<!-- EMAIL CONTAINER 600px -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px; width:100%; border-collapse:collapse;">
+
+<!-- HEADER -->
+<tr>
+<td align="center" style="background-color:#ffffff; padding:28px 20px 24px 20px; border-radius:8px 8px 0 0; border-bottom:3px solid #43ade1;">
+<a href="https://www.rockmountainperformance.com" target="_blank" style="text-decoration:none;">
+<img src="https://www.rockmountainperformance.com/email/logo-header-safe.png" alt="Rock Mountain Performance" width="200" style="display:block; max-width:200px; width:100%; height:auto; border:0;" />
+</a>
+</td>
+</tr>
+
+<!-- BODY -->
+<tr>
+<td style="background-color:#ffffff; padding:40px 35px 35px 35px;">
+
+<p style="margin:0 0 20px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; color:#222222; line-height:1.6;">
+Hi {{contact.first_name}},
+</p>
+
+<p style="margin:0 0 25px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#333333; line-height:1.7;">
+Your Peak Performance subscription is active. Your first bottle is on its way, and you'll get a fresh one every 30 days without having to think about it.
+</p>
+
+<!-- Order Details Card -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 28px 0;">
+<tr>
+<td style="background-color:#f5f8fa; border:1px solid #e2e8ed; border-left:4px solid #43ade1; border-radius:6px; padding:24px 28px;">
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<!-- Order Number -->
+<tr>
+<td style="padding:0 0 14px 0;">
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#888888; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">
+Order Number
+</p>
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:16px; color:#333333; font-weight:bold;">
+{{contact.order_id}}
+</p>
+</td>
+</tr>
+<!-- Divider -->
+<tr>
+<td style="padding:0 0 14px 0; border-top:1px solid #e2e8ed;"></td>
+</tr>
+<!-- Amount -->
+<tr>
+<td style="padding:0 0 14px 0;">
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#888888; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">
+Charged Today
+</p>
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:16px; color:#333333; font-weight:bold;">
+{{contact.order_total}} {{contact.currency}}
+</p>
+</td>
+</tr>
+<!-- Divider -->
+<tr>
+<td style="padding:0 0 14px 0; border-top:1px solid #e2e8ed;"></td>
+</tr>
+<!-- Payment Status -->
+<tr>
+<td style="padding:0;">
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#888888; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">
+Payment Status
+</p>
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:16px; color:#43ade1; font-weight:bold;">
+{{contact.payment_status}}
+</p>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<!-- Shipping Address Card -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 28px 0;">
+<tr>
+<td style="background-color:#f5f8fa; border:1px solid #e2e8ed; border-radius:6px; padding:24px 28px;">
+<p style="margin:0 0 10px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#888888; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">
+Shipping To
+</p>
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#333333; line-height:1.6; font-weight:bold;">
+{{contact.shipping_name}}
+</p>
+<p style="margin:0 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#555555; line-height:1.6;">
+{{contact.shipping_address_line_1}}
+</p>
+<p style="margin:0 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#555555; line-height:1.6;">
+{{contact.shipping_address_line_2}}
+</p>
+<p style="margin:0 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#555555; line-height:1.6;">
+{{contact.shipping_city}}, {{contact.shipping_state}} {{contact.shipping_postal_code}}
+</p>
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#555555; line-height:1.6;">
+{{contact.shipping_country}}
+</p>
+</td>
+</tr>
+</table>
+
+<!-- HOW YOUR SUBSCRIPTION WORKS Section -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 20px 0;">
+<tr>
+<td style="background-color:#43ade1; border-radius:6px; padding:12px 16px;">
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-transform:uppercase; letter-spacing:2px;">
+How Your Subscription Works
+</p>
+</td>
+</tr>
+</table>
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 24px 0;">
+<tr>
+<td style="padding:0 0 12px 0;">
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#222222; line-height:1.6; font-weight:bold;">
+It renews every 30 days
+</p>
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#555555; line-height:1.7;">
+Your card is charged automatically at the start of each cycle, at the same amount shown above, and a fresh bottle ships to the address on file.
+</p>
+</td>
+</tr>
+<tr>
+<td style="padding:0 0 12px 0;">
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#222222; line-height:1.6; font-weight:bold;">
+Your next charge is about 30 days from today
+</p>
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#555555; line-height:1.7;">
+We'll email you a receipt each time it renews, so you always know what was charged and when.
+</p>
+</td>
+</tr>
+<tr>
+<td style="padding:0 0 12px 0;">
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#222222; line-height:1.6; font-weight:bold;">
+Cancel or change it anytime
+</p>
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#555555; line-height:1.7;">
+No minimum term, no cancellation fee. Cancel before your next renewal date and you won't be charged again. You can also update your card or shipping address from the same place.
+</p>
+</td>
+</tr>
+</table>
+
+<!-- Manage CTA -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center" style="padding:0 0 28px 0;">
+<!--[if mso]>
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.rockmountainperformance.com/manage" style="height:52px;v-text-anchor:middle;width:300px;" arcsize="10%" strokecolor="#43ade1" fillcolor="#43ade1">
+<w:anchorlock/>
+<center style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;">MANAGE SUBSCRIPTION</center>
+</v:roundrect>
+<![endif]-->
+<!--[if !mso]><!-->
+<a href="https://www.rockmountainperformance.com/manage" target="_blank" style="display:inline-block; background-color:#43ade1; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:16px; font-weight:bold; text-decoration:none; padding:16px 42px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; mso-hide:all;">
+MANAGE SUBSCRIPTION
+</a>
+<!--<![endif]-->
+</td>
+</tr>
+</table>
+
+<!-- Separator -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="padding:0 0 22px 0; border-top:1px solid #eeeeee;"></td>
+</tr>
+</table>
+
+<p style="margin:0 0 18px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#333333; line-height:1.7;">
+We've attached two guides to this email: <strong>Optimize Your Testosterone</strong> and <strong>Sleep Optimization Protocol</strong>. They cover the research behind the formula and the daily habits that make the biggest difference.
+</p>
+
+<p style="margin:0 0 25px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#333333; line-height:1.7;">
+One honest note on timing: the trials behind these ingredients ran 4 to 12 weeks. That's the timescale the research works on, and it's why we built this as a subscription rather than a one-off. Take it daily and let it compound.
+</p>
+
+<p style="margin:0 0 25px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#333333; line-height:1.7;">
+Every order is backed by our 30-day money-back guarantee. If it's not for you, one email gets your money back.
+</p>
+
+<!-- Sign Off -->
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; color:#222222; line-height:1.6; font-weight:bold;">
+&mdash; Rock Mountain Performance
+</p>
+
+<!-- Contact Info -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="padding:12px 0 0 0; border-top:1px solid #eeeeee;">
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; color:#888888; line-height:1.6;">
+&#9993;&#65039; <a href="mailto:contact@rockmountainperformance.com" style="color:#43ade1; text-decoration:none;">contact@rockmountainperformance.com</a>
+</p>
+<p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; color:#888888; line-height:1.6;">
+&#127760; <a href="https://www.rockmountainperformance.com" target="_blank" style="color:#43ade1; text-decoration:none;">rockmountainperformance.com</a>
+</p>
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; color:#888888; line-height:1.6;">
+&#128247; <a href="https://www.instagram.com/rockmountainperformance/" target="_blank" style="color:#43ade1; text-decoration:none;">@rockmountainperformance</a>
+</p>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- FOOTER -->
+<tr>
+<td style="background-color:#43ade1; height:4px; font-size:1px; line-height:1px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="background-color:#1a1a1a; padding:35px 30px 20px 30px; border-radius:0 0 8px 8px;">
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center" style="padding:0 0 22px 0;">
+<a href="https://www.rockmountainperformance.com" target="_blank" style="text-decoration:none;">
+<img src="https://www.rockmountainperformance.com/email/logo-footer-safe.png" alt="Rock Mountain Performance" width="150" style="display:block; max-width:150px; width:100%; height:auto; border:0;" />
+</a>
+</td>
+</tr>
+</table>
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+<tr>
+<td align="center" style="padding:0 8px 22px 8px;">
+<a href="https://www.instagram.com/rockmountainperformance/" target="_blank" style="text-decoration:none;">
+<img src="https://www.rockmountainperformance.com/email/icon-instagram.png" alt="Instagram" width="36" height="36" style="display:block; border:0; border-radius:50%;" />
+</a>
+</td>
+<td align="center" style="padding:0 8px 22px 8px;">
+<a href="https://www.tiktok.com/@rockmountainperformance" target="_blank" style="text-decoration:none;">
+<img src="https://www.rockmountainperformance.com/email/icon-tiktok.png" alt="TikTok" width="36" height="36" style="display:block; border:0; border-radius:50%;" />
+</a>
+</td>
+</tr>
+</table>
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td style="padding:8px 0 20px 0; border-top:1px solid #333333;"></td>
+</tr>
+</table>
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center" style="padding:0 0 12px 0;">
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777; line-height:1.5;">
+Rock Mountain Performance &bull; 1000 Brickell Ave, Ste 715 &bull; Miami, FL
+</p>
+</td>
+</tr>
+<tr>
+<td align="center" style="padding:0 0 16px 0;">
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777; line-height:1.5;">
+No longer want to receive these emails? <a href="{{unsubscribe_link}}" target="_blank" style="color:#43ade1; text-decoration:underline;; mso-style-textfill-fill-color: #43ade1;"><!--[if mso]><font color="#43ade1"><![endif]-->Unsubscribe<!--[if mso]></font><![endif]--></a>
+</p>
+</td>
+</tr>
+</table>
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td align="center" style="padding:0 0 5px 0;">
+<p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#444444;">
+&copy; 2026 Rock Mountain Performance. All rights reserved.
+</p>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
