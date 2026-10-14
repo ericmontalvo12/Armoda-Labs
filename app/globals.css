@@ -2,29 +2,59 @@
 @import "tailwindcss";
 
 @theme {
+  /* ------------------------------------------------------------------
+     Armoda Labs — white & gold.
+     Two-tier gold is deliberate and not cosmetic. Bright gold on white
+     measures 2.42:1, which fails WCAG for text, but ink on that same gold
+     is 7.78:1 (AAA). So --color-gold is a FILL you put dark text on, and
+     --color-gold-deep (5.06:1 on white) is the only gold allowed to BE
+     text. Never set --color-gold as a text color on a light surface.
+     ------------------------------------------------------------------ */
+
+  /* Surfaces — warm off-whites tinted toward gold rather than neutral
+     grays, so the palette reads as one system instead of white + an accent. */
   --color-background: #ffffff;
-  --color-surface: #f8f8fc;
-  --color-surface-elevated: #f0f0f4;
-  --color-border: #e4e4e7;
-  --color-border-subtle: #ebebef;
+  --color-surface: #fdfcf9;
+  --color-surface-elevated: #faf7f0;
+  --color-surface-accent: #f5f0e4;
+  --color-border: #e8e2d4;
+  --color-border-subtle: #f0ebe0;
 
-  --color-primary: #43ade1;
-  --color-primary-hover: #3899c9;
-  --color-secondary: #202020;
-  --color-secondary-hover: #333333;
-  --color-accent: #43ade1;
+  /* Gold — see the contrast note above before using either. */
+  --color-gold: #c9a227;         /* fills, rules, hairlines, badges */
+  --color-gold-hover: #b8912b;
+  --color-gold-deep: #8a6a14;    /* text-safe gold: links, small accents */
+  --color-gold-muted: #e8d9a8;   /* dividers, inactive states */
 
-  --color-text-primary: #18181b;
-  --color-text-secondary: #52525b;
-  --color-text-muted: #a1a1aa;
+  /* Primary action = ink, not gold. A gold button with white text is
+     unreadable; ink with a gold hover keeps the brand and the contrast. */
+  --color-primary: #14110e;
+  --color-primary-hover: #2a251e;
+  --color-secondary: #c9a227;
+  --color-secondary-hover: #b8912b;
+  --color-accent: #c9a227;
+
+  /* Text — warm-neutral ramp to match the warm surfaces. */
+  --color-text-primary: #14110e;   /* 18.81:1 on white */
+  --color-text-secondary: #5a5247; /*  7.68:1 */
+  --color-text-muted: #7d7467;     /*  4.60:1 — lowest that still passes AA */
   --color-text-on-dark: #ffffff;
-  --color-text-on-dark-muted: #c4c4c4;
+  --color-text-on-dark-muted: #c9c2b4;
+  --color-text-on-gold: #14110e;   /*  7.78:1 on --color-gold */
 
-  --color-dark-bg: #202020;
-  --color-dark-surface: #2a2a2a;
+  --color-dark-bg: #14110e;
+  --color-dark-surface: #221e18;
 
-  --color-star: #f5a623;
-  --color-success: #22c55e;
+  --color-star: #c9a227;
+  --color-success: #2f7d55;
+  --color-danger: #b3261e;         /*  6.54:1 — urgency only, never decoration */
+
+  /* Catalog geometry, measured from a dense multi-product grid: flat
+     surfaces, generous radii, hairline borders instead of shadows. */
+  --radius-card: 20px;
+  --radius-control: 10px;
+  --container-max: 1280px;
+  --grid-gap: 20px;
 
   --font-sans: "Outfit", sans-serif;
   --font-heading: "Poppins", sans-serif;
