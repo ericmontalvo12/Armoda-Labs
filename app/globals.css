@@ -3,17 +3,19 @@
 
 @theme {
   /* ------------------------------------------------------------------
-     Armoda Labs — dark, with pale champagne gold.
+     Armoda Labs — dark, with true gold (#ffd700).
      Going dark inverts the gold problem rather than inheriting it. On white
      this gold family measured 2.09:1 and could not be used for text at all;
      on #0d0c0a the gold is 14.28:1, so the same value works as BOTH fill
      and text. That is why gold-on-black is the luxury pairing and
      gold-on-white is not.
-     The gold is pale on purpose. The cost of going this light is that gold
-     and body text are now close in luminance (1.23:1 between them), so they
-     no longer separate by brightness — only by hue. Body text is therefore
-     kept cool-neutral rather than warm, so the gold stays readable AS gold
-     beside it. Warming up the body text would collapse the distinction.
+     This is a saturated yellow-gold rather than a muted champagne. It is
+     bright (13.94:1 on the background) and unmissable, which is the point,
+     but saturation at this level is also what separates "gold leaf" from
+     "costume" — so it is rationed. Gold is for the accent, the primary
+     action and the rules, never for large fills or body copy. Body text is
+     cool-neutral so the gold reads as a deliberate warm accent against it
+     rather than as part of a yellow wash.
      The old --color-gold-deep (a dark bronze for text on white) is the
      casualty: at 3.72:1 on this background it now fails, so it is gone.
      Use --color-gold-text for gold type, --color-gold for fills and rules.
@@ -29,19 +31,19 @@
   --color-border-subtle: #211e1a;
 
   /* Gold — usable as text on these backgrounds, unlike the light theme. */
-  --color-gold: #e8dcb5;         /* fills, rules, icons       14.28:1 */
-  --color-gold-text: #efe5c8;    /* gold type, slightly lifted       */
-  --color-gold-hover: #f2ecd9;
-  --color-gold-muted: #7a6d4c;   /* dividers, inactive, hairlines    */
+  --color-gold: #ffd700;         /* fills, rules, icons       13.94:1 */
+  --color-gold-text: #ffd700;    /* gold type — same value works here */
+  --color-gold-hover: #ffdf33;
+  --color-gold-muted: #6b5c0a;   /* dividers, inactive, hairlines    */
 
   /* Primary action is a gold fill carrying ink text (9.02:1). White on gold
      would fail, so --color-on-primary exists to stop that happening. */
-  --color-primary: #e8dcb5;
-  --color-primary-hover: #f2ecd9;
+  --color-primary: #ffd700;
+  --color-primary-hover: #ffdf33;
   --color-on-primary: #14110e;
   --color-secondary: #1b1815;
   --color-secondary-hover: #232019;
-  --color-accent: #e8dcb5;
+  --color-accent: #ffd700;
 
   /* Text — cool-neutral, NOT warm. See the note above: warm text at this
      gold's lightness becomes indistinguishable from it. */
@@ -50,12 +52,12 @@
   --color-text-muted: #8f8d87;     /*  5.73:1 — AA floor, do not go darker */
   --color-text-on-dark: #eceae6;
   --color-text-on-dark-muted: #aeaba4;
-  --color-text-on-gold: #14110e;   /* 13.74:1 on --color-gold */
+  --color-text-on-gold: #14110e;   /* 13.41:1 on --color-gold */
 
   --color-dark-bg: #0d0c0a;
   --color-dark-surface: #1b1815;
 
-  --color-star: #e8dcb5;
+  --color-star: #ffd700;
   --color-success: #5fa37c;        /*  6.53:1 */
   --color-danger: #e26b63;         /*  6.07:1 — the light theme's #b3261e
                                       drops to 2.99:1 here and cannot be

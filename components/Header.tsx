@@ -2,12 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
-import { isSaleActive } from "@/lib/sale";
-import { SaleCountdown } from "@/components/SaleCountdown";
 
 const navLinks = [
   { href: "/product", label: "Shop" },
@@ -38,21 +35,9 @@ export function Header() {
         className={`announceBar bg-gold text-center transition-all duration-300 ease-in-out overflow-hidden ${showAnnouncement ? "h-9 flex items-center justify-center px-4" : "h-0"}`}
       >
         <p className="hidden sm:block text-sm font-heading font-bold text-text-on-gold whitespace-nowrap tracking-wide">
-          {isSaleActive() ? (
-            <>
-              20% OFF &mdash; $39.95/BOTTLE{" "}
-              <span className="mx-2 opacity-60">|</span> FREE SHIPPING ON
-              ORDERS $100+{" "}
-              <span className="mx-2 opacity-60">|</span> ENDS IN{" "}
-              <SaleCountdown className="font-bold" />
-            </>
-          ) : (
-            <>
-              FREE SHIPPING{" "}
-              <span className="mx-2 opacity-60">|</span> 30-DAY MONEY BACK
-              GUARANTEE
-            </>
-          )}
+          THIRD-PARTY ASSAYED
+          <span className="mx-2 opacity-60">|</span> COA PUBLISHED FOR EVERY LOT
+          <span className="mx-2 opacity-60">|</span> SAME-DAY WEEKDAY DISPATCH
         </p>
         <div className="sm:hidden announceTrack">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -60,21 +45,9 @@ export function Header() {
               key={i}
               className="flex-shrink-0 text-xs font-heading font-bold text-text-on-gold whitespace-nowrap tracking-wide"
             >
-              {isSaleActive() ? (
-                <>
-                  20% OFF &mdash; $39.95/BOTTLE{" "}
-                  <span className="mx-3 opacity-60">&bull;</span> ENDS IN{" "}
-                  <SaleCountdown />{" "}
-                  <span className="mx-3 opacity-60">&bull;</span>
-                </>
-              ) : (
-                <>
-                  FREE SHIPPING{" "}
-                  <span className="mx-3 opacity-60">&bull;</span> 30-DAY
-                  GUARANTEE{" "}
-                  <span className="mx-3 opacity-60">&bull;</span>
-                </>
-              )}
+              THIRD-PARTY ASSAYED
+              <span className="mx-3 opacity-60">&bull;</span> COA EVERY LOT
+              <span className="mx-3 opacity-60">&bull;</span>
             </span>
           ))}
         </div>
@@ -86,14 +59,9 @@ export function Header() {
           {/* Desktop Layout */}
           <div className="hidden md:flex h-[72px] items-center justify-between">
             <Link href="/" className="flex items-center">
-              <Image
-                src="/logo-new.png"
-                alt="Armoda Labs"
-                width={180}
-                height={54}
-                className="h-10 w-auto"
-                priority
-              />
+              <span className="font-heading text-xl font-extrabold tracking-tight text-text-primary">
+                ARMODA<span className="text-gold">LABS</span>
+              </span>
             </Link>
 
             <nav className="flex items-center gap-8">
@@ -149,14 +117,9 @@ export function Header() {
 
             <div className="justify-self-center">
               <Link href="/" className="block">
-                <Image
-                  src="/logo-new.png"
-                  alt="Armoda Labs"
-                  width={160}
-                  height={48}
-                  className="h-9 w-auto"
-                  priority
-                />
+                <span className="font-heading text-base font-extrabold tracking-tight text-text-primary">
+                  ARMODA<span className="text-gold">LABS</span>
+                </span>
               </Link>
             </div>
 
