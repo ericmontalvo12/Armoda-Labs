@@ -7,7 +7,7 @@ import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 
 const navLinks = [
-  { href: "/product", label: "Shop" },
+  { href: "/products", label: "Shop" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Articles" },
   { href: "/how-to-pay", label: "How to Pay" },
@@ -160,7 +160,7 @@ export function Header() {
               ))}
               <div className="pt-4">
                 <Link
-                  href="/product"
+                  href="/products"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center w-full h-11 rounded-[10px] bg-gold text-text-on-gold font-heading font-bold text-base hover:bg-gold-hover transition-colors"
                 >

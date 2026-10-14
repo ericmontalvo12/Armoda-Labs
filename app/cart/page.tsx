@@ -156,7 +156,7 @@ export default function CartPage() {
               <p className="text-text-secondary mb-8">
                 Looks like you haven't added anything to your cart yet.
               </p>
-              <Link href="/product">
+              <Link href="/products">
                 <Button size="lg">Buy Now</Button>
               </Link>
             </div>

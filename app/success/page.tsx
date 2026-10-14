@@ -209,7 +209,7 @@ function SuccessContent() {
                   Manage Subscription
                 </a>
               ) : (
-                <Link href="/product" className={buttonVariants({ size: "lg", variant: "outline" })}>
+                <Link href="/products" className={buttonVariants({ size: "lg", variant: "outline" })}>
                   View Product
                 </Link>
               )}

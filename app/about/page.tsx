@@ -182,7 +182,7 @@ export default function About() {
               Not a lifestyle brand. Not influencer-founded. We&apos;re athletes who got tired of taking supplements we didn&apos;t trust — so we built what should exist.
             </p>
             <Link
-              href="/product"
+              href="/products"
               className="inline-flex items-center gap-2 font-heading font-bold text-sm text-primary hover:underline"
             >
               See the Product

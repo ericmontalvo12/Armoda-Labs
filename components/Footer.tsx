@@ -3,20 +3,20 @@ import Image from "next/image";
 
 const footerLinks = {
   product: [
-    { label: "Peak Performance", href: "/product" },
-    { label: "Lab Results", href: "/lab-results" },
-    { label: "Reviews", href: "/product#reviews" },
+    { label: "All Products", href: "/products" },
+    { label: "Certificates of Analysis", href: "/lab-results" },
+    { label: "How to Pay", href: "/how-to-pay" },
   ],
   company: [
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Manage Subscription", href: "/manage" },
+    { label: "Partner With Us", href: "/how-to-profit" },
+    { label: "Help", href: "/help" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms of Service", href: "/terms-of-service" },
-    { label: "Returns & Guarantee", href: "/refund-policy" },
+    { label: "Refund Policy", href: "/refund-policy" },
   ],
 };
 

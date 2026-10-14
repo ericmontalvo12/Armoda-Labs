@@ -16,7 +16,7 @@ export function FinalCTA() {
           </p>
 
           <Link
-            href="/product"
+            href="/products"
             className="inline-flex items-center justify-center h-12 px-10 rounded-[5px] bg-secondary text-white font-heading font-bold text-base uppercase tracking-wide hover:bg-secondary-hover transition-colors mb-8"
           >
             Shop Now
