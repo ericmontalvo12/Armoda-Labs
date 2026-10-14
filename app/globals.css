@@ -84,6 +84,23 @@
   --font-heading: "Poppins", sans-serif;
 }
 
+/* Clearance for the fixed header.
+   The header is a 36px announcement bar over a 72px nav (64px on mobile),
+   so it occupies 108px / 100px. Page padding was being set per-route at
+   pt-28 (112px), which left 4px of clearance and read as content jammed
+   under the bar. This is one value so the pages cannot drift apart again:
+   144px gives 44px of breathing room on mobile, 176px gives 68px on
+   desktop. If the announcement bar's height changes, change it here. */
+.page-top {
+  padding-top: 9rem;
+}
+
+@media (min-width: 1024px) {
+  .page-top {
+    padding-top: 11rem;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;

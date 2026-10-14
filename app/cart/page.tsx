@@ -144,7 +144,7 @@ export default function CartPage() {
     return (
       <div className="w-full max-w-full overflow-x-hidden bg-surface/50">
         <Header />
-        <main className="pt-32 pb-16 sm:pb-24 min-h-screen">
+        <main className="page-top pb-16 sm:pb-24 min-h-screen">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="text-center py-16">
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-surface border border-border flex items-center justify-center">
@@ -170,7 +170,7 @@ export default function CartPage() {
   return (
     <div className="w-full max-w-full overflow-x-hidden bg-surface/50">
       <Header />
-      <main className="pt-32 pb-16 sm:pb-24 min-h-screen">
+      <main className="page-top pb-16 sm:pb-24 min-h-screen">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h1 className="font-heading text-3xl sm:text-4xl font-bold text-text-primary mb-2">
             Your Cart

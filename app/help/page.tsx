@@ -90,7 +90,7 @@ export default function HelpPage() {
   return (
     <div className="w-full max-w-full overflow-x-hidden">
       <Header />
-      <main className="pt-28 pb-20">
+      <main className="page-top pb-20">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="font-heading text-3xl font-extrabold text-text-primary sm:text-4xl">
             Help

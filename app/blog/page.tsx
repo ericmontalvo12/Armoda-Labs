@@ -10,7 +10,7 @@ export default function BlogPage() {
   return (
     <div className="w-full max-w-full overflow-x-hidden bg-surface/50">
       <Header />
-      <main className="pt-28 sm:pt-32 pb-20">
+      <main className="page-top pb-20">
 
         {/* Header */}
         <section className="py-8 sm:py-10">

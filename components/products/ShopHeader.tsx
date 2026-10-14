@@ -14,7 +14,7 @@ export function ShopHeader({
 }) {
   return (
     <section className="border-b border-border bg-surface">
-      <div className="mx-auto max-w-[1280px] px-4 pb-10 pt-32 lg:pt-36">
+      <div className="page-top mx-auto max-w-[1280px] px-4 pb-10">
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-2 text-xs text-text-muted">
             {crumbs.map((c, i) => (

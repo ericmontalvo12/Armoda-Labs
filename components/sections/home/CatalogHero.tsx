@@ -10,7 +10,7 @@ import { ShieldCheck } from "lucide-react";
 export function CatalogHero() {
   return (
     <section className="bg-surface-elevated">
-      <div className="mx-auto grid max-w-[1280px] items-center gap-10 px-4 pb-14 pt-32 lg:grid-cols-2 lg:pb-20 lg:pt-36">
+      <div className="page-top mx-auto grid max-w-[1280px] items-center gap-10 px-4 pb-14 lg:grid-cols-2 lg:pb-20">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-gold-muted bg-background px-3 py-1.5 text-xs font-heading font-bold uppercase tracking-wider text-gold-text">
             <ShieldCheck className="h-3.5 w-3.5" />

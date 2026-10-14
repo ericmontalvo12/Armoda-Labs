@@ -726,7 +726,7 @@ export default function ProductPageClient({
   return (
     <div className="w-full max-w-full overflow-x-hidden">
       <Header />
-      <main className="pt-28 sm:pt-32 pb-24 sm:pb-24 bg-surface/50">
+      <main className="page-top pb-24 sm:pb-24 bg-surface/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Mobile-only: title + reviews above gallery */}
           <div className="lg:hidden text-center mb-4">

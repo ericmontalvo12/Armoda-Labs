@@ -81,7 +81,7 @@ export default async function ProductDetailPage({
   return (
     <div className="w-full max-w-full overflow-x-hidden">
       <Header />
-      <main className="pt-28 lg:pt-32">
+      <main className="page-top">
         <div className="mx-auto max-w-[1280px] px-4 pb-16">
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-2 text-xs text-text-muted">

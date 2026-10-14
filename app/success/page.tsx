@@ -140,7 +140,7 @@ function SuccessContent() {
   return (
     <div className="w-full max-w-full overflow-x-hidden bg-surface/50">
       <Header />
-      <main className="pt-32 pb-16 sm:pb-24">
+      <main className="page-top pb-16 sm:pb-24">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
           <div className="text-center py-16">
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center">
