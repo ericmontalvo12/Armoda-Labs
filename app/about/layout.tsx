@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "Who We Are",
   description:
-    "The story behind Rock Mountain Performance and why we build fully disclosed, research-aligned supplements for men who read labels.",
+    "Armoda Labs supplies defined-sequence research peptides, independently assayed with a certificate of analysis published for every lot.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Us",
+    title: "Who We Are",
     description:
-      "The story behind Rock Mountain Performance and why we build fully disclosed, research-aligned supplements for men who read labels.",
+      "Armoda Labs supplies defined-sequence research peptides, independently assayed with a certificate of analysis published for every lot.",
     url: "/about",
   },
 };
