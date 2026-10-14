@@ -24,6 +24,23 @@ export default function BlogPage() {
         {/* Article list */}
         <section>
           <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+            {blogPosts.length === 0 && (
+              <div className="rounded-[20px] border border-border bg-surface p-12 text-center">
+                <p className="font-heading text-base font-extrabold text-text-primary">
+                  No articles yet
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                  Technical notes and handling guidance will be published here.
+                </p>
+                <Link
+                  href="/products"
+                  className="mt-5 inline-block font-heading text-sm font-bold text-gold hover:underline"
+                >
+                  Browse the catalog →
+                </Link>
+              </div>
+            )}
+
             <div className="flex flex-col gap-6">
               {blogPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`}>
