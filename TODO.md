@@ -1,5 +1,33 @@
 # To-Do
 
+---
+
+## Armoda Labs — open engineering items
+
+### Add a "Popularity" sort to the shop page
+
+`components/products/ProductsBrowser.tsx` deliberately omits it. The
+reference site defaults to sorting by popularity, but there is no order data
+to rank by, and a dropdown option that silently does nothing is worse than an
+absent one — so the sort list is currently name and price only.
+
+**Blocked on:** order volume in the `orders` table worth ranking by.
+
+**When unblocked:** derive a rank from line items in `orders` (count of units
+sold per SKU over a trailing window, not all-time, or new products can never
+surface), expose it as a sort key, and make it the default — it is the most
+useful default once it is real.
+
+---
+
+## Stale — Rock Mountain Performance
+
+Everything below this line belongs to the brand this repo was forked from.
+It references that site's domain, its single product, its sale dates and its
+Vercel project. Kept for reference only; none of it is an Armoda task, and
+several items are actively wrong for this project. Delete once the rebrand
+pass is finished.
+
 Things that need a human with account access. Tick them off as you go.
 
 ---
