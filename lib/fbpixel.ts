@@ -1,4 +1,14 @@
-export const FB_PIXEL_ID = "1812986660081810";
+// Meta ads prohibit peptides, so Armoda Labs has no pixel and the tracking
+// path is inert by default: empty ID => MetaPixel renders nothing and the
+// Conversions API short-circuits. The old Rock Mountain pixel was removed
+// outright rather than replaced — leaving it in sent Armoda traffic to
+// another brand's analytics. Do not hardcode an ID here; if a compliant
+// destination is ever approved, set NEXT_PUBLIC_FB_PIXEL_ID in the
+// environment and the existing wiring resumes unchanged.
+export const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? "";
+
+/** True only when a pixel ID is configured. Gates every tracking call. */
+export const isPixelConfigured = FB_PIXEL_ID.length > 0;
 
 declare global {
   interface Window {
@@ -16,6 +26,7 @@ export function trackFbEvent(
   eventId?: string
 ) {
   if (typeof window === "undefined") return;
+  if (!isPixelConfigured) return;
   if (!window.fbq) {
     // The base snippet defines a queueing stub synchronously, so this only
     // happens if it hasn't executed yet or was blocked. Log rather than drop

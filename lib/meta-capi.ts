@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { FB_PIXEL_ID } from "./fbpixel";
+import { FB_PIXEL_ID, isPixelConfigured } from "./fbpixel";
 
 const GRAPH_VERSION = "v21.0";
 
@@ -64,6 +64,9 @@ export interface PurchaseEventInput {
 export async function sendPurchaseToMetaCapi(
   input: PurchaseEventInput
 ): Promise<{ ok: boolean; reason?: string }> {
+  if (!isPixelConfigured) {
+    return { ok: false, reason: "NEXT_PUBLIC_FB_PIXEL_ID not set" };
+  }
   const accessToken = process.env.META_CAPI_ACCESS_TOKEN;
   if (!accessToken) {
     return { ok: false, reason: "META_CAPI_ACCESS_TOKEN not set" };

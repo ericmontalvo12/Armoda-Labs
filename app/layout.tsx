@@ -7,7 +7,10 @@ import "./globals.css";
 // that var legitimately differs per environment (Stripe redirects need the
 // current deployment's URL), but a canonical must always name the real
 // production host or preview builds would tell Google to index preview URLs.
-export const SITE_URL = "https://www.rockmountainperformance.com";
+// NOTE: armodalabs.com is a placeholder standing in for the retired Rock
+// Mountain origin — confirm the real production domain before launch, since
+// a wrong value here poisons canonicals, OG URLs, the sitemap and JSON-LD.
+export const SITE_URL = "https://www.armodalabs.com";
 
 const DEFAULT_TITLE =
   "Rock Mountain Performance | Research-Aligned Testosterone Support";
@@ -32,11 +35,6 @@ export const metadata: Metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   alternates: { canonical: "/" },
-  // Proves domain ownership to Meta, which is a prerequisite for Aggregated
-  // Event Measurement — without it iOS conversions can't be attributed to ads.
-  other: {
-    "facebook-domain-verification": "2hlf5lgboz8j8psb8boqrkkwczvg43",
-  },
   openGraph: {
     type: "website",
     siteName: "Rock Mountain Performance",

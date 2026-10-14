@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { FB_PIXEL_ID, trackFbEvent } from "@/lib/fbpixel";
+import { FB_PIXEL_ID, isPixelConfigured, trackFbEvent } from "@/lib/fbpixel";
 
 export function MetaPixel() {
   const pathname = usePathname();
@@ -13,6 +13,10 @@ export function MetaPixel() {
   useEffect(() => {
     trackFbEvent("PageView");
   }, [pathname]);
+
+  // No pixel configured (the default for Armoda Labs — Meta prohibits
+  // peptides), so emit no script and no noscript beacon at all.
+  if (!isPixelConfigured) return null;
 
   return (
     <>

@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "rockmountainperformance.com",
+        hostname: "www.armodalabs.com",
       },
       {
         protocol: "https",
