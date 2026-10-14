@@ -43,6 +43,26 @@ Not legal advice. Formation, trademark and labelling each need counsel.
   - [ ] Do not render anything implying human use — no syringes staged for
         injection, no body imagery, no clinical-administration scenes
 
+- [ ] **Review moderation — blocked on a schema change, needs your call**
+      Reviews currently publish the moment they are submitted:
+      `app/api/reviews/route.ts` validates and inserts, and `lib/reviews-db.ts`
+      has no approved/status column. So the moderation commitment in the
+      third-party content policy is unenforceable as the code stands — the
+      policy says we remove human-use reviews, but nothing holds one back
+      before it is public.
+      **Needs:** an `approved BOOLEAN NOT NULL DEFAULT false` column on
+      `reviews`, public queries filtered to approved rows, and an approve
+      and reject pair in the admin. CLAUDE.md requires asking before schema
+      changes, so this is waiting on a go-ahead.
+
+- [ ] **Publish the policy drafts after legal review**
+      `/ugc-policy` and `/affiliate-terms` are live but carry a draft banner,
+      rendered by `components/legal/PolicyPage.tsx`. Remove the banner by
+      passing `draft={false}` once counsel has approved the wording. The same
+      review should cover the footer research-use notice and the product-page
+      notice in `components/products/ResearchUseNotice.tsx`, which are the
+      other two placeholder legal texts.
+
 - [ ] **Add a "Popularity" sort to the shop page**
       `components/products/ProductsBrowser.tsx` omits it deliberately: there is
       no order data to rank by, and a sort that silently does nothing is worse

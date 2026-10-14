@@ -94,6 +94,17 @@ export default function HowToProfitPage() {
                 Applications are reviewed individually and we may decline or
                 withdraw an account at our discretion.
               </p>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                Content partners publish under our{" "}
+                <Link
+                  href="/affiliate-terms"
+                  className="text-gold hover:underline"
+                >
+                  affiliate and partner terms
+                </Link>
+                , which prohibit describing human use, dosing or outcomes and
+                require content to be approved before publication.
+              </p>
             </div>
           </div>
 

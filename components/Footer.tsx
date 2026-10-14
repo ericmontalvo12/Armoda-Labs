@@ -22,6 +22,8 @@ const footerLinks = {
     { label: "FAQs", href: "/faq" },
     { label: "Refund Policy", href: "/refund-policy" },
     { label: "Terms of Service", href: "/terms-of-service" },
+    { label: "Affiliate Terms", href: "/affiliate-terms" },
+    { label: "Third-Party Content", href: "/ugc-policy" },
     { label: "Privacy Policy", href: "/privacy-policy" },
   ],
 };
