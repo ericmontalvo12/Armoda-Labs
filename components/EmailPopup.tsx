@@ -94,7 +94,7 @@ export function EmailPopup() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[100] bg-white flex items-center justify-center"
+          className="fixed inset-0 z-[100] bg-background flex items-center justify-center"
         >
           <button
             onClick={handleClose}
@@ -119,7 +119,7 @@ export function EmailPopup() {
                   </span>
                 </div>
 
-                <p className="text-[11px] font-heading font-bold uppercase tracking-widest text-primary mb-3">
+                <p className="text-[11px] font-heading font-bold uppercase tracking-widest text-gold mb-3">
                   Limited Time Offer
                 </p>
                 <h2 className="font-heading text-[32px] font-bold text-text-primary leading-tight mb-3">
@@ -136,7 +136,7 @@ export function EmailPopup() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
-                    className="w-full h-14 px-4 rounded-[5px] border border-border bg-surface text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-base"
+                    className="w-full h-14 px-4 rounded-[10px] border border-border bg-surface text-text-primary placeholder-text-muted focus:outline-none focus:border-gold transition-colors text-base"
                   />
                   <Button type="submit" size="lg" className="w-full h-14 text-base">
                     Claim My 10% Code
@@ -152,8 +152,8 @@ export function EmailPopup() {
               </>
             ) : (
               <>
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-5">
-                  <Check className="w-8 h-8 text-primary" />
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface-accent mb-5">
+                  <Check className="w-8 h-8 text-gold" />
                 </div>
                 <h2 className="font-heading text-2xl font-bold text-text-primary mb-2">
                   Here&apos;s your code!
@@ -163,12 +163,12 @@ export function EmailPopup() {
                 </p>
                 <button
                   onClick={handleCopy}
-                  className="w-full flex items-center justify-between px-5 py-4 rounded-[5px] border-2 border-dashed border-primary bg-primary/5 hover:bg-primary/10 transition-colors group mb-4"
+                  className="w-full flex items-center justify-between px-5 py-4 rounded-[10px] border-2 border-dashed border-gold bg-surface hover:bg-surface-accent transition-colors group mb-4"
                 >
-                  <span className="font-heading text-2xl font-bold text-primary tracking-widest">
+                  <span className="font-heading text-2xl font-bold text-gold tracking-widest">
                     ARMODA10
                   </span>
-                  <span className="text-sm text-primary/70 group-hover:text-primary transition-colors ml-3">
+                  <span className="text-sm text-text-muted group-hover:text-gold transition-colors ml-3">
                     {copied ? "Copied!" : "Copy"}
                   </span>
                 </button>
