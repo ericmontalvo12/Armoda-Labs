@@ -480,7 +480,7 @@ export default function AffiliatePage() {
                   Read first
                 </span>
                 <h3 className="mt-3 font-heading text-base font-extrabold text-text-primary">
-                  Research material, never personal use
+                  For research purposes only, not for human consumption
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                   Do not describe using our products yourself, and do not relay
