@@ -9,7 +9,7 @@ export const maxDuration = 60;
  *
  * Orders placed before the dashboard shipped only exist in Stripe. This is
  * safe to run repeatedly - upsertOrder is idempotent on the session id and
- * never overwrites fulfilment fields.
+ * never overwrites fulfillment fields.
  */
 export async function POST() {
   try {

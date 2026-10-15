@@ -148,7 +148,7 @@ export interface UpsertOrderInput {
 
 /**
  * Idempotent on stripe_session_id: Stripe retries webhooks, and the backfill
- * may cover orders the webhook already saved. Fulfilment fields are never
+ * may cover orders the webhook already saved. Fulfillment fields are never
  * overwritten, so a re-delivered webhook can't wipe a tracking number.
  */
 // Customer-facing order numbers are derived from the row id, offset so the

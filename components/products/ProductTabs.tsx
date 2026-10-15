@@ -28,7 +28,7 @@ type TabKey = (typeof TABS)[number]["key"];
 const FAQS = [
   {
     q: "How is this material supplied?",
-    a: "As a lyophilised powder in a sealed vial, shipped at ambient temperature, which the format tolerates in transit.",
+    a: "As a lyophilized powder in a sealed vial, shipped at ambient temperature, which the format tolerates in transit.",
   },
   {
     q: "Where is the certificate of analysis?",
@@ -78,13 +78,13 @@ export function ProductTabs({ product }: { product: Product }) {
             <div className="space-y-4 text-sm leading-relaxed text-text-secondary">
               <p>
                 {product.overview ??
-                  `${product.name} is supplied as a lyophilised preparation for laboratory research use. Identity and purity are confirmed by an independent laboratory before release, and the certificate is published against the lot number on the vial.`}
+                  `${product.name} is supplied as a lyophilized preparation for laboratory research use. Identity and purity are confirmed by an independent laboratory before release, and the certificate is published against the lot number on the vial.`}
               </p>
               <ul className="space-y-2 pt-2">
                 {[
                   "Independently assayed before release",
                   "Certificate of analysis published per lot",
-                  "Supplied as a lyophilised preparation",
+                  "Supplied as a lyophilized preparation",
                   "For laboratory research use only",
                 ].map((line) => (
                   <li key={line} className="flex gap-2 text-text-primary">

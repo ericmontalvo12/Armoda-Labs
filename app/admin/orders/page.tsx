@@ -131,7 +131,7 @@ export default function AdminOrdersPage() {
       ).length;
       if (oversized === 0) {
         setNotice(
-          `All ${plan.photos} review photo${plan.photos === 1 ? "" : "s"} are already optimised. Nothing to do.`
+          `All ${plan.photos} review photo${plan.photos === 1 ? "" : "s"} are already optimized. Nothing to do.`
         );
         return;
       }

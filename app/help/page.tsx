@@ -66,7 +66,7 @@ const topics = [
 const faqs = [
   {
     q: "How is material shipped?",
-    a: "Lyophilised peptides are shipped at ambient temperature, which they tolerate in transit. Orders placed before the weekday cut-off are dispatched the same day.",
+    a: "Lyophilized peptides are shipped at ambient temperature, which they tolerate in transit. Orders placed before the weekday cut-off are dispatched the same day.",
   },
   {
     q: "The lot number on my vial is not in the certificates list.",

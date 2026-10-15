@@ -60,7 +60,7 @@ export default function AffiliateLoginPage() {
               href="/affiliate"
               className="font-heading font-bold text-gold hover:underline"
             >
-              See the affiliate programme
+              See the affiliate program
             </Link>
           </p>
         </div>

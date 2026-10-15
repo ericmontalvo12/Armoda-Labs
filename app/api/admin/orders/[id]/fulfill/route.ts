@@ -129,7 +129,7 @@ export async function POST(
     const updated = await getOrderById(id);
     return NextResponse.json({ order: updated, emailSent: true });
   } catch (err) {
-    console.error("Fulfil order failed:", err);
+    console.error("Fulfill order failed:", err);
     return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
   }
 }

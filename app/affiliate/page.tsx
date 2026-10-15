@@ -209,11 +209,11 @@ export default function AffiliatePage() {
           <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-4 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-gold-muted bg-background px-3 py-1.5 text-xs font-heading font-bold uppercase tracking-wider text-gold">
-                Armoda Labs partner programme
+                Armoda Labs partner program
               </span>
               <h1 className="mt-5 font-heading text-4xl font-extrabold leading-[1.1] text-text-primary sm:text-5xl">
-                Get paid to point people at{" "}
-                <span className="text-gold">documented material</span>
+                Get paid on{" "}
+                <span className="text-gold">every order you refer</span>
               </h1>
               <p className="mt-5 max-w-lg text-sm leading-relaxed text-text-secondary">
                 Earn {commissionLabel} on every referred order and give your
@@ -304,7 +304,7 @@ export default function AffiliatePage() {
             ))}
           </dl>
           <p className="px-4 pb-6 text-center text-xs text-text-muted">
-            Rates shown are indicative while the programme is being finalised
+            Rates shown are indicative while the program is being finalised
             and are confirmed in writing on approval.
           </p>
         </section>
@@ -378,7 +378,7 @@ export default function AffiliatePage() {
           </div>
         </section>
 
-        <Section eyebrow="Getting started" title="How the programme works" tinted>
+        <Section eyebrow="Getting started" title="How the program works" tinted>
           <div className="grid gap-5 lg:grid-cols-3">
             {STEPS.map(({ n, title, body }) => (
               <div
@@ -428,7 +428,7 @@ export default function AffiliatePage() {
                 <span aria-hidden="true">— </span>Keeping it fair
               </p>
               <h2 className="mt-3 font-heading text-2xl font-extrabold text-text-primary sm:text-3xl">
-                Programme rules
+                Program rules
               </h2>
               <div className="mt-3 h-[3px] w-14 rounded-full bg-gold" />
               <p className="mt-5 text-sm leading-relaxed text-text-secondary">

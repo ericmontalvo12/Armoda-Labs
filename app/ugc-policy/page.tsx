@@ -56,7 +56,7 @@ export default function UgcPolicyPage() {
           Partners operate under written terms that prohibit describing human
           use, dosing, protocols, outcomes or personal experience with our
           products. Content from partners is reviewed before publication.
-          Partners who breach those terms are removed from the programme and
+          Partners who breach those terms are removed from the program and
           their content is reported for removal.
         </p>
         <p>

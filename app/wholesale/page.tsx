@@ -23,7 +23,7 @@ const FEATURES = [
   {
     icon: Building2,
     title: "Institutional accounts",
-    body: "Universities, contract research organisations and private laboratories can order against a purchase order with consolidated invoicing and a named point of contact.",
+    body: "Universities, contract research organizations and private laboratories can order against a purchase order with consolidated invoicing and a named point of contact.",
   },
   {
     icon: Percent,
@@ -51,7 +51,7 @@ export default function WholesalePage() {
           </h1>
           <p className="mt-4 text-sm leading-relaxed text-text-secondary">
             Account terms and volume pricing for qualifying laboratories,
-            research organisations and distributors.
+            research organizations and distributors.
           </p>
 
           <div className="mt-10 space-y-4">
@@ -131,7 +131,7 @@ export default function WholesalePage() {
               Apply for an account
             </h2>
             <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-text-on-gold/80">
-              Tell us about your organisation and expected volume. We respond
+              Tell us about your organization and expected volume. We respond
               to applications within two business days.
             </p>
             <Link

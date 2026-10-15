@@ -123,7 +123,7 @@ export default function HowToPayPage() {
           <p className="mt-12 text-sm text-text-secondary">
             Still stuck?{" "}
             <Link href="/help" className="font-medium text-gold-text hover:underline">
-              Visit the help centre
+              Visit the help center
             </Link>{" "}
             or{" "}
             <Link href="/contact" className="font-medium text-gold-text hover:underline">

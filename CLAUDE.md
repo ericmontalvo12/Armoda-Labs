@@ -102,6 +102,14 @@ NextResponse.json({ error: ... }, { status: 500 }) }`. Validate input and return
 try/catch so one failure doesn't block the others. `meta-capi.ts` never throws —
 tracking must not break order processing.
 
+## Copy conventions
+
+- **US English.** Armoda is a US business dealing with the FDA and FTC:
+  program, organization, labeling, lyophilized, center, fulfillment. An
+  earlier pass wrote the site in British spellings and had to be converted.
+- Product and policy copy states facts about the operation — testing,
+  documentation, handling — never an effect on a person.
+
 ## Constraints
 
 - **Never write copy claiming a therapeutic or performance effect of a peptide**,

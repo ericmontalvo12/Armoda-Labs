@@ -24,7 +24,7 @@ export function ResearchUseNotice() {
         purposes. Introduction into humans or animals is prohibited. This
         material must be handled only by qualified professionals. It is not a
         drug, food or cosmetic, and must not be misbranded, misused or
-        mislabelled as such.
+        mislabeled as such.
       </p>
     </div>
   );
