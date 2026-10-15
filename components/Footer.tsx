@@ -9,7 +9,8 @@ const footerLinks = {
     { label: "Who We Are", href: "/about" },
     { label: "Shop", href: "/products" },
     { label: "Certificates of Analysis", href: "/lab-results" },
-    { label: "Partner With Us", href: "/how-to-profit" },
+    { label: "Wholesale", href: "/wholesale" },
+    { label: "Affiliate Program", href: "/affiliate" },
   ],
   Account: [
     { label: "Cart", href: "/cart" },

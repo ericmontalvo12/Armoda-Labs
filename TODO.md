@@ -43,6 +43,24 @@ Not legal advice. Formation, trademark and labelling each need counsel.
   - [ ] Do not render anything implying human use — no syringes staged for
         injection, no body imagery, no clinical-administration scenes
 
+- [ ] **Build the affiliate portal**
+      `/affiliate/login` currently explains that access is manual rather than
+      rendering a login form, because there is no affiliate auth: no accounts
+      table, no sessions, no dashboard. A form that takes credentials and does
+      nothing teaches partners their password does not matter and invites them
+      to reuse a real one. Replace the page when the portal exists.
+      **Needs:** affiliate accounts, per-partner code attribution reporting
+      against `orders`, and a payout ledger. Schema change, so it needs a
+      go-ahead.
+
+- [ ] **Set the affiliate commercial terms**
+      `app/affiliate/page.tsx` drives the hero, stat strip and earnings
+      estimator from one `COMMISSION_RATE` constant, currently a placeholder
+      20%, with `AUDIENCE_DISCOUNT` and `APPROVAL_WINDOW` beside it. The page
+      says on its face that rates are indicative until confirmed. Set them
+      from real margin, then remove that line. Wholesale tiers in
+      `app/wholesale/page.tsx` are `TBC` for the same reason.
+
 - [ ] **Review moderation — blocked on a schema change, needs your call**
       Reviews currently publish the moment they are submitted:
       `app/api/reviews/route.ts` validates and inserts, and `lib/reviews-db.ts`

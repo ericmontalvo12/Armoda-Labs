@@ -3,20 +3,35 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, ChevronDown } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 
-const navLinks = [
+type NavLink = {
+  href: string;
+  label: string;
+  children?: { href: string; label: string }[];
+};
+
+const navLinks: NavLink[] = [
   { href: "/products", label: "Shop" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Articles" },
   { href: "/how-to-pay", label: "How to Pay" },
-  { href: "/how-to-profit", label: "How to Profit" },
+  {
+    href: "/wholesale",
+    label: "Affiliate/Wholesale",
+    children: [
+      { href: "/wholesale", label: "Wholesale" },
+      { href: "/affiliate", label: "Affiliate Program" },
+      { href: "/affiliate/login", label: "Affiliate Login" },
+    ],
+  },
   { href: "/help", label: "Help" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [showAnnouncement, setShowAnnouncement] = useState(true);
   const { totalItems } = useCart();
 
@@ -65,15 +80,69 @@ export function Header() {
             </Link>
 
             <nav className="flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-heading font-bold text-text-primary uppercase tracking-wide hover:text-gold-text transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.children ? (
+                  // Opens on hover for pointers and on focus for keyboards, so
+                  // the submenu is reachable without a click either way.
+                  <div
+                    key={link.href}
+                    className="relative"
+                    onMouseEnter={() => setOpenDropdown(link.href)}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                    onFocus={() => setOpenDropdown(link.href)}
+                    onBlur={(e) => {
+                      if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                        setOpenDropdown(null);
+                      }
+                    }}
+                  >
+                    <button
+                      type="button"
+                      aria-expanded={openDropdown === link.href}
+                      aria-haspopup="true"
+                      onClick={() =>
+                        setOpenDropdown((cur) =>
+                          cur === link.href ? null : link.href
+                        )
+                      }
+                      className="flex items-center gap-1 text-sm font-heading font-bold text-text-primary uppercase tracking-wide hover:text-gold-text transition-colors"
+                    >
+                      {link.label}
+                      <ChevronDown
+                        className={`h-3.5 w-3.5 transition-transform ${
+                          openDropdown === link.href ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {openDropdown === link.href && (
+                      <div className="absolute left-0 top-full z-50 w-56 pt-3">
+                        <ul className="overflow-hidden rounded-[10px] border border-border bg-surface py-2">
+                          {link.children.map((child) => (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                onClick={() => setOpenDropdown(null)}
+                                className="block px-4 py-2.5 text-sm font-heading font-bold text-text-secondary transition-colors hover:bg-surface-accent hover:text-gold-text"
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm font-heading font-bold text-text-primary uppercase tracking-wide hover:text-gold-text transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
             </nav>
 
             <div className="flex items-center gap-4">
@@ -148,16 +217,42 @@ export function Header() {
             className="md:hidden bg-surface border-b border-border"
           >
             <nav className="flex flex-col px-4 py-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="py-3 font-heading font-bold text-text-primary uppercase text-sm tracking-wide hover:text-gold-text transition-colors border-b border-border-subtle last:border-b-0"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.children ? (
+                  // Mobile has no hover, so the group renders expanded rather
+                  // than behind a second tap.
+                  <div
+                    key={link.href}
+                    className="border-b border-border-subtle py-3 last:border-b-0"
+                  >
+                    <p className="font-heading text-sm font-bold uppercase tracking-wide text-text-muted">
+                      {link.label}
+                    </p>
+                    <ul className="mt-2 space-y-1 pl-3">
+                      {link.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block py-2 font-heading text-sm font-bold text-text-primary transition-colors hover:text-gold-text"
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="py-3 font-heading font-bold text-text-primary uppercase text-sm tracking-wide hover:text-gold-text transition-colors border-b border-border-subtle last:border-b-0"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
               <div className="pt-4">
                 <Link
                   href="/products"
