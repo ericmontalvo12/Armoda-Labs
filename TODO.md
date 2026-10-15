@@ -14,11 +14,20 @@ generate revenue, and are also what manufacture evidence of human-use intent
 rules are not paperwork to do later; they are a precondition for the
 marketing existing at all.
 
-Not legal advice. Formation, trademark and labelling each need counsel.
+Not legal advice. Formation, trademark and labeling each need counsel.
+
+**How the work splits.** You own what is bounded by your own effort — code,
+backend, copy. Gabe owns what is bounded by other people's response times:
+anything where the task is send it and wait. Headings below carry the owner.
+
+Gabe needs spending authority inside agreed limits, or he blocks on you for
+every choice and the split buys nothing. What he should not decide alone: the
+brand name, anything a lawyer must see, anything published publicly, and
+whether Retatrutide and Tirzepatide stay listed.
 
 ---
 
-### Website
+### Website — YOU
 
 - [ ] **Finish the website**
   - [x] Catalog model, `/products`, `/products/category/[slug]`, `/products/[slug]`
@@ -91,7 +100,7 @@ Not legal advice. Formation, trademark and labelling each need counsel.
 
 ---
 
-### 1. Name — blocks everything
+### 1. Name — BOTH, decide together
 
 - [ ] USPTO TESS conflict search, classes 1 and 5
 - [ ] `.com` available, or pick again
@@ -100,7 +109,7 @@ Not legal advice. Formation, trademark and labelling each need counsel.
 - [ ] Lock it, then set the real domain in `SITE_URL` (`app/layout.tsx`),
       currently the placeholder `https://www.armodalabs.com`
 
-### 2. LLC
+### 2. LLC — GABE
 
 - [ ] Formation state (home state unless there is a reason — Delaware/Wyoming
       add foreign qualification and protect you from nothing here)
@@ -112,7 +121,7 @@ Not legal advice. Formation, trademark and labelling each need counsel.
       and licenses it to the operating company, so the brand survives anything
       that happens to the operating entity
 
-### 3. Trademark — expect a lawfulness problem
+### 3. Trademark — GABE (search), BOTH (attorney call)
 
 - [ ] Clearance search (start now, long lead time)
 - [ ] Trademark attorney consult **specifically on registrability**
@@ -124,7 +133,7 @@ Cir. 2020). Research peptides are plausibly unapproved new drugs, so filing for
 for unambiguously lawful goods/services instead. Common-law rights exist from
 use regardless of registration.
 
-### 4. COAs and third-party testing — the actual product
+### 4. COAs and third-party testing — GABE
 
 - [ ] Supplier is chosen on price. Qualify it by buying a single vial of each
       compound and sending those to an independent lab before committing to a
@@ -146,7 +155,7 @@ use regardless of registration.
 
 Mass spec matters as much as purity: purity alone does not confirm identity.
 
-### 5. Payment processing — have one, protect it
+### 5. Payment processing — GABE
 
 - [ ] Confirm rolling reserve percentage and hold period — this sets working capital
 - [ ] Confirm chargeback threshold (usually ~0.9%); monitor weekly
@@ -157,7 +166,7 @@ Mass spec matters as much as purity: purity alone does not confirm identity.
 - [ ] Keep the site underwriteable: class-based categories, no efficacy claims,
       research-use notices. Processors re-review periodically
 
-### 6. Influencer payouts — highest-risk item
+### 6. Influencer payouts — YOU (terms), GABE (outreach list)
 
 - [ ] Payout model: coupon-code attribution by default (ties to the promo code
       infrastructure already built); flat fee for known quantities; 10–20% rev
@@ -173,7 +182,7 @@ Mass spec matters as much as purity: purity alone does not confirm identity.
 You are liable for what affiliates say. A creator improvising a testimonial has
 made a drug claim with your name on it, and your processor may see it first.
 
-### 7. Vial packaging
+### 7. Vial packaging — GABE (negotiate), YOU (artwork)
 
 - [ ] Label must carry: "For Laboratory Research Use Only — Not for Human
       Consumption", compound name, net quantity, lot number, CAS where
@@ -187,7 +196,7 @@ made a drug claim with your name on it, and your processor may see it first.
 The label travels, gets photographed, and is the artefact most likely to end up
 as an enforcement exhibit.
 
-### 8. Thank-you cards / UGC
+### 8. Thank-you cards / UGC — YOU (decide mechanic)
 
 - [ ] Reconsider the mechanic. Incentivised social posts are material
       connections requiring FTC disclosure, and Meta/TikTok prohibit this
@@ -201,7 +210,7 @@ as an enforcement exhibit.
       submissions showing it
 - [ ] Card copy must itself carry the disclosure requirement
 
-### 9. Marketing
+### 9. Marketing — GABE (channel groundwork)
 
 - [ ] **Closed, do not spend time on:** Google Ads (Unapproved Substances
       policy), Meta and TikTok ads (prohibited category)
