@@ -126,9 +126,16 @@ use regardless of registration.
 
 ### 4. COAs and third-party testing — the actual product
 
-- [ ] Blind-qualify 3–4 suppliers: order as an anonymous buyer, send samples to
-      your own lab, compare. Expect at least one to come back off-spec. This is
-      the step that separates vendors who last from vendors who don't
+- [ ] Supplier is chosen on price. Qualify it by buying a single vial of each
+      compound and sending those to an independent lab before committing to a
+      full lot. (Anonymous purchasing was considered and dropped.)
+- [ ] **Test the production lot too, separately.** The sample vials will not be
+      from the lot you end up buying, so the sample test qualifies the supplier,
+      not the inventory. The COA published against a lot number has to come from
+      that lot or the documentation does not match what shipped — which is the
+      one failure this whole positioning cannot survive
+- [ ] Get repeat-customer pricing from the lab: per-lot testing is a permanent
+      recurring cost, not a one-off
 - [ ] Select an ISO 17025-accredited lab
 - [ ] Price the panel: HPLC purity, mass spec identity, peptide content, water
       content, residual solvents (TFA), endotoxin if positioning warrants
