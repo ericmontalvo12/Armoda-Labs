@@ -5,126 +5,135 @@ import { Footer } from "@/components/Footer";
 import { FileText, FlaskConical } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Lab Results",
+  title: "Certificates of Analysis",
   description:
-    "Certificates of Analysis for every batch of Peak Performance — ingredient amounts, microbiological testing, and batch details.",
+    "Independent certificates of analysis for every lot supplied by Armoda Labs, matched to the lot number printed on the vial.",
   alternates: { canonical: "/lab-results" },
 };
 
-// One entry per manufactured lot, newest first. When a new COA arrives, drop
-// the PDF in public/coa/ named with its lot number so files never collide,
-// then add a row here.
-const batches = [
-  {
-    product: "Peak Performance (90 ct)",
-    lot: "260319",
-    manufactured: "June 15, 2026",
-    bestBy: "June 2028",
-    href: "/coa/peak-performance-90ct-lot-260319.pdf",
-  },
-];
+// One entry per tested lot, newest first. When a certificate arrives, drop the
+// PDF in public/coa/ named with its lot number so files never collide, then
+// add a row here.
+//
+// NOTHING SHIPS BEFORE ITS ROW EXISTS. Publishing a certificate against a lot
+// number is the only claim this brand makes; shipping a lot whose certificate
+// is not published makes every other certificate worth less.
+const batches: {
+  product: string;
+  lot: string;
+  tested: string;
+  href: string;
+}[] = [];
 
 const tested = [
   {
-    title: "Active ingredients",
-    body: "Every active in the formula listed against its label claim — vitamin D3, zinc, magnesium, boron, KSM-66 ashwagandha, fenugreek, and tongkat ali — with the amount each batch is required to meet.",
+    title: "Identity",
+    body: "Confirmed by mass spectrometry against the expected molecular mass. Purity alone cannot establish identity, so both are reported.",
   },
   {
-    title: "Microbiological safety",
-    body: "Total aerobic microbial count, total yeast and mold, E. coli, Salmonella, and Staphylococcus aureus. These analyses are performed by ISO 17025-accredited third-party laboratories.",
+    title: "Purity",
+    body: "Measured by HPLC and reported as the percentage of the chromatogram attributable to the target compound, with the method stated.",
   },
   {
-    title: "Physical inspection",
-    body: "Appearance, color, odor, and capsule integrity — checked against specification for every batch before it ships.",
+    title: "Peptide content",
+    body: "The net mass of peptide in the vial, which is a separate measurement from purity — a vial can assay as highly pure and still contain less material than stated.",
   },
   {
-    title: "Testing methodology",
-    body: "Microbiological analyses are performed by ISO 17025-accredited third-party laboratories. Active ingredient amounts are substantiated under 21 CFR 111.75 through component testing and batch production record review, a standard method for finished supplements.",
+    title: "Water content and residual solvents",
+    body: "Both contribute mass that is not peptide, so both are measured rather than assumed.",
+  },
+  {
+    title: "Lot and method",
+    body: "The lot number, the date analyzed, the laboratory, and the analytical method used, so the result can be traced and repeated.",
   },
 ];
 
 export default function LabResults() {
   return (
-    <div className="w-full max-w-full overflow-x-hidden bg-surface/50">
+    <div className="w-full max-w-full overflow-x-hidden">
       <Header />
-      <main className="page-top pb-16 sm:pb-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-3xl sm:text-4xl font-bold text-text-primary mb-4">
-            Lab Results
+      <main className="page-top pb-20">
+        <div className="mx-auto max-w-4xl px-4">
+          <h1 className="font-heading text-3xl font-extrabold text-text-primary sm:text-4xl">
+            Certificates of Analysis
           </h1>
 
-          <p className="text-text-secondary mb-10 max-w-2xl leading-relaxed">
-            Every batch of Peak Performance ships with a Certificate of Analysis.
-            It names the lot, the manufacturing date, every active ingredient
-            with its label claim, and the microbiological panel the batch was
-            required to pass. They&apos;re all here, unedited.
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary">
+            Every lot is analyzed by an independent laboratory before release.
+            Certificates are published here against the lot number printed on
+            the vial, so what you read describes the material you received —
+            not a reference batch from an earlier run. They are posted
+            unedited.
           </p>
 
-          {/* Batches */}
-          <section className="space-y-4 mb-14">
-            {batches.map((batch) => (
-              <div
-                key={batch.lot}
-                className="bg-white border border-border rounded-xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-5"
-              >
-                <div className="flex-1 min-w-0">
-                  <h2 className="font-heading font-semibold text-text-primary mb-3">
-                    {batch.product}
-                  </h2>
-                  <dl className="flex flex-wrap gap-x-8 gap-y-2 text-sm">
-                    <div>
-                      <dt className="text-text-muted text-xs uppercase tracking-wide mb-0.5">
-                        Lot
-                      </dt>
-                      <dd className="text-text-primary font-medium tabular-nums">
-                        {batch.lot}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-text-muted text-xs uppercase tracking-wide mb-0.5">
-                        Manufactured
-                      </dt>
-                      <dd className="text-text-primary font-medium">
-                        {batch.manufactured}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-text-muted text-xs uppercase tracking-wide mb-0.5">
-                        Best by
-                      </dt>
-                      <dd className="text-text-primary font-medium">
-                        {batch.bestBy}
-                      </dd>
-                    </div>
-                  </dl>
-                </div>
-
-                <a
-                  href={batch.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90 flex-shrink-0"
-                >
-                  <FileText className="w-4 h-4" aria-hidden="true" />
-                  View Certificate
-                </a>
+          <section className="mt-10 space-y-4">
+            {batches.length === 0 ? (
+              <div className="rounded-[20px] border border-border bg-surface p-10 text-center">
+                <p className="font-heading text-base font-extrabold text-text-primary">
+                  No certificates published yet
+                </p>
+                <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-text-secondary">
+                  Certificates appear here as lots are analyzed and released.
+                  Nothing is offered for sale before its certificate is
+                  published.
+                </p>
               </div>
-            ))}
+            ) : (
+              batches.map((batch) => (
+                <div
+                  key={batch.lot}
+                  className="flex flex-col gap-5 rounded-[20px] border border-border bg-surface p-6 sm:flex-row sm:items-center"
+                >
+                  <div className="min-w-0 flex-1">
+                    <h2 className="font-heading font-extrabold text-text-primary">
+                      {batch.product}
+                    </h2>
+                    <dl className="mt-3 flex flex-wrap gap-x-8 gap-y-2 text-sm">
+                      <div>
+                        <dt className="mb-0.5 text-xs uppercase tracking-wide text-text-muted">
+                          Lot
+                        </dt>
+                        <dd className="font-medium tabular-nums text-text-primary">
+                          {batch.lot}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="mb-0.5 text-xs uppercase tracking-wide text-text-muted">
+                          Analyzed
+                        </dt>
+                        <dd className="font-medium tabular-nums text-text-primary">
+                          {batch.tested}
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  <a
+                    href={batch.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex flex-shrink-0 items-center justify-center gap-2 rounded-[10px] bg-primary px-5 py-3 font-heading text-sm font-bold text-on-primary transition-colors hover:bg-primary-hover"
+                  >
+                    <FileText className="h-4 w-4" aria-hidden="true" />
+                    View certificate
+                  </a>
+                </div>
+              ))
+            )}
           </section>
 
-          {/* What the certificate covers */}
-          <section className="mb-12">
-            <h2 className="font-heading text-xl font-semibold text-text-primary mb-6 flex items-center gap-2">
-              <FlaskConical className="w-5 h-5 text-primary" aria-hidden="true" />
-              What&apos;s on the certificate
+          <section className="mt-14">
+            <h2 className="flex items-center gap-2 font-heading text-lg font-extrabold text-text-primary">
+              <FlaskConical className="h-5 w-5 text-gold" aria-hidden="true" />
+              What the certificate reports
             </h2>
-            <div className="space-y-5">
+            <div className="mt-6 space-y-5">
               {tested.map((item) => (
                 <div key={item.title}>
-                  <h3 className="font-semibold text-text-primary text-sm mb-1.5">
+                  <h3 className="font-heading text-sm font-extrabold text-text-primary">
                     {item.title}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed">
+                  <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
                     {item.body}
                   </p>
                 </div>
@@ -132,24 +141,25 @@ export default function LabResults() {
             </div>
           </section>
 
-          {/* Batch questions — routed to support, not framed as a caveat. */}
-          <section>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              Questions about a specific batch? Email{" "}
-              <a
-                href="mailto:contact@rockmountainperformance.com"
-                className="text-primary hover:underline"
-              >
-                contact@rockmountainperformance.com
-              </a>{" "}
-              with the lot number from your bottle.
+          <section className="mt-12 rounded-[20px] border border-border bg-surface p-6">
+            <p className="text-sm leading-relaxed text-text-secondary">
+              A certificate reports what a lot was measured to contain. It is
+              not a statement about what the compound does, and nothing here
+              should be read as one.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+              Questions about a specific lot?{" "}
+              <Link href="/contact" className="text-gold hover:underline">
+                Contact us
+              </Link>{" "}
+              with the lot number printed on your vial.
             </p>
           </section>
 
           <div className="mt-10">
             <Link
               href="/products"
-              className="text-primary text-sm font-medium hover:underline"
+              className="font-heading text-sm font-bold text-gold hover:underline"
             >
               Browse the catalog →
             </Link>
