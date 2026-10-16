@@ -40,7 +40,11 @@ const FAQS = [
   },
   {
     q: "Can this be returned?",
-    a: "Unopened items can be raised with us within the window set out in the refund policy. Once a seal is broken, chain of custody cannot be verified and the item cannot be returned.",
+    a: "No. All sales are final. Once material leaves our custody we cannot verify how it was stored or handled, so it can never re-enter inventory — accepting returns would mean either destroying them or reselling material we can no longer stand behind.",
+  },
+  {
+    q: "What if my order arrives damaged, or does not arrive?",
+    a: "Contact us with your order number and photographs within the claim window. Damaged, lost and incorrectly picked shipments are replaced or refunded without a return — we do not want the vial back.",
   },
 ];
 

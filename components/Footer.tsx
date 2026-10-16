@@ -21,7 +21,7 @@ const footerLinks = {
     { label: "Help", href: "/help" },
     { label: "Contact Us", href: "/contact" },
     { label: "FAQs", href: "/faq" },
-    { label: "Refund Policy", href: "/refund-policy" },
+    { label: "Shipping & Claims", href: "/shipping-and-claims" },
     { label: "Terms of Service", href: "/terms-of-service" },
     { label: "Affiliate Terms", href: "/affiliate-terms" },
     { label: "Third-Party Content", href: "/ugc-policy" },

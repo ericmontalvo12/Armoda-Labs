@@ -34,8 +34,9 @@ whether Retatrutide and Tirzepatide stay listed.
   - [x] Homepage, `/about`, `/how-to-pay`, `/how-to-profit`, `/help`, footer
   - [ ] Retire `/product` and `ProductPageClient.tsx` (the single-product path)
   - [ ] Dark-theme pass on legacy routes: `/cart`, `/success`, `/blog`, `/manage`
-  - [ ] Rebrand `/terms-of-service`, `/privacy-policy`, `/refund-policy` —
-        still Rock Mountain's, and where the real restrictions belong
+  - [x] `/refund-policy` replaced by `/shipping-and-claims` — all sales final
+  - [ ] Rebrand `/terms-of-service` and `/privacy-policy` — still Rock
+        Mountain's, and where the real restrictions belong
   - [ ] Real prices per SKU and per variant (all currently `0` →
         "Price on request")
   - [ ] Decide fonts — Poppins/Outfit are inherited and wrong for the palette

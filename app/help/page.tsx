@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import {
   Package,
   Truck,
-  RotateCcw,
+  PackageCheck,
   FlaskConical,
   CreditCard,
   Mail,
@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Help",
   description:
-    "Order tracking, shipping, returns, certificates of analysis and payment help for Armoda Labs.",
+    "Order tracking, shipping, damage claims, certificates of analysis and payment help for Armoda Labs.",
   alternates: { canonical: "/help" },
 };
 
@@ -34,11 +34,11 @@ const topics = [
     cta: "Shipping questions",
   },
   {
-    icon: RotateCcw,
-    title: "Returns & refunds",
-    body: "What can be returned, the window for raising an issue, and how refunds are processed.",
-    href: "/refund-policy",
-    cta: "Refund policy",
+    icon: PackageCheck,
+    title: "Damage & claims",
+    body: "All sales are final. How damaged, lost or incorrect shipments are handled.",
+    href: "/shipping-and-claims",
+    cta: "Claims policy",
   },
   {
     icon: FlaskConical,
@@ -71,6 +71,10 @@ const faqs = [
   {
     q: "The lot number on my vial is not in the certificates list.",
     a: "Contact us with the lot number and we will send the certificate directly. Every lot is assayed before dispatch, so a missing entry is a publishing gap on our side, not an untested lot.",
+  },
+  {
+    q: "Can I return an order?",
+    a: "No. All sales are final. Once material leaves our custody its storage and handling cannot be verified, so it can never return to inventory. Damaged, lost or incorrectly picked shipments are made right without a return.",
   },
   {
     q: "Can I change or cancel an order?",

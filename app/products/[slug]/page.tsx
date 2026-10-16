@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Truck, RotateCcw, FlaskConical, Headphones, ShieldCheck, Lock } from "lucide-react";
+import { Truck, PackageCheck, FlaskConical, Headphones, ShieldCheck, Lock } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
@@ -44,11 +44,11 @@ const SERVICE = [
     cta: "Shipping details",
   },
   {
-    icon: RotateCcw,
-    title: "Returns",
-    body: "Unopened items can be raised within the policy window.",
-    href: "/refund-policy",
-    cta: "Refund policy",
+    icon: PackageCheck,
+    title: "All sales final",
+    body: "No returns. Damaged or lost shipments are replaced without one.",
+    href: "/shipping-and-claims",
+    cta: "Claims policy",
   },
   {
     icon: FlaskConical,
