@@ -13,9 +13,12 @@ import "./globals.css";
 export const SITE_URL = "https://www.armodalabs.com";
 
 const DEFAULT_TITLE =
-  "Rock Mountain Performance | Research-Aligned Testosterone Support";
+  "Armoda Labs | Research Peptides, Independently Tested";
+// Describes what the material IS and how it is documented. It states no
+// effect, which is both accurate and the only defensible position here —
+// a meta description is advertising and is read as intended use.
 const DEFAULT_DESCRIPTION =
-  "Science-backed testosterone support formula designed to support healthy testosterone levels, improve training performance, and optimize daily vitality.";
+  "Defined-sequence research peptides supplied for laboratory use only. Every lot is independently assayed, with the certificate of analysis published against the lot number on the vial.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -31,17 +34,17 @@ export const metadata: Metadata = {
   // Child routes set only their own page name; this appends the brand.
   title: {
     default: DEFAULT_TITLE,
-    template: "%s | Rock Mountain Performance",
+    template: "%s | Armoda Labs",
   },
   description: DEFAULT_DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    siteName: "Rock Mountain Performance",
+    siteName: "Armoda Labs",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     url: SITE_URL,
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Peak Performance — Built for Men Who Read Labels" }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Armoda Labs" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -50,12 +53,11 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   keywords: [
-    "testosterone support",
-    "peak performance",
-    "strength",
-    "energy",
-    "recovery",
-    "research-aligned doses",
+    "research peptides",
+    "laboratory research",
+    "certificate of analysis",
+    "third-party tested",
+    "lyophilized peptides",
   ],
 };
 

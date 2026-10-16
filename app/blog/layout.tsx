@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Articles",
   description:
-    "Research-backed articles on testosterone, supplementation, sleep, cortisol, and training from Rock Mountain Performance.",
+    "Technical notes on handling, storage and documentation from Armoda Labs.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: "Articles",
     description:
-      "Research-backed articles on testosterone, supplementation, sleep, cortisol, and training from Rock Mountain Performance.",
+      "Technical notes on handling, storage and documentation from Armoda Labs.",
     url: "/blog",
   },
 };
