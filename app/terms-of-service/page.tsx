@@ -44,23 +44,30 @@ export default function TermsOfServicePage() {
           items={[
             "You are at least 18 years of age.",
             "You are acquiring the material for laboratory research purposes only.",
-            "You are qualified by training or experience to handle research chemicals safely, or are acquiring on behalf of an organization whose personnel are.",
+            "You are a qualified researcher, a laboratory professional, or an institution — or you are acquiring on behalf of one — and are competent by training or experience to handle research chemicals safely.",
             "You will handle, store and dispose of the material in accordance with applicable law and good laboratory practice.",
             "You are not acquiring the material for yourself or any other person to consume, administer or otherwise introduce into a human or an animal.",
             "Your purchase and possession of the material is lawful in your jurisdiction.",
           ]}
         />
         <p>
-          We may decline or cancel any order, and may require evidence of
-          eligibility before dispatch.
+          These are conditions of sale, not advisory notes. We may decline or
+          cancel any order, and may require written confirmation or evidence
+          of eligibility before dispatch.
         </p>
       </PolicySection>
 
       <PolicySection heading="3. Permitted use">
         <p>
           Material is supplied <strong>for laboratory research use only</strong>
-          . It is not a drug, food, cosmetic, dietary supplement or medical
-          device, and it is not supplied for human or veterinary use.
+          . It is not a drug, food, food additive, beverage, cosmetic, dietary
+          supplement or medical device, and it is not supplied for human or
+          veterinary use.
+        </p>
+        <p>
+          Introducing this material into a human or an animal is prohibited
+          under these terms and may violate federal, state or local law. You
+          assume full responsibility for any use in breach of this section.
         </p>
         <p>You must not:</p>
         <PolicyList
