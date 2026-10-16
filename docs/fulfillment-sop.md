@@ -71,14 +71,16 @@ Inventory arriving is not inventory you can sell.
 1. [ ] Shipment arrives at the CMRA. Collect it
 2. [ ] Open and count. Record in the inventory log: **compound, lot number,
        quantity received, date received**
-3. [ ] Pull sample vials for testing and send to the lab
-4. [ ] Mark the lot **QUARANTINED**. It is not sellable and does not go live
-       on the site
-5. [ ] Certificate returns:
+3. [ ] **Label now, at room temperature** (Phase 3) — before anything goes in
+       the freezer. Adhesive will not bond to a cold vial
+4. [ ] Pull sample vials for testing and send to the lab
+5. [ ] Freeze the lot and mark it **QUARANTINED**. It is not sellable and does
+       not go live on the site
+6. [ ] Certificate returns:
    - **Pass** → publish the PDF to `public/coa/`, add the row to
      `app/lab-results/page.tsx`, then mark the lot sellable
    - **Fail** → it never ships. Quarantine permanently, pursue the supplier
-6. [ ] Only now does the product go live in the catalog
+7. [ ] Only now does the product go live in the catalog
 
 **Rule: nothing is offered for sale before its certificate is published.** This
 is the operational version of the entire brand promise. Breaking it once makes
@@ -87,6 +89,61 @@ every certificate on the site worth less.
 ---
 
 ## Phase 3 — Labeling
+
+**Sequence matters: label on arrival, at room temperature, before the vials
+are ever frozen.** Label adhesive will not bond to a cold or frosty surface,
+and bringing a lot back out to room temperature later to label it means an
+avoidable freeze-thaw cycle. The lot number is known at receiving, so there is
+no reason to wait for the certificate — quarantine status is a record, not a
+sticker.
+
+So the real order is: receive → log → **label** → freeze → test → release.
+
+### Artwork spec (give this to the designer)
+
+- Exact dimensions, measured off the actual vial. A 2–3mL vial usually takes
+  about 1.75in x 1in; a 10mL about 2.25in x 1.25in
+- Vector source (.ai or layered .pdf), CMYK
+- 0.125in bleed all sides; all text 0.125in inside the trim
+- **A blank designated zone for the lot number**, at least 1.25in x 0.3in.
+  The lot must NOT be part of the artwork — it changes every batch, and a
+  label with the lot baked in can only be used for one lot
+- Fonts outlined or supplied
+- Deliverables: editable source, print-ready PDF, flattened PNG for records
+
+### Material spec
+
+| Spec | Requirement |
+|---|---|
+| Face stock | BOPP / polypropylene or polyester. **Never paper** |
+| Adhesive | Freezer-grade / all-temperature. Standard adhesive fails below about -10C |
+| Print method | Laser toner, thermal transfer resin, or commercial press. **Never inkjet** — it smears as soon as condensation hits it |
+
+Frozen vials condense the moment they come out. Paper lifts and inkjet runs,
+and a vial whose lot number is unreadable is unsellable: there is no way to
+prove which certificate belongs to it.
+
+### Printing options
+
+- **Pre-printed color + lot added separately** — order brand labels from a
+  print shop on synthetic stock with the lot zone blank, then print lot
+  numbers into that zone. Full color plus variable data. Recommended
+- **Home laser printer on weatherproof polyester sheets** — cheapest, fine at
+  240 vials. Laser only
+- **Thermal transfer printer** (Zebra ZD421 class, ~$400-600) — what labs use,
+  overkill at this volume. Note most cheap "thermal" printers are *direct*
+  thermal, which fades and is wrong for a stored product
+
+### Applying
+
+1. Wipe each vial with isopropyl, let it dry completely
+2. Roll the **vial onto the label**, not the label onto the vial — much
+   straighter on a curved surface
+3. A V-groove jig (two rulers taped into a V) makes a few hundred go quickly
+4. Overlap the ends slightly so the seam seals
+5. Press firmly, then leave a few hours before freezing
+
+### Required content
 
 Each vial label must carry:
 
