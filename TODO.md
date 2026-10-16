@@ -193,8 +193,61 @@ made a drug claim with your name on it, and your processor may see it first.
       the artwork
 - [ ] Sample run and a physical proof before full production
 
-The label travels, gets photographed, and is the artefact most likely to end up
+The label travels, gets photographed, and is the artifact most likely to end up
 as an enforcement exhibit.
+
+### 7b. Fulfillment / 3PL — GABE
+
+**Settle the temperature question first.** Lyophilized peptides tolerate
+ambient transit for weeks — that is the point of lyophilizing them. Freezer
+storage is for long-term inventory, not shipping. Ask the supplier what their
+stability data actually supports before specifying −20°C, because insisting on
+frozen cuts the provider list down and raises per-unit cost for possibly no
+benefit. If inventory turns in 30–60 days, ambient may be enough.
+
+- [ ] Decide: −20°C frozen / 2–8°C refrigerated / ambient
+
+**Candidates found (all self-reported marketing, none verified):**
+
+- [ ] Wholesale Peptide Supply — Costa Mesa CA; −20°C and 2–8°C, temperature
+      logging, lot-record picking, ships under your brand; also a manufacturer
+- [ ] 3PLGuys — Paramount CA; FDA-registered, temperature-controlled, lot
+      tracking, FEFO expiry management
+- [ ] AMZ Prep — FDA-registered, −20°C and 2–8°C cold chain
+- [ ] Peptides3PL — cold-chain peptide fulfillment
+- [ ] Partner3PL — directory, useful for finding more
+- [ ] Flow Fulfillment — Jacksonville FL; free freezer storage, but markets
+      "discreet shipping". Treat as a flag: discretion marketing signals
+      grey-market positioning, which is the opposite of this brand's, and it is
+      the sort of association that surfaces in a processor review
+
+"FDA-registered facility" means the facility filed a registration. It is not
+approval of anything stored there.
+
+**The disqualifying question:**
+
+- [ ] **Can they pick by lot and record which lot shipped to which order?**
+      Most 3PLs treat units as fungible. The whole brand is a COA matched to
+      the lot number on the customer's vial — if they cannot say which lot went
+      in which box, /lab-results is a promise the operation cannot keep, and
+      nobody finds out until a customer asks
+
+**Rest of the vetting list:**
+
+- [ ] Will their terms accept research-use-only reagents? **Get it in writing.**
+      Same failure mode as payment processors: verbal yes, contractual no,
+      inventory stranded later
+- [ ] Temperature mapping, monitoring, alarms, and the excursion policy — what
+      happens when a freezer fails at 2am
+- [ ] Who applies the lot label, them or us (ties to the packaging decision)
+- [ ] Receiving, storage and pick fees; minimums; same-day cutoff time
+- [ ] Restricted destinations for international orders
+- [ ] Insurance, and who owns inventory sitting on their floor
+
+**Consider self-fulfilling at first.** At early volume a 3PL's fees often
+exceed the time cost of packing yourself, and self-fulfillment keeps absolute
+control of lot traceability while that discipline is being established. Move to
+a 3PL when packing becomes the bottleneck — by then the spec will be obvious.
 
 ### 8. Thank-you cards / UGC — YOU (decide mechanic)
 
