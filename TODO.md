@@ -53,6 +53,26 @@ whether Retatrutide and Tirzepatide stay listed.
   - [ ] Do not render anything implying human use — no syringes staged for
         injection, no body imagery, no clinical-administration scenes
 
+- [ ] **Store credit has no implementation**
+      `/shipping-and-claims` commits to resolving verified issues with store
+      credit, and nothing in the codebase issues or tracks it. There is no
+      credit balance on a customer, and `lib/promo-codes.ts` is not the source
+      of truth for codes — `validate-promo` resolves against the processor.
+      **Interim:** issue a single-use processor promotion code per claim, by
+      hand, and log it against the order. Workable at launch volume.
+      **Later:** a credit balance per customer, which is a schema change.
+      Do not let the page promise something the system cannot do.
+
+- [ ] **Decide the non-delivery carve-out**
+      The policy offers credit first on a confirmed-lost shipment and says we
+      will discuss the alternative. That wording is deliberate: card networks
+      treat "merchandise not received" as near-automatic for the cardholder,
+      and store credit does not satisfy that dispute — so a hard credit-only
+      line on non-delivery converts those cases into chargebacks, costing the
+      revenue anyway plus the fee plus ratio damage against the ~0.9%
+      threshold that ends a high-risk account. Confirm the stance with the
+      processor and with counsel, then tighten or loosen the wording.
+
 - [ ] **Build the affiliate portal**
       `/affiliate/login` currently explains that access is manual rather than
       rendering a login form, because there is no affiliate auth: no accounts

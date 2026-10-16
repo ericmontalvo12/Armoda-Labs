@@ -44,7 +44,7 @@ const FAQS = [
   },
   {
     q: "What if my order arrives damaged, or does not arrive?",
-    a: "Contact us with your order number and photographs within the claim window. Damaged, lost and incorrectly picked shipments are replaced or refunded without a return — we do not want the vial back.",
+    a: "Contact us with your order number and photographs within the claim window. Where we can verify the issue we resolve it with store credit, and we never ask for the product back.",
   },
 ];
 

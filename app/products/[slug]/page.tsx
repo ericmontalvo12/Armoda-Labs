@@ -46,7 +46,7 @@ const SERVICE = [
   {
     icon: PackageCheck,
     title: "All sales final",
-    body: "No returns. Damaged or lost shipments are replaced without one.",
+    body: "No returns. Verified issues are resolved with store credit.",
     href: "/shipping-and-claims",
     cta: "Claims policy",
   },

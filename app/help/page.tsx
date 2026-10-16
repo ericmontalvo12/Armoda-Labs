@@ -36,7 +36,7 @@ const topics = [
   {
     icon: PackageCheck,
     title: "Damage & claims",
-    body: "All sales are final. How damaged, lost or incorrect shipments are handled.",
+    body: "All sales are final. How verified issues are resolved with store credit.",
     href: "/shipping-and-claims",
     cta: "Claims policy",
   },
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     q: "Can I return an order?",
-    a: "No. All sales are final. Once material leaves our custody its storage and handling cannot be verified, so it can never return to inventory. Damaged, lost or incorrectly picked shipments are made right without a return.",
+    a: "No. All sales are final. Once material leaves our custody its storage and handling cannot be verified, so it can never return to inventory. Where we can verify that something went wrong with an order, we resolve it with store credit — and we never ask for the product back.",
   },
   {
     q: "Can I change or cancel an order?",
