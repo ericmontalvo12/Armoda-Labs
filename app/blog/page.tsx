@@ -61,7 +61,7 @@ export default function BlogPage() {
                         {post.title}
                       </h2>
                       <p className="text-xs text-text-muted uppercase tracking-widest mb-3 font-medium">
-                        {post.date} &nbsp;&bull;&nbsp; Rock Mountain Research
+                        {post.date} &nbsp;&bull;&nbsp; Armoda Labs
                       </p>
                       <p className="text-text-secondary text-sm leading-relaxed">
                         {post.excerpt}

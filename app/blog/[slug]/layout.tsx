@@ -53,12 +53,12 @@ export default async function ArticleLayout({
     articleSection: post.category,
     author: {
       "@type": "Organization",
-      name: "Rock Mountain Performance",
+      name: "Armoda Labs",
       url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
-      name: "Rock Mountain Performance",
+      name: "Armoda Labs",
       logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon-192.png` },
     },
     mainEntityOfPage: {

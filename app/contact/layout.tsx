@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Questions about Peak Performance, your order, or our formula? Get in touch with the Rock Mountain Performance team.",
+    "Questions about a product's specification, a certificate of analysis, or an order? Get in touch with Armoda Labs.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact",
     description:
-      "Questions about Peak Performance, your order, or our formula? Get in touch with the Rock Mountain Performance team.",
+      "Questions about a product's specification, a certificate of analysis, or an order? Get in touch with Armoda Labs.",
     url: "/contact",
   },
 };

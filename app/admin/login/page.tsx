@@ -47,7 +47,7 @@ function LoginForm() {
           </div>
           <h1 className="text-xl font-bold text-gray-900 mb-1">Admin access</h1>
           <p className="text-sm text-gray-500 mb-6">
-            Rock Mountain Performance order dashboard.
+            Armoda Labs order dashboard.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">

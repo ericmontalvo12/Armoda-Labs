@@ -345,7 +345,7 @@ export default function CartPage() {
                     />
                     <span>
                       By checking this box, I agree to receive recurring automated marketing text
-                      messages from Rock Mountain Performance at the phone number provided. Consent
+                      messages from Armoda Labs at the phone number provided. Consent
                       is not a condition of purchase. Message and data rates may apply. Message
                       frequency varies. Reply STOP to cancel, HELP for help. View our{" "}
                       <Link href="/privacy-policy" className="underline">Privacy Policy</Link> and{" "}

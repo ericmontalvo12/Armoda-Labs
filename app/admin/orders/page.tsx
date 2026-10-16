@@ -193,7 +193,7 @@ export default function AdminOrdersPage() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Orders</h1>
           <p className="text-sm text-gray-500 mt-0.5">
-            Rock Mountain Performance
+            Armoda Labs
           </p>
         </div>
         <div className="flex items-center gap-2">

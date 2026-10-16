@@ -1,287 +1,185 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import Link from "next/link";
+import {
+  PolicyPage,
+  PolicySection,
+  PolicyList,
+} from "@/components/legal/PolicyPage";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "The terms and conditions governing use of the Rock Mountain Performance website and purchases.",
+    "Terms governing the purchase of research materials from Armoda Labs, including eligibility, permitted use and restrictions on resale and redistribution.",
   alternates: { canonical: "/terms-of-service" },
 };
 
-export default function TermsOfService() {
+export default function TermsOfServicePage() {
   return (
-    <div className="w-full max-w-full overflow-x-hidden bg-surface/50">
-      <Header />
-      <main className="page-top pb-16 sm:pb-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-3xl sm:text-4xl font-bold text-text-primary mb-8">
-            Terms of Service
-          </h1>
+    <PolicyPage
+      title="Terms of Service"
+      updated="Draft"
+      intro="These terms govern your purchase and use of materials supplied by Armoda Labs. By placing an order you agree to them. If you do not, do not order."
+    >
+      {/*
+        Sections 2 to 5 are the load-bearing ones and were absent from the
+        inherited supplement terms: buyer qualification, permitted use, the
+        resale restriction and the no-advice clause. A footer disclaimer with
+        none of these behind it is the pattern regulators describe as a fig
+        leaf — the restriction has to be a condition of sale, agreed at
+        purchase, not a notice printed nearby.
+      */}
 
-          <div className="max-w-none space-y-8 text-text-secondary">
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                OVERVIEW
-              </h2>
-              <p className="mb-4">
-                This website is operated by Rock Mountain Performance. Throughout the site, the terms "we," "us," and "our" refer to Rock Mountain Performance. Rock Mountain Performance offers this website, including all information, tools, products, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here.
-              </p>
-              <p className="mb-4">
-                By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following Terms and Conditions ("Terms of Service", "Terms"), including those additional terms and policies referenced herein and/or available by hyperlink.
-              </p>
-              <p className="mb-4">
-                These Terms of Service apply to all users of the site, including without limitation users who are browsers, customers, merchants, and/or contributors of content.
-              </p>
-              <p className="mb-4">
-                Please read these Terms carefully before accessing or using our website. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services.
-              </p>
-              <p>
-                Our store may be hosted and supported by third-party platforms that provide e-commerce and digital service infrastructure.
-              </p>
-            </section>
+      <PolicySection heading="1. Who we are">
+        <p>
+          Armoda Labs supplies defined-sequence peptides and related materials
+          for laboratory research. We are a supplier of research reagents. We
+          are not a pharmacy, a compounding facility, a manufacturer of drugs,
+          or a provider of medical services of any kind.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 1 - ONLINE STORE TERMS
-              </h2>
-              <p className="mb-4">
-                By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence.
-              </p>
-              <p className="mb-4">
-                You may not use our products or services for any illegal or unauthorized purpose nor may you, in the use of the Service, violate any laws in your jurisdiction.
-              </p>
-              <p className="mb-4">
-                You must not transmit any worms, viruses, or any code of a destructive nature.
-              </p>
-              <p>
-                A breach or violation of any of the Terms may result in immediate termination of your access to the Service.
-              </p>
-            </section>
+      <PolicySection heading="2. Eligibility">
+        <p>By placing an order you represent and warrant that:</p>
+        <PolicyList
+          items={[
+            "You are at least 18 years of age.",
+            "You are acquiring the material for laboratory research purposes only.",
+            "You are qualified by training or experience to handle research chemicals safely, or are acquiring on behalf of an organization whose personnel are.",
+            "You will handle, store and dispose of the material in accordance with applicable law and good laboratory practice.",
+            "You are not acquiring the material for yourself or any other person to consume, administer or otherwise introduce into a human or an animal.",
+            "Your purchase and possession of the material is lawful in your jurisdiction.",
+          ]}
+        />
+        <p>
+          We may decline or cancel any order, and may require evidence of
+          eligibility before dispatch.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 2 - GENERAL CONDITIONS
-              </h2>
-              <p className="mb-4">
-                We reserve the right to refuse service to anyone for any reason at any time.
-              </p>
-              <p className="mb-4">
-                You understand that your content (not including payment information) may be transferred unencrypted and involve transmissions over various networks.
-              </p>
-              <p className="mb-4">
-                Payment information is always encrypted during transfer over networks.
-              </p>
-              <p>
-                You agree not to reproduce, duplicate, copy, sell, resell, or exploit any portion of the Service without express written permission by us.
-              </p>
-            </section>
+      <PolicySection heading="3. Permitted use">
+        <p>
+          Material is supplied <strong>for laboratory research use only</strong>
+          . It is not a drug, food, cosmetic, dietary supplement or medical
+          device, and it is not supplied for human or veterinary use.
+        </p>
+        <p>You must not:</p>
+        <PolicyList
+          items={[
+            "Consume, administer or introduce the material into a human or an animal, or permit anyone else to.",
+            "Use the material in the diagnosis, treatment, cure, mitigation or prevention of any condition.",
+            "Represent the material as approved, safe or effective for any use in humans or animals.",
+            "Relabel, repackage or re-present the material as a drug, supplement, food or cosmetic.",
+          ]}
+        />
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 3 - ACCURACY, COMPLETENESS, AND TIMELINESS OF INFORMATION
-              </h2>
-              <p className="mb-4">
-                We are not responsible if information made available on this site is not accurate, complete, or current.
-              </p>
-              <p className="mb-4">
-                The material on this site is provided for general informational purposes only and should not be relied upon as the sole basis for making decisions.
-              </p>
-              <p>
-                Any reliance on the material on this site is at your own risk.
-              </p>
-            </section>
+      <PolicySection heading="4. Resale and redistribution">
+        <p>
+          Material is supplied for your own research use. You must not resell,
+          distribute, transfer or supply it to any other person except where we
+          have agreed in writing, and any such agreement requires you to
+          impose these same restrictions on your buyer.
+        </p>
+        <p>
+          You may not list our material on any consumer marketplace, or offer
+          it for sale in any context that presents it as suitable for human or
+          veterinary use.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 4 - MODIFICATIONS TO THE SERVICE AND PRICES
-              </h2>
-              <p className="mb-4">
-                Prices for our products are subject to change without notice.
-              </p>
-              <p className="mb-4">
-                We reserve the right at any time to modify or discontinue the Service (or any part thereof) without notice.
-              </p>
-              <p>
-                We shall not be liable to you or to any third party for any modification, price change, suspension, or discontinuance of the Service.
-              </p>
-            </section>
+      <PolicySection heading="5. No advice, no warranty of fitness">
+        <p>
+          Nothing on this site is medical, veterinary, scientific or legal
+          advice. We do not provide dosing, protocols, administration guidance
+          or any recommendation about use, and we will not do so on request.
+        </p>
+        <p>
+          Material is supplied as described in its certificate of analysis and
+          for no other purpose. To the fullest extent permitted by law, we
+          disclaim all warranties not expressly stated here, including any
+          implied warranty of merchantability or fitness for a particular
+          purpose. A certificate of analysis states what a lot was measured to
+          contain; it is not a representation that the material is safe or
+          effective for anything.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 5 - PRODUCTS OR SERVICES
-              </h2>
-              <p className="mb-4">
-                Certain products or services may be available exclusively online through the website.
-              </p>
-              <p className="mb-4">
-                These products or services may have limited quantities and are subject to return or exchange only according to our Return Policy.
-              </p>
-              <p className="mb-4">
-                We reserve the right to limit the sales of our products or services to any person, geographic region, or jurisdiction.
-              </p>
-              <p>
-                We do not warrant that the quality of any products, services, information, or other material purchased or obtained will meet your expectations.
-              </p>
-            </section>
+      <PolicySection heading="6. Export, import and jurisdiction">
+        <p>
+          You are responsible for compliance with the import, export and
+          controlled-substance laws of your own jurisdiction and of any
+          destination you have material shipped to. Where we cannot lawfully
+          ship to an address, checkout will not accept it. Parcels seized or
+          returned by customs are not refundable.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 6 - ACCURACY OF BILLING AND ACCOUNT INFORMATION
-              </h2>
-              <p className="mb-4">
-                We reserve the right to refuse any order you place with us.
-              </p>
-              <p className="mb-4">
-                You agree to provide current, complete, and accurate purchase and account information for all purchases made at our store.
-              </p>
-              <p>
-                You agree to promptly update your information, including email address and payment details, so that we can complete your transactions.
-              </p>
-            </section>
+      <PolicySection heading="7. Orders, pricing and availability">
+        <p>
+          Prices and availability may change without notice. We may correct
+          pricing errors and cancel affected orders with a full refund. An
+          order is accepted when it is dispatched, not when it is placed.
+        </p>
+        <p>
+          All sales are final — see{" "}
+          <Link href="/shipping-and-claims" className="text-gold hover:underline">
+            Shipping &amp; Claims
+          </Link>{" "}
+          for how verified issues are resolved.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 7 - USER COMMENTS, FEEDBACK, AND SUBMISSIONS
-              </h2>
-              <p className="mb-4">
-                If you submit comments, feedback, ideas, suggestions, or other materials, you agree that we may edit, copy, publish, distribute, and use them in any medium without restriction.
-              </p>
-              <p>
-                You agree your submissions will not violate any third-party rights or contain unlawful or harmful material.
-              </p>
-            </section>
+      <PolicySection heading="8. Reviews and submitted content">
+        <p>
+          We may publish reviews and other content you submit. We will not
+          publish, and will remove, content that describes use in a human or an
+          animal, states a dose or protocol, or claims any outcome or effect —
+          see our{" "}
+          <Link href="/ugc-policy" className="text-gold hover:underline">
+            third-party content policy
+          </Link>
+          . You grant us a non-exclusive licence to publish what you submit, and
+          you confirm it is your own.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 8 - PERSONAL INFORMATION
-              </h2>
-              <p>
-                Your submission of personal information through the site is governed by our Privacy Policy.
-              </p>
-            </section>
+      <PolicySection heading="9. Limitation of liability">
+        <p>
+          To the fullest extent permitted by law, our total liability arising
+          out of or relating to any order is limited to the amount you paid for
+          that order. We are not liable for indirect, incidental or
+          consequential loss.
+        </p>
+        <p>
+          You agree to indemnify us against claims arising from your use,
+          handling, storage, resale or disposal of material in breach of these
+          terms — in particular, any use in a human or an animal.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 9 - ERRORS, INACCURACIES, AND OMISSIONS
-              </h2>
-              <p className="mb-4">
-                Occasionally there may be information on our site that contains typographical errors or inaccuracies.
-              </p>
-              <p>
-                We reserve the right to correct any errors and to change or update information at any time without prior notice.
-              </p>
-            </section>
+      <PolicySection heading="10. Accounts and acceptable use">
+        <p>
+          You are responsible for activity under your account and for keeping
+          your credentials secure. Do not attempt to disrupt, probe or gain
+          unauthorized access to the site.
+        </p>
+      </PolicySection>
 
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 10 - PROHIBITED USES
-              </h2>
-              <p className="mb-4">
-                You are prohibited from using the site or its content:
-              </p>
-              <ul className="list-disc pl-6 mb-4 space-y-2">
-                <li>For unlawful purposes</li>
-                <li>To violate intellectual property rights</li>
-                <li>To harass, abuse, or discriminate</li>
-                <li>To upload malicious code</li>
-                <li>To spam, scrape, or interfere with site security</li>
-              </ul>
-              <p>
-                We reserve the right to terminate your use for violating these prohibited uses.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 11 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY
-              </h2>
-              <p className="mb-4">
-                We do not guarantee that your use of our service will be uninterrupted, timely, secure, or error-free.
-              </p>
-              <p className="mb-4">
-                All products and services are provided "as is" and "as available."
-              </p>
-              <p>
-                In no case shall Rock Mountain Performance, its directors, employees, affiliates, or service providers be liable for any injury, loss, or damages arising from your use of the Service.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 12 - INDEMNIFICATION
-              </h2>
-              <p>
-                You agree to indemnify, defend, and hold harmless Rock Mountain Performance and its affiliates from any claim arising out of your breach of these Terms or violation of any law.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 13 - SEVERABILITY
-              </h2>
-              <p>
-                If any provision of these Terms is determined to be unlawful or unenforceable, the remaining provisions shall remain valid and enforceable.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 14 - TERMINATION
-              </h2>
-              <p className="mb-4">
-                These Terms are effective unless terminated by either you or us.
-              </p>
-              <p>
-                We may terminate this agreement at any time without notice if you fail to comply with any term.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 15 - ENTIRE AGREEMENT
-              </h2>
-              <p>
-                These Terms constitute the entire agreement between you and Rock Mountain Performance and govern your use of the Service.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 16 - GOVERNING LAW
-              </h2>
-              <p>
-                These Terms shall be governed by and construed in accordance with the laws of the United States.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 17 - CHANGES TO TERMS OF SERVICE
-              </h2>
-              <p className="mb-4">
-                We reserve the right to update or replace any part of these Terms at any time by posting updates to our website.
-              </p>
-              <p>
-                Your continued use of the site constitutes acceptance of those changes.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
-                SECTION 18 - CONTACT INFORMATION
-              </h2>
-              <p>
-                Questions about the Terms of Service should be sent to us at:<br />
-                <a href="mailto:contact@rockmountainperformance.com" className="text-primary hover:underline">
-                  contact@rockmountainperformance.com
-                </a>
-              </p>
-            </section>
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </div>
+      <PolicySection heading="11. Changes, governing law and contact">
+        <p>
+          We may update these terms; the version in force is the one published
+          when you order. These terms are governed by the laws of the state in
+          which Armoda Labs is organized, without regard to conflict of laws
+          rules.
+        </p>
+        <p>
+          Questions:{" "}
+          <Link href="/contact" className="text-gold hover:underline">
+            contact us
+          </Link>
+          .
+        </p>
+      </PolicySection>
+    </PolicyPage>
   );
 }

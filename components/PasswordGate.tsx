@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 
 export function PasswordGate({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,7 +38,7 @@ export function PasswordGate({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -47,16 +46,12 @@ export function PasswordGate({ children }: { children: React.ReactNode }) {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <div className="w-full max-w-sm">
           <div className="text-center mb-8">
-            <Image
-              src="/logo-new.png"
-              alt="Rock Mountain Performance"
-              width={200}
-              height={60}
-              className="mx-auto h-12 w-auto mb-6"
-            />
+            <span className="mb-6 block font-heading text-2xl font-extrabold tracking-tight text-text-primary">
+              ARMODA<span className="text-gold">LABS</span>
+            </span>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Website Under Maintenance</h1>
             <p className="text-gray-600 text-sm">
               We&apos;re making some updates. Enter the password to access the site.

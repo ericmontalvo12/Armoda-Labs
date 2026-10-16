@@ -37,7 +37,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 {post.category}
               </span>
               <span className="text-xs text-text-muted uppercase tracking-widest font-medium">
-                {post.date} &nbsp;&bull;&nbsp; Rock Mountain Research
+                {post.date} &nbsp;&bull;&nbsp; Armoda Labs
               </span>
             </div>
 

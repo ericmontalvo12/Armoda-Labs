@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Rock Mountain Performance collects, uses, and protects your personal information.",
+    "How Armoda Labs collects, uses, and protects your personal information.",
   alternates: { canonical: "/privacy-policy" },
 };
 
@@ -25,14 +26,14 @@ export default function PrivacyPolicy() {
                 SECTION 1 - WHAT DO WE DO WITH YOUR INFORMATION?
               </h2>
               <p className="mb-4">
-                When you purchase a product or service from Rock Mountain Performance, as part of the buying and selling process, we collect the personal information you provide such as your name, billing address, shipping address, email address, phone number, and payment-related details.
+                When you purchase a product or service from Armoda Labs, as part of the buying and selling process, we collect the personal information you provide such as your name, billing address, shipping address, email address, phone number, and payment-related details.
               </p>
               <p className="mb-4">
                 When you browse our website, we also automatically receive your computer's Internet Protocol (IP) address and related technical information in order to help us learn about your browser, device, and operating system.
               </p>
               <p className="mb-4">
                 <strong>Email marketing (if applicable):</strong><br />
-                With your permission, we may send you emails about Rock Mountain Performance, new products, services, promotions, and other updates.
+                With your permission, we may send you emails about Armoda Labs, new products, services, promotions, and other updates.
               </p>
               <p>
                 <strong>Text marketing (if applicable):</strong><br />
@@ -54,9 +55,7 @@ export default function PrivacyPolicy() {
               <p>
                 <strong>How do I withdraw my consent?</strong><br />
                 If after opting in you change your mind, you may withdraw your consent for us to contact you or for the continued collection, use, or disclosure of your information at any time by contacting us at:<br />
-                <a href="mailto:contact@rockmountainperformance.com" className="text-primary hover:underline">
-                  contact@rockmountainperformance.com
-                </a>
+                <Link href="/contact" className="text-gold hover:underline">our contact page</Link>
               </p>
             </section>
 
@@ -136,10 +135,8 @@ export default function PrivacyPolicy() {
               </p>
               <p className="mb-4">
                 To make such a request, please contact:<br />
-                Rock Mountain Performance<br />
-                <a href="mailto:contact@rockmountainperformance.com" className="text-primary hover:underline">
-                  contact@rockmountainperformance.com
-                </a>
+                Armoda Labs<br />
+                <Link href="/contact" className="text-gold hover:underline">our contact page</Link>
               </p>
               <p>
                 This Privacy Policy applies only to this website and program and does not affect other privacy policies that may govern separate relationships.
@@ -193,7 +190,7 @@ export default function PrivacyPolicy() {
                 If material changes are made, we will update this page to reflect the changes.
               </p>
               <p>
-                If Rock Mountain Performance is acquired or merged with another company, your information may be transferred to the new owners so we may continue to operate and serve you.
+                If Armoda Labs is acquired or merged with another company, your information may be transferred to the new owners so we may continue to operate and serve you.
               </p>
             </section>
 
@@ -203,9 +200,7 @@ export default function PrivacyPolicy() {
               </h2>
               <p>
                 If you would like to access, correct, amend, or delete any personal information we have about you, register a complaint, or request more information, contact:<br />
-                <a href="mailto:contact@rockmountainperformance.com" className="text-primary hover:underline">
-                  contact@rockmountainperformance.com
-                </a>
+                <Link href="/contact" className="text-gold hover:underline">our contact page</Link>
               </p>
             </section>
           </div>
