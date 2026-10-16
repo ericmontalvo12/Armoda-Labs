@@ -11,6 +11,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { X } from "lucide-react";
 import { readCookie } from "@/lib/fbpixel";
+import { ACK_VERSION } from "@/lib/buyer-acknowledgement";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -51,6 +52,11 @@ export function EmbeddedCheckoutModal({
         email,
         fbp: readCookie("_fbp"),
         fbc: readCookie("_fbc"),
+        // The modal only mounts once the acknowledgement is checked, so
+        // reaching here means it was given. Recorded with the version of
+        // the wording that was shown.
+        buyerAck: true,
+        buyerAckVersion: ACK_VERSION,
       }),
     });
     const data = await res.json();

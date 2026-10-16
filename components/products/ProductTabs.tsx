@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "Who is eligible to order?",
-    a: "Material is supplied for laboratory research use only, to buyers qualified to receive and handle it. It is not supplied for human or veterinary use.",
+    a: "Material is supplied for laboratory research use only, to buyers aged 21 or over who are qualified to receive and handle it. It is not supplied for human or veterinary use, and you confirm this at checkout.",
   },
   {
     q: "Can this be returned?",

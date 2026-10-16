@@ -42,7 +42,7 @@ export default function TermsOfServicePage() {
         <p>By placing an order you represent and warrant that:</p>
         <PolicyList
           items={[
-            "You are at least 18 years of age.",
+            "You are at least 21 years of age.",
             "You are acquiring the material for laboratory research purposes only.",
             "You are a qualified researcher, a laboratory professional, or an institution — or you are acquiring on behalf of one — and are competent by training or experience to handle research chemicals safely.",
             "You will handle, store and dispose of the material in accordance with applicable law and good laboratory practice.",
@@ -51,7 +51,8 @@ export default function TermsOfServicePage() {
           ]}
         />
         <p>
-          These are conditions of sale, not advisory notes. We may decline or
+          You confirm these at checkout. These are conditions of sale, not
+          advisory notes. We may decline or
           cancel any order, and may require written confirmation or evidence
           of eligibility before dispatch.
         </p>

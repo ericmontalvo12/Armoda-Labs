@@ -1,6 +1,10 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { getPricePerBottle } from "@/lib/sale";
+import {
+  ACK_METADATA_KEYS,
+  ACK_VERSION,
+} from "@/lib/buyer-acknowledgement";
 
 type CartItem = {
   name: string;
@@ -47,12 +51,26 @@ export async function POST(req: Request) {
     // deliberately not passed to Stripe as customer_email: doing so locks the
     // field read-only in Checkout, leaving a customer who mistyped it unable to
     // correct their own address.
-    const { cartItems, promotionCodeId, fbp, fbc } = (await req.json()) as {
-      cartItems: CartItem[];
-      promotionCodeId?: string;
-      fbp?: string | null;
-      fbc?: string | null;
-    };
+    const { cartItems, promotionCodeId, fbp, fbc, buyerAck, buyerAckVersion } =
+      (await req.json()) as {
+        cartItems: CartItem[];
+        promotionCodeId?: string;
+        fbp?: string | null;
+        fbc?: string | null;
+        buyerAck?: boolean;
+        buyerAckVersion?: string;
+      };
+
+    // Enforced here as well as in the UI. The client gate is a convenience;
+    // this is the one that cannot be bypassed by posting to the endpoint
+    // directly, which matters because the acknowledgement is a condition of
+    // sale rather than a cosmetic step.
+    if (buyerAck !== true) {
+      return NextResponse.json(
+        { error: "The buyer acknowledgement is required to continue." },
+        { status: 400 }
+      );
+    }
 
     const forwardedFor = req.headers.get("x-forwarded-for");
     const clientIp =
@@ -67,6 +85,15 @@ export async function POST(req: Request) {
     if (fbc) metaMetadata.fbc = String(fbc).slice(0, 500);
     if (clientIp) metaMetadata.client_ip = clientIp.slice(0, 100);
     if (userAgent) metaMetadata.client_ua = userAgent.slice(0, 500);
+
+    // Stored on the session so it reaches the webhook and lands on the order
+    // record. The version is kept because the acknowledgement is only
+    // evidence if we can say what wording was shown on the day.
+    metaMetadata[ACK_METADATA_KEYS.accepted] = "true";
+    metaMetadata[ACK_METADATA_KEYS.version] = String(
+      buyerAckVersion || ACK_VERSION
+    ).slice(0, 64);
+    metaMetadata[ACK_METADATA_KEYS.at] = new Date().toISOString();
 
     if (!Array.isArray(cartItems) || cartItems.length === 0) {
       return NextResponse.json({ error: "Cart is empty" }, { status: 400 });

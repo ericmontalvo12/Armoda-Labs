@@ -53,6 +53,20 @@ whether Retatrutide and Tirzepatide stay listed.
   - [ ] Do not render anything implying human use — no syringes staged for
         injection, no body imagery, no clinical-administration scenes
 
+- [ ] **Surface the buyer acknowledgement in the admin**
+      Checkout now records `buyer_ack`, `buyer_ack_version` and `buyer_ack_at`
+      in session metadata, so it reaches the webhook. The order views do not
+      display it. The record is only useful if it can be produced on demand —
+      show it on the order detail, and include it in any dispute response.
+      Also confirm the webhook persists session metadata onto the order row
+      rather than dropping it.
+
+- [ ] **Version the acknowledgement wording, never edit it in place**
+      `lib/buyer-acknowledgement.ts` holds `ACK_TEXT` and `ACK_VERSION`. A
+      stored acknowledgement is only evidence of what someone agreed to if the
+      wording shown on that date can be reproduced. Bump the version on every
+      change and keep the old text retrievable.
+
 - [ ] **Store credit has no implementation**
       `/shipping-and-claims` commits to resolving verified issues with store
       credit, and nothing in the codebase issues or tracks it. There is no
