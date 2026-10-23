@@ -38,15 +38,23 @@ from rdkit.Chem.Draw import rdMolDraw2D
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "public", "structures")
 
-INK = "#0d0c0a"
-SURFACE = "#141210"
-BORDER = "#2a2621"
-BONE = "#eceae6"
-MUTED = "#8f8d87"
-GOLD = "#d4af37"
+# Light tile, deliberately. The site is dark, so an ivory card reads as a
+# framed object on the page rather than another dark panel — and it is the
+# clearest separation from the reference, which is near-black with violet.
+#
+# Gold has to change value on a light ground. #d4af37 measures 1.98:1 on
+# ivory and cannot carry text or an atom symbol; #8a6a14 is 4.76:1 and can.
+# The bright gold survives only as a decorative hairline, where nothing has
+# to be read.
+IVORY = "#faf8f3"
+IVORY_EDGE = "#f3efe6"
+INK = "#14110e"
+MUTED = "#6b6459"          # 5.51:1 on ivory
+GOLD_RULE = "#c9a227"      # hairlines only
+GOLD_DEEP = "#8a6a14"      # 4.76:1 — anything that must be read
 
-BONE_RGB = (0.925, 0.918, 0.902)
-GOLD_RGB = (0.831, 0.686, 0.216)
+INK_RGB = (0.078, 0.067, 0.055)
+GOLD_DEEP_RGB = (0.541, 0.416, 0.078)
 
 # slug: (kind, value, klass, cas, verified, note)
 CATALOG = {
@@ -72,8 +80,8 @@ CATALOG = {
 }
 
 W, H = 620, 620
-PAD = 34
-STRUCT_BOX = (90, 170, 440, 250)  # x, y, w, h
+PAD = 44
+STRUCT_BOX = (70, 176, 480, 236)  # x, y, w, h
 
 
 def build(kind, value):
@@ -92,8 +100,8 @@ def structure_svg(mol, w, h):
     o.bondLineWidth = 2
     o.multipleBondOffset = 0.14
     o.padding = 0.02
-    o.setSymbolColour(GOLD_RGB)
-    o.setAtomPalette({-1: BONE_RGB, 7: GOLD_RGB, 8: GOLD_RGB, 16: GOLD_RGB})
+    o.setSymbolColour(GOLD_DEEP_RGB)
+    o.setAtomPalette({-1: INK_RGB, 7: GOLD_DEEP_RGB, 8: GOLD_DEEP_RGB, 16: GOLD_DEEP_RGB})
     rdMolDraw2D.PrepareAndDrawMolecule(d, mol)
     d.FinishDrawing()
     body = d.GetDrawingText()
@@ -106,55 +114,63 @@ def esc(t):
 
 def card(name, klass, mol, cas):
     formula = rdMolDescriptors.CalcMolFormula(mol)
-    mw = f"{Descriptors.MolWt(mol):.2f} g/mol"
+    mw = f"{Descriptors.MolWt(mol):.2f}"
     sx, sy, sw, sh = STRUCT_BOX
 
-    stats = [("FORMULA", formula), ("MOL. WEIGHT", mw)]
+    stats = [("FORMULA", formula), ("MOL. WEIGHT", f"{mw} g/mol")]
     if cas:
         stats.append(("CAS", cas))
-    span = W - PAD * 2
-    step = span / len(stats)
 
+    # Left-aligned columns rather than the reference's centred row — the
+    # whole layout is set left, which is the plainest way to read as
+    # editorial rather than as a HUD.
     cells = []
     for i, (label, value) in enumerate(stats):
-        cx = PAD + step * i + step / 2
+        cx = PAD + i * 168
         cells.append(
-            f'<text x="{cx:.0f}" y="470" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" '
-            f'font-size="9" letter-spacing="1.4" fill="{MUTED}">{esc(label)}</text>'
-            f'<text x="{cx:.0f}" y="489" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" '
-            f'font-size="12" fill="{BONE}">{esc(value)}</text>'
+            f'<text x="{cx}" y="492" font-family="ui-monospace,Menlo,monospace" font-size="8.5" '
+            f'letter-spacing="1.8" fill="{MUTED}">{esc(label)}</text>'
+            f'<text x="{cx}" y="512" font-family="ui-monospace,Menlo,monospace" font-size="12.5" '
+            f'fill="{INK}">{esc(value)}</text>'
         )
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="{esc(name)} structure">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}"
+     preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:auto"
+     role="img" aria-label="{esc(name)} chemical structure">
   <defs>
-    <radialGradient id="vig" cx="50%" cy="38%" r="72%">
-      <stop offset="0%" stop-color="{SURFACE}"/>
-      <stop offset="100%" stop-color="{INK}"/>
-    </radialGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="{IVORY}"/>
+      <stop offset="100%" stop-color="{IVORY_EDGE}"/>
+    </linearGradient>
   </defs>
-  <rect width="{W}" height="{H}" rx="18" fill="url(#vig)"/>
-  <rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="18" fill="none" stroke="{BORDER}"/>
 
-  <!-- corner rules -->
-  <path d="M{PAD} {PAD+6} v-6 h64" fill="none" stroke="{GOLD}" stroke-width="1.5"/>
-  <path d="M{W-PAD} {PAD+6} v-6 h-64" fill="none" stroke="{GOLD}" stroke-width="1.5"/>
+  <rect width="{W}" height="{H}" fill="url(#paper)"/>
 
-  <text x="{W/2}" y="{PAD+42}" text-anchor="middle" font-family="ui-monospace,Menlo,monospace"
-        font-size="10" letter-spacing="2.6" fill="{MUTED}">{esc(klass.upper())}</text>
-  <text x="{W/2}" y="{PAD+96}" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif"
-        font-size="40" font-weight="700" letter-spacing="-0.5" fill="{BONE}">{esc(name)}</text>
+  <!-- Double inset rule: a bookplate device, not a bracket. The outer is
+       hairline gold, the inner a fine ink line a few px in. -->
+  <rect x="18.5" y="18.5" width="{W-37}" height="{H-37}" fill="none" stroke="{GOLD_RULE}" stroke-width="1"/>
+  <rect x="24.5" y="24.5" width="{W-49}" height="{H-49}" fill="none" stroke="{INK}" stroke-width="0.4" opacity="0.28"/>
+
+  <text x="{PAD}" y="{PAD+36}" font-family="ui-monospace,Menlo,monospace"
+        font-size="9.5" letter-spacing="2.8" fill="{MUTED}">{esc(klass.upper())}</text>
+
+  <text x="{PAD}" y="{PAD+94}" font-family="Georgia,'Times New Roman',serif"
+        font-size="46" fill="{INK}">{esc(name)}</text>
+
+  <line x1="{PAD}" y1="{PAD+112}" x2="{PAD+70}" y2="{PAD+112}" stroke="{GOLD_RULE}" stroke-width="2"/>
 
   <g transform="translate({sx},{sy})">{structure_svg(mol, sw, sh)}</g>
 
-  <line x1="{PAD}" y1="447" x2="{W-PAD}" y2="447" stroke="{BORDER}"/>
+  <line x1="{PAD}" y1="462" x2="{W-PAD}" y2="462" stroke="{INK}" stroke-width="0.4" opacity="0.2"/>
   {''.join(cells)}
 
-  <text x="{W/2}" y="546" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif"
-        font-size="15" font-weight="800" letter-spacing="1" fill="{BONE}">ARMODA<tspan fill="{GOLD}">LABS</tspan></text>
+  <line x1="{PAD}" y1="548" x2="{W-PAD}" y2="548" stroke="{GOLD_RULE}" stroke-width="1"/>
 
-  <line x1="{PAD}" y1="568" x2="{W-PAD}" y2="568" stroke="{BORDER}"/>
-  <text x="{W/2}" y="590" text-anchor="middle" font-family="ui-monospace,Menlo,monospace"
-        font-size="8.5" letter-spacing="1.3" fill="{MUTED}">FOR LABORATORY RESEARCH USE ONLY &#8212; NOT FOR HUMAN CONSUMPTION</text>
+  <text x="{PAD}" y="578" font-family="Georgia,'Times New Roman',serif"
+        font-size="17" letter-spacing="2.5" fill="{INK}">ARMODA<tspan fill="{GOLD_DEEP}">LABS</tspan></text>
+
+  <text x="{W-PAD}" y="578" text-anchor="end" font-family="ui-monospace,Menlo,monospace"
+        font-size="8" letter-spacing="1.1" fill="{MUTED}">RESEARCH USE ONLY &#183; NOT FOR HUMAN CONSUMPTION</text>
 </svg>
 '''
 
