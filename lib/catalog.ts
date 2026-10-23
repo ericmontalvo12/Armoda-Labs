@@ -1,3 +1,5 @@
+import structureData from "./structure-data.json";
+
 // Product catalog — replaces the single-SKU model in lib/sale.ts.
 //
 // TAXONOMY NOTE: categories are named by chemical/structural class, not by
@@ -18,6 +20,15 @@ export interface Category {
   /** Factual description of the class. No effect or outcome language. */
   blurb: string;
 }
+
+type StructureEntry = {
+  formula?: string;
+  molecularWeight?: string;
+  compoundClass?: string;
+  cas?: string;
+};
+
+const STRUCTURE_DATA = structureData as Record<string, StructureEntry>;
 
 export interface Variant {
   /** Shown on the selector pill, e.g. "Vial" or "Kit (10 vials)". */
@@ -335,6 +346,34 @@ export function getCategoryBySlug(slug: string): Category | undefined {
 
 export function getProductsByCategory(categorySlug: string): Product[] {
   return LISTED_PRODUCTS.filter((p) => p.categorySlug === categorySlug);
+}
+
+/**
+ * Structure tile for a product, or the placeholder until one exists.
+ *
+ * scripts/generate-structures.py writes both the SVG and an entry in
+ * structure-data.json, and only for compounds whose structure has been
+ * verified against an authoritative source. So presence in that file is
+ * the signal: a tile is used exactly when a verified one has been
+ * generated, and no code changes when the next one is approved.
+ */
+export function productImage(product: Product): string {
+  return STRUCTURE_DATA[product.slug]
+    ? `/structures/${product.slug}.svg`
+    : product.image;
+}
+
+/** Computed spec rows for the Properties tab, if a structure exists. */
+export function structureProperties(product: Product): PropertyRow[] {
+  const data = STRUCTURE_DATA[product.slug];
+  if (!data) return [];
+  const rows: PropertyRow[] = [];
+  if (data.compoundClass) rows.push({ label: "Class", value: data.compoundClass });
+  if (data.formula) rows.push({ label: "Molecular formula", value: data.formula });
+  if (data.molecularWeight)
+    rows.push({ label: "Molecular weight", value: data.molecularWeight });
+  if (data.cas) rows.push({ label: "CAS", value: data.cas });
+  return rows;
 }
 
 export function formatPrice(cents: number): string {

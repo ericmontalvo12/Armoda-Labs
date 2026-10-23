@@ -31,12 +31,17 @@ compound does in a body, which is the line this catalog does not cross; the
 structural class is a fact about the molecule and matches the site taxonomy.
 """
 
+import json
 import os
 from rdkit import Chem
 from rdkit.Chem import Descriptors, rdMolDescriptors
 from rdkit.Chem.Draw import rdMolDraw2D
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "public", "structures")
+# Computed values are emitted here rather than copied into lib/catalog.ts by
+# hand. Formula and mass come from the same molecule that was drawn, so the
+# spec table and the picture cannot disagree, and neither can be typo'd.
+DATA = os.path.join(os.path.dirname(__file__), "..", "lib", "structure-data.json")
 
 # Light tile, deliberately. The site is dark, so an ivory card reads as a
 # framed object on the page rather than another dark panel — and it is the
@@ -178,6 +183,7 @@ def card(name, klass, mol, cas):
 def main():
     os.makedirs(OUT, exist_ok=True)
     drawn = skipped = unverified = 0
+    emitted: dict[str, dict[str, str]] = {}
 
     for slug, (kind, value, klass, cas, verified, note) in CATALOG.items():
         display = slug.upper().replace("-", "-")
@@ -196,10 +202,21 @@ def main():
             continue
         with open(os.path.join(OUT, f"{slug}.svg"), "w") as fh:
             fh.write(card(display, klass, mol, cas))
+        emitted[slug] = {
+            "formula": rdMolDescriptors.CalcMolFormula(mol),
+            "molecularWeight": f"{Descriptors.MolWt(mol):.2f} g/mol",
+            "compoundClass": klass,
+            **({"cas": cas} if cas else {}),
+        }
         print(f"  drawn      {slug:24} {mol.GetNumHeavyAtoms()} heavy atoms")
         drawn += 1
 
+    with open(DATA, "w") as fh:
+        json.dump(emitted, fh, indent=2, sort_keys=True)
+        fh.write("\n")
+
     print(f"\n{drawn} drawn, {unverified} awaiting verification, {skipped} skipped.")
+    print(f"Wrote {os.path.relpath(DATA)} with {len(emitted)} entries.")
     if unverified:
         print("Set verified=True only after checking against an authoritative "
               "source. Do not publish an unchecked structure.")

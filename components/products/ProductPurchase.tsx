@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Minus, Plus, ShoppingCart, FlaskConical } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
-import { formatPrice, type Product } from "@/lib/catalog";
+import { formatPrice, productImage, type Product } from "@/lib/catalog";
 
 const MAX_QTY = 10;
 
@@ -22,7 +22,7 @@ export function ProductPurchase({ product }: { product: Product }) {
     <div className="grid gap-10 lg:grid-cols-2">
       <div className="overflow-hidden rounded-[20px] border border-border bg-surface-elevated">
         <Image
-          src={product.image}
+          src={productImage(product)}
           alt={product.name}
           width={600}
           height={600}

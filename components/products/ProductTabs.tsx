@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FileText, Table, FlaskConical, HelpCircle } from "lucide-react";
-import type { Product } from "@/lib/catalog";
+import { structureProperties, type Product } from "@/lib/catalog";
 
 /**
  * There is deliberately no "Research" tab.
@@ -50,6 +50,10 @@ const FAQS = [
 
 export function ProductTabs({ product }: { product: Product }) {
   const [active, setActive] = useState<TabKey>("overview");
+  const propertyRows = [
+    ...structureProperties(product),
+    ...(product.properties ?? []),
+  ];
 
   return (
     <div className="rounded-[20px] border border-border bg-surface">
@@ -109,9 +113,12 @@ export function ProductTabs({ product }: { product: Product }) {
 
         {active === "properties" && (
           <>
-            {product.properties && product.properties.length > 0 ? (
+            {/* Computed rows first — formula and mass come from the same
+                molecule that was drawn, so they cannot disagree with the
+                structure image. Hand-entered rows follow. */}
+            {propertyRows.length > 0 ? (
               <dl className="divide-y divide-border">
-                {product.properties.map(({ label, value }) => (
+                {propertyRows.map(({ label, value }) => (
                   <div key={label} className="grid grid-cols-2 gap-4 py-3">
                     <dt className="text-sm text-text-muted">{label}</dt>
                     <dd className="text-sm text-text-primary">{value}</dd>

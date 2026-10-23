@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
-import { priceRange, type Product } from "@/lib/catalog";
+import { priceRange, productImage, type Product } from "@/lib/catalog";
 
 /**
  * Catalog card. Geometry follows the measured reference: flat surface, hairline
@@ -25,7 +25,7 @@ export function ProductCard({ product }: { product: Product }) {
         className="block bg-surface-elevated"
       >
         <Image
-          src={product.image}
+          src={productImage(product)}
           alt={product.name}
           width={294}
           height={260}
