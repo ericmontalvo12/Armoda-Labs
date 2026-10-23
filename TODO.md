@@ -44,8 +44,18 @@ whether Retatrutide and Tirzepatide stay listed.
         re-resolved server-side from `lib/catalog.ts`, never taken from the client
 
 - [ ] **AI image mockups**
-  - [ ] Vial renders per SKU — `public/` images were deleted (~182MB) and every
-        card currently shows `product-placeholder.svg`
+  - [ ] **Structure images, not vial renders** — `scripts/generate-structures.py`
+        renders brand-styled SVGs per SKU from sequence or SMILES. Nothing
+        renders until its entry is marked `verified`, which requires checking
+        the sequence against PubChem, the supplier CoA or the literature.
+        A wrong structure is a visible, checkable error in the one field this
+        brand claims competence in — worse than no image at all.
+  - [ ] Decide the card treatment for large molecules. Structures stay legible
+        to roughly 60 heavy atoms; BPC-157 is 100, MOTS-c 153, tirzepatide 294.
+        The GLP compounds cannot use a structure on a card at any size
+  - [ ] Blends (GLOW, KLOW, Semax/Selank, BPC-157/TB-500, CJC/Ipamorelin) have
+        no single structure and need their own treatment
+  - [ ] Vial photography for the PDP gallery, once packaging exists
   - [ ] Label artwork mockups, which double as the supplier proof for item 7
   - [ ] Hero and lab/facility imagery for the homepage and `/about`
   - [ ] Keep renders consistent: one angle, one lighting setup, one background,
