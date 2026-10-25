@@ -45,7 +45,8 @@ export function HeroPanel() {
 
                 <blockquote className="mt-6 border-l-2 border-gold bg-surface-elevated px-5 py-4">
                   <p className="text-sm leading-relaxed text-text-secondary">
-                    Every lot is tested before release and its certificate is
+                    Every account application is reviewed by a person. Every
+                    lot is tested before release, with its certificate
                     published against the lot number printed on the vial — not
                     a reference batch from an earlier run.
                   </p>
@@ -66,20 +67,31 @@ export function HeroPanel() {
                 </p>
               </div>
 
-              <div className="mt-9 flex flex-wrap gap-3">
+              <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/products"
-                  className="inline-flex h-12 items-center rounded-full bg-primary px-8 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover"
-                >
-                  Browse catalog
-                </Link>
-                <Link
-                  href="/lab-results"
+                  href="/account/login"
                   className="inline-flex h-12 items-center rounded-full border border-border px-8 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold"
                 >
-                  View test results
+                  Login
+                </Link>
+                <Link
+                  href="/apply"
+                  className="inline-flex h-12 items-center rounded-full bg-primary px-8 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover"
+                >
+                  Apply for account
                 </Link>
               </div>
+
+              {/* The catalog is not gated, so it still needs a route from the
+                  hero. Kept as a tertiary link rather than a third button so
+                  the two account CTAs stay the primary pair. */}
+              <p className="mt-5 text-sm text-text-secondary">
+                Or{" "}
+                <Link href="/products" className="font-heading font-bold text-gold hover:underline">
+                  browse the catalog
+                </Link>{" "}
+                — no account required.
+              </p>
             </div>
           </div>
         </div>

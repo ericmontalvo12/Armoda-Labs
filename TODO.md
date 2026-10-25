@@ -97,6 +97,21 @@ whether Retatrutide and Tirzepatide stay listed.
       threshold that ends a high-risk account. Confirm the stance with the
       processor and with counsel, then tighten or loosen the wording.
 
+- [ ] **Customer accounts do not exist**
+      The hero's primary CTAs are now Login and Apply for account. `/apply` is
+      real — it collects qualification details and sends them through the
+      contact route — but it creates no account, and `/account/login` renders
+      no form, because there is nothing to authenticate against. A form that
+      takes a password and does nothing teaches people their password does not
+      matter and invites them to reuse a real one.
+      **Needs:** customer accounts, sessions, and an approval state. Schema
+      change, so it needs a go-ahead. When built, `/apply` becomes the
+      registration step rather than being replaced.
+      **Then decide:** whether to gate prices behind an account, as the
+      reference does. That is what makes a catalog read B2B rather than
+      consumer retail, and it helps both the intended-use posture and
+      processor underwriting.
+
 - [ ] **Build the affiliate portal**
       `/affiliate/login` currently explains that access is manual rather than
       rendering a login form, because there is no affiliate auth: no accounts

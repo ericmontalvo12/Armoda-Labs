@@ -27,6 +27,7 @@ const navLinks: NavLink[] = [
     ],
   },
   { href: "/help", label: "Help" },
+  { href: "/account/login", label: "Account" },
 ];
 
 export function Header() {
