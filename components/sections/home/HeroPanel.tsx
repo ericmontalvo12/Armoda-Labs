@@ -1,0 +1,89 @@
+import Link from "next/link";
+import { FlaskConical } from "lucide-react";
+
+/**
+ * Hero as an inset panel rather than a full-bleed band, with gold rules
+ * breaking the top edge.
+ *
+ * The reference's CTAs are Login / Apply for account, because its catalog is
+ * gated behind a reviewed account. Ours are not gated, so those buttons would
+ * lead nowhere — they become Browse catalog / View test results. The callout
+ * beside them says what is actually true here: eligibility is confirmed at
+ * checkout, not vetted by a person.
+ */
+export function HeroPanel() {
+  return (
+    <section className="page-top bg-background pb-16">
+      <div className="mx-auto max-w-[1280px] px-4">
+        <div className="relative overflow-hidden rounded-[24px] border border-border bg-surface px-6 py-12 sm:px-12 sm:py-16">
+          {/* Rules breaking the top edge */}
+          <span className="absolute left-10 top-0 h-[3px] w-28 bg-gold" />
+          <span className="absolute right-10 top-0 h-[3px] w-28 bg-gold/40" />
+
+          <div className="grid items-center gap-10 lg:grid-cols-[260px_1fr]">
+            <div className="flex justify-center lg:justify-start">
+              <span className="flex h-40 w-40 items-center justify-center rounded-full border border-gold-muted bg-surface-accent">
+                <FlaskConical className="h-16 w-16 text-gold" strokeWidth={1.1} />
+              </span>
+            </div>
+
+            <div>
+              <p className="text-xs font-heading font-bold uppercase tracking-[0.22em] text-gold">
+                Documented before it ships
+              </p>
+              <h1 className="mt-5 max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] text-text-primary sm:text-5xl">
+                The certificate is the product.
+                <br />
+                The compound is what it says.
+              </h1>
+
+              <div className="mt-10 max-w-xl">
+                <p className="text-base leading-relaxed text-text-secondary">
+                  Defined-sequence research peptides, independently assayed for
+                  identity and purity, for laboratory research use.
+                </p>
+
+                <blockquote className="mt-6 border-l-2 border-gold bg-surface-elevated px-5 py-4">
+                  <p className="text-sm leading-relaxed text-text-secondary">
+                    Every lot is tested before release and its certificate is
+                    published against the lot number printed on the vial — not
+                    a reference batch from an earlier run.
+                  </p>
+                </blockquote>
+              </div>
+
+              <div className="mt-10 border-t border-border pt-5">
+                <p className="max-w-3xl text-xs leading-relaxed text-text-muted">
+                  <span className="font-heading font-bold text-text-secondary">
+                    RESEARCH USE ONLY.
+                  </span>{" "}
+                  All materials supplied by Armoda Labs are intended strictly
+                  for laboratory research use. They are not drugs, dietary
+                  supplements, food or cosmetics, and are not intended to
+                  diagnose, treat, cure or prevent any disease. Purchasers must
+                  be qualified to handle research chemicals and are responsible
+                  for compliance with all applicable laws.
+                </p>
+              </div>
+
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link
+                  href="/products"
+                  className="inline-flex h-12 items-center rounded-full bg-primary px-8 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover"
+                >
+                  Browse catalog
+                </Link>
+                <Link
+                  href="/lab-results"
+                  className="inline-flex h-12 items-center rounded-full border border-border px-8 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold"
+                >
+                  View test results
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

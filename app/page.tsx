@@ -1,26 +1,26 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { CatalogHero } from "@/components/sections/home/CatalogHero";
-import { TrustStrip } from "@/components/sections/home/TrustStrip";
-import { ProductRail } from "@/components/sections/home/ProductRail";
+import { HeroPanel } from "@/components/sections/home/HeroPanel";
+import { WhyArmoda } from "@/components/sections/home/WhyArmoda";
 import { ProductCategories } from "@/components/sections/home/ProductCategories";
-import { TestingPromise } from "@/components/sections/home/TestingPromise";
-import { LISTED_PRODUCTS } from "@/lib/catalog";
+import { CommitmentBand } from "@/components/sections/home/CommitmentBand";
+import { FromTheLibrary } from "@/components/sections/home/FromTheLibrary";
+import { NeedToKnow } from "@/components/sections/home/NeedToKnow";
 
 export default function Home() {
   return (
     <div className="w-full max-w-full overflow-x-hidden">
       <Header />
       <main>
-        <CatalogHero />
-        <TrustStrip />
-        <ProductRail
-          title="Most requested"
-          products={LISTED_PRODUCTS.slice(0, 4)}
-          cta={{ href: "/products", label: "Explore all products" }}
-        />
+        <HeroPanel />
+        <WhyArmoda />
+        {/* The reference sells nothing on its homepage because its catalog is
+            gated behind a reviewed account. Ours is open, so the category
+            browser stays — removing it would leave no path to the products. */}
         <ProductCategories />
-        <TestingPromise />
+        <CommitmentBand />
+        <FromTheLibrary />
+        <NeedToKnow />
       </main>
       <Footer />
     </div>
