@@ -205,6 +205,12 @@ export default function AdminAccountsPage() {
                           </td>
                           <td className="px-4 py-3 max-w-sm text-gray-600">
                             {row.audience || "—"}
+                            {customer?.researchUse && (
+                              <div className="mt-1 text-xs text-gray-500">
+                                <span className="font-medium">Stated use:</span>{" "}
+                                {customer.researchUse}
+                              </div>
+                            )}
                           </td>
                           <td className="px-4 py-3">
                             <Badge status={row.status} />
@@ -293,7 +299,7 @@ export default function AdminAccountsPage() {
                     <tr>
                       <th className="px-4 py-3 font-medium">Account</th>
                       <th className="px-4 py-3 font-medium">Organization</th>
-                      <th className="px-4 py-3 font-medium">Role</th>
+                      <th className="px-4 py-3 font-medium">Role &amp; stated use</th>
                       <th className="px-4 py-3 font-medium">Registered</th>
                       <th className="px-4 py-3 font-medium">Status</th>
                       <th className="px-4 py-3 font-medium text-right">Action</th>
@@ -313,8 +319,19 @@ export default function AdminAccountsPage() {
                         <td className="px-4 py-3 text-gray-600">
                           {customer.organization || "—"}
                         </td>
-                        <td className="px-4 py-3 text-gray-600">
+                        <td className="px-4 py-3 max-w-md text-gray-600">
                           {customer.role || "—"}
+                          {customer.researchUse && (
+                            <div className="mt-1 text-xs text-gray-500">
+                              {customer.researchUse}
+                            </div>
+                          )}
+                          {customer.expectedVolume && (
+                            <div className="mt-1 text-xs text-gray-500">
+                              <span className="font-medium">Volume:</span>{" "}
+                              {customer.expectedVolume}
+                            </div>
+                          )}
                         </td>
                         <td className="px-4 py-3 text-gray-600">
                           {new Date(customer.createdAt).toLocaleDateString("en-US")}

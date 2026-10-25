@@ -42,6 +42,8 @@ export default function ApplyPage() {
           name: get("name"),
           organization: get("organization"),
           role: get("role"),
+          researchUse: get("use"),
+          expectedVolume: get("volume"),
           certified: true,
         }),
       });

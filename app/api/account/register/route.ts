@@ -7,7 +7,10 @@ const MIN_PASSWORD_LENGTH = 10;
 
 export async function POST(req: Request) {
   try {
-    const { email, password, name, organization, role, certified } =
+    const {
+      email, password, name, organization, role, certified,
+      researchUse, expectedVolume,
+    } =
       (await req.json()) as Record<string, unknown>;
 
     if (typeof email !== "string" || !EMAIL_REGEX.test(email.trim())) {
@@ -34,6 +37,12 @@ export async function POST(req: Request) {
       name: typeof name === "string" ? name.trim() : undefined,
       organization: typeof organization === "string" ? organization.trim() : undefined,
       role: typeof role === "string" ? role.trim() : undefined,
+      // Free text, and the main thing an approval is judged on. Capped so a
+      // paste of an entire protocol cannot bloat the row.
+      researchUse:
+        typeof researchUse === "string" ? researchUse.trim().slice(0, 2000) : undefined,
+      expectedVolume:
+        typeof expectedVolume === "string" ? expectedVolume.trim().slice(0, 200) : undefined,
     });
 
     // An address already registered returns the same shape as a new one.

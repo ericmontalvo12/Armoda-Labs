@@ -35,6 +35,8 @@ export interface Customer {
   name: string | null;
   organization: string | null;
   role: string | null;
+  researchUse: string | null;
+  expectedVolume: string | null;
   status: CustomerStatus;
   createdAt: string;
 }
@@ -64,11 +66,18 @@ async function ensureTables() {
       name TEXT,
       organization TEXT,
       role TEXT,
+      research_use TEXT,
+      expected_volume TEXT,
       status TEXT NOT NULL DEFAULT 'pending',
       created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
       updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
     )
   `;
+  // Added after the first deploy, so existing databases need them too. The
+  // intended research use is the main thing an approval is judged on.
+  await sql`ALTER TABLE customers ADD COLUMN IF NOT EXISTS research_use TEXT`;
+  await sql`ALTER TABLE customers ADD COLUMN IF NOT EXISTS expected_volume TEXT`;
+
   // Case-insensitive uniqueness: addresses are not case sensitive in
   // practice, and two accounts differing only in case would silently split
   // one person's order history.
@@ -105,6 +114,8 @@ function mapCustomer(row: any): Customer {
     name: row.name ?? null,
     organization: row.organization ?? null,
     role: row.role ?? null,
+    researchUse: row.research_use ?? null,
+    expectedVolume: row.expected_volume ?? null,
     status: (row.status as CustomerStatus) ?? "pending",
     createdAt: String(row.created_at),
   };
@@ -130,13 +141,17 @@ export async function createCustomer(input: {
   name?: string;
   organization?: string;
   role?: string;
+  researchUse?: string;
+  expectedVolume?: string;
 }): Promise<Customer | null> {
   await ensureTables();
   const sql = getSql();
   const rows = await sql`
-    INSERT INTO customers (email, password_hash, name, organization, role)
+    INSERT INTO customers (email, password_hash, name, organization, role,
+                           research_use, expected_volume)
     VALUES (${input.email.trim()}, ${input.passwordHash},
-            ${input.name ?? null}, ${input.organization ?? null}, ${input.role ?? null})
+            ${input.name ?? null}, ${input.organization ?? null}, ${input.role ?? null},
+            ${input.researchUse ?? null}, ${input.expectedVolume ?? null})
     ON CONFLICT (lower(email)) DO NOTHING
     RETURNING *
   `;
