@@ -112,6 +112,9 @@ export async function POST(req: NextRequest) {
             postalCode: shippingAddress?.postal_code ?? null,
             country: shippingAddress?.country ?? null,
             lineItems,
+            // Set by the checkout route after validating the code against an
+            // approved referral, so what lands here has already been checked.
+            referralCode: session.metadata?.referral_code ?? null,
             createdAt: new Date(session.created * 1000),
           });
           orderNumber = formatOrderNumber(orderId);

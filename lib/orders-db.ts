@@ -81,6 +81,9 @@ async function ensureTables() {
 
   await sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS stripe_invoice_id TEXT UNIQUE`;
   await sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS order_type TEXT NOT NULL DEFAULT 'one_time'`;
+  // Also created in lib/customers-db.ts; declared here too so an order can be
+  // written before anything has touched the customers module.
+  await sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS referral_code TEXT`;
   await sql`ALTER TABLE orders ALTER COLUMN stripe_session_id DROP NOT NULL`;
 
   // Login throttling has to be shared across serverless instances, so it
@@ -143,6 +146,8 @@ export interface UpsertOrderInput {
   postalCode?: string | null;
   country?: string | null;
   lineItems?: OrderLineItem[];
+  /** Referral code the order was attributed to, if any. */
+  referralCode?: string | null;
   createdAt?: Date;
 }
 
@@ -177,7 +182,7 @@ export async function upsertOrder(input: UpsertOrderInput): Promise<number> {
     INSERT INTO orders (
       stripe_session_id, order_type, email, customer_name, phone, amount_total,
       currency, payment_status, shipping_name, address_line1, address_line2,
-      city, state, postal_code, country, line_items, created_at
+      city, state, postal_code, country, line_items, referral_code, created_at
     ) VALUES (
       ${input.stripeSessionId}, ${input.orderType ?? "one_time"},
       ${input.email ?? null}, ${input.customerName ?? null},
@@ -186,6 +191,7 @@ export async function upsertOrder(input: UpsertOrderInput): Promise<number> {
       ${input.addressLine1 ?? null}, ${input.addressLine2 ?? null}, ${input.city ?? null},
       ${input.state ?? null}, ${input.postalCode ?? null}, ${input.country ?? null},
       ${JSON.stringify(input.lineItems ?? [])}::jsonb,
+      ${input.referralCode ?? null},
       ${(input.createdAt ?? new Date()).toISOString()}
     )
     ON CONFLICT (stripe_session_id) DO UPDATE SET
@@ -202,6 +208,7 @@ export async function upsertOrder(input: UpsertOrderInput): Promise<number> {
       postal_code = EXCLUDED.postal_code,
       country = EXCLUDED.country,
       line_items = EXCLUDED.line_items,
+      referral_code = COALESCE(orders.referral_code, EXCLUDED.referral_code),
       updated_at = now()
     RETURNING id
   `;
@@ -215,6 +222,8 @@ export interface UpsertRenewalInput {
   amountTotal: number;
   currency: string;
   lineItems?: OrderLineItem[];
+  /** Referral code the order was attributed to, if any. */
+  referralCode?: string | null;
   createdAt?: Date;
 }
 
@@ -230,6 +239,7 @@ export async function upsertRenewalOrder(input: UpsertRenewalInput): Promise<voi
       ${input.email ?? null}, ${input.customerName ?? null},
       ${input.amountTotal}, ${input.currency}, 'paid',
       ${JSON.stringify(input.lineItems ?? [])}::jsonb,
+      ${input.referralCode ?? null},
       ${(input.createdAt ?? new Date()).toISOString()}
     )
     ON CONFLICT (stripe_invoice_id) DO NOTHING

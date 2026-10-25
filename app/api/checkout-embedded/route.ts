@@ -5,6 +5,7 @@ import {
   ACK_METADATA_KEYS,
   ACK_VERSION,
 } from "@/lib/buyer-acknowledgement";
+import { getApprovedReferralByCode } from "@/lib/customers-db";
 
 type CartItem = {
   name: string;
@@ -51,15 +52,23 @@ export async function POST(req: Request) {
     // deliberately not passed to Stripe as customer_email: doing so locks the
     // field read-only in Checkout, leaving a customer who mistyped it unable to
     // correct their own address.
-    const { cartItems, promotionCodeId, fbp, fbc, buyerAck, buyerAckVersion } =
-      (await req.json()) as {
-        cartItems: CartItem[];
-        promotionCodeId?: string;
-        fbp?: string | null;
-        fbc?: string | null;
-        buyerAck?: boolean;
-        buyerAckVersion?: string;
-      };
+    const {
+      cartItems,
+      promotionCodeId,
+      fbp,
+      fbc,
+      buyerAck,
+      buyerAckVersion,
+      referralCode,
+    } = (await req.json()) as {
+      cartItems: CartItem[];
+      promotionCodeId?: string;
+      fbp?: string | null;
+      fbc?: string | null;
+      buyerAck?: boolean;
+      buyerAckVersion?: string;
+      referralCode?: string;
+    };
 
     // Enforced here as well as in the UI. The client gate is a convenience;
     // this is the one that cannot be bypassed by posting to the endpoint
@@ -94,6 +103,14 @@ export async function POST(req: Request) {
       buyerAckVersion || ACK_VERSION
     ).slice(0, 64);
     metaMetadata[ACK_METADATA_KEYS.at] = new Date().toISOString();
+
+    // Referral attribution is resolved here rather than taken on trust: the
+    // code must match an approved referral, or it is dropped. An unchecked
+    // code in metadata would become commission owed to nobody.
+    if (typeof referralCode === "string" && referralCode.trim()) {
+      const referral = await getApprovedReferralByCode(referralCode.trim());
+      if (referral?.code) metaMetadata.referral_code = referral.code;
+    }
 
     if (!Array.isArray(cartItems) || cartItems.length === 0) {
       return NextResponse.json({ error: "Cart is empty" }, { status: 400 });

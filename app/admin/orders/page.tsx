@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Search,
   Package,
@@ -12,6 +13,7 @@ import {
   RefreshCw,
   Download,
   ImageDown,
+  Users,
 } from "lucide-react";
 import type { Order, OrderStatus } from "@/lib/orders-db";
 import { OrderDetail } from "./OrderDetail";
@@ -197,6 +199,13 @@ export default function AdminOrdersPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <Link
+            href="/admin/accounts"
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg border border-gray-300 bg-white text-sm text-gray-700 hover:bg-gray-50"
+          >
+            <Users className="w-4 h-4" />
+            Accounts
+          </Link>
           <button
             onClick={handleBackfill}
             disabled={backfilling}
