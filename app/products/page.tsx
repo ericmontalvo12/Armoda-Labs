@@ -7,7 +7,7 @@ import { ProductsBrowser } from "@/components/products/ProductsBrowser";
 export const metadata: Metadata = {
   title: "Shop",
   description:
-    "Defined-sequence research peptides from Armoda Labs, third-party assayed with a certificate of analysis published for every lot.",
+    "Defined-sequence research peptides from Armoda Labs, third-party tested with a certificate of analysis published for every lot.",
   alternates: { canonical: "/products" },
 };
 

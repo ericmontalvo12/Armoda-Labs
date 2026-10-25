@@ -39,7 +39,7 @@ export function HeroPanel() {
 
               <div className="mt-10 max-w-xl">
                 <p className="text-base leading-relaxed text-text-secondary">
-                  Defined-sequence research peptides, independently assayed for
+                  Defined-sequence research peptides, independently tested for
                   identity and purity, for laboratory research use.
                 </p>
 

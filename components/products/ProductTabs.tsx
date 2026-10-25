@@ -90,7 +90,7 @@ export function ProductTabs({ product }: { product: Product }) {
               </p>
               <ul className="space-y-2 pt-2">
                 {[
-                  "Independently assayed before release",
+                  "Independently tested before release",
                   "Certificate of analysis published per lot",
                   "Supplied as a lyophilized preparation",
                   "For laboratory research use only",

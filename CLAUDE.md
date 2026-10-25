@@ -109,6 +109,11 @@ tracking must not break order processing.
   earlier pass wrote the site in British spellings and had to be converted.
 - Product and policy copy states facts about the operation — testing,
   documentation, handling — never an effect on a person.
+- **"Independently tested", not "assayed".** Plain language in customer-facing
+  copy; "assay" is jargon that makes the trust claim harder to scan. The site
+  previously used three phrasings for the same thing (third-party assayed,
+  independently assayed, third-party tested), which read as unconsidered for
+  the brand's central claim.
 
 ## Constraints
 

@@ -36,7 +36,7 @@ const tested = [
   },
   {
     title: "Peptide content",
-    body: "The net mass of peptide in the vial, which is a separate measurement from purity — a vial can assay as highly pure and still contain less material than stated.",
+    body: "The net mass of peptide in the vial, which is a separate measurement from purity — a vial can test as highly pure and still contain less material than stated.",
   },
   {
     title: "Water content and residual solvents",
@@ -44,7 +44,7 @@ const tested = [
   },
   {
     title: "Lot and method",
-    body: "The lot number, the date analyzed, the laboratory, and the analytical method used, so the result can be traced and repeated.",
+    body: "The lot number, the date tested, the laboratory, and the analytical method used, so the result can be traced and repeated.",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function LabResults() {
           </h1>
 
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary">
-            Every lot is analyzed by an independent laboratory before release.
+            Every lot is tested by an independent laboratory before release.
             Certificates are published here against the lot number printed on
             the vial, so what you read describes the material you received —
             not a reference batch from an earlier run. They are posted
@@ -99,7 +99,7 @@ export default function LabResults() {
                       </div>
                       <div>
                         <dt className="mb-0.5 text-xs uppercase tracking-wide text-text-muted">
-                          Analyzed
+                          Tested
                         </dt>
                         <dd className="font-medium tabular-nums text-text-primary">
                           {batch.tested}

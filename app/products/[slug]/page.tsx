@@ -29,7 +29,7 @@ export async function generateMetadata({
   if (!product) return {};
   return {
     title: product.name,
-    description: `${product.name}, ${product.spec}. Supplied for laboratory research use only, independently assayed with a certificate of analysis published per lot.`,
+    description: `${product.name}, ${product.spec}. Supplied for laboratory research use only, independently tested with a certificate of analysis published per lot.`,
     alternates: { canonical: `/products/${product.slug}` },
   };
 }
@@ -53,7 +53,7 @@ const SERVICE = [
   {
     icon: FlaskConical,
     title: "Lab tested",
-    body: "Every lot assayed by an independent laboratory before release.",
+    body: "Every lot tested by an independent laboratory before release.",
     href: "/lab-results",
     cta: "View certificates",
   },
@@ -121,7 +121,7 @@ export default async function ProductDetailPage({
           {/* Operational assurances — deliberately not purity or efficacy. */}
           <div className="mt-10 grid gap-3 sm:grid-cols-3">
             {[
-              { icon: FlaskConical, label: "Independently assayed" },
+              { icon: FlaskConical, label: "Independently tested" },
               { icon: ShieldCheck, label: "Research use only" },
               { icon: Lock, label: "Secure checkout" },
             ].map(({ icon: Icon, label }) => (

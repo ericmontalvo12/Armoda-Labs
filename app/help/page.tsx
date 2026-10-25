@@ -43,7 +43,7 @@ const topics = [
   {
     icon: FlaskConical,
     title: "Certificates of analysis",
-    body: "Find the COA matching the lot number on your vial, and how to read the assay.",
+    body: "Find the COA matching the lot number on your vial, and how to read a certificate.",
     href: "/lab-results",
     cta: "Browse certificates",
   },
@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     q: "The lot number on my vial is not in the certificates list.",
-    a: "Contact us with the lot number and we will send the certificate directly. Every lot is assayed before dispatch, so a missing entry is a publishing gap on our side, not an untested lot.",
+    a: "Contact us with the lot number and we will send the certificate directly. Every lot is tested before dispatch, so a missing entry is a publishing gap on our side, not an untested lot.",
   },
   {
     q: "Can I return an order?",

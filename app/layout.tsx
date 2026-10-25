@@ -18,7 +18,7 @@ const DEFAULT_TITLE =
 // effect, which is both accurate and the only defensible position here —
 // a meta description is advertising and is read as intended use.
 const DEFAULT_DESCRIPTION =
-  "Defined-sequence research peptides supplied for laboratory use only. Every lot is independently assayed, with the certificate of analysis published against the lot number on the vial.";
+  "Defined-sequence research peptides supplied for laboratory use only. Every lot is independently tested, with the certificate of analysis published against the lot number on the vial.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

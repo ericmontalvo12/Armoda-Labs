@@ -8,7 +8,7 @@ import { Truck, Lock, Headphones, CreditCard, Landmark, Bitcoin } from "lucide-r
 // PLACEHOLDER FACTS — every value here is a factual claim about the business
 // and none of it is invented copy you can safely ship. The purity figure in
 // particular is a claim that has to be backed by the certificates it cites: a
-// headline number higher than what a lot actually assays at is the kind of
+// headline number higher than what a lot actually tests at is the kind of
 // discrepancy that a regulator reads as a misbranding, and a buyer reads as a
 // reason to stop trusting the COAs. Fill these in from real records, or cut
 // the elements that carry them.
@@ -18,7 +18,7 @@ const FACTS = {
   experience: "TBC",
   purity: "TBC",
   origin: "TBC",
-  /** Shown under the ring. Keep it to what the assay method actually shows. */
+  /** Shown under the ring. Keep it to what the test method actually shows. */
   purityCaption: "Verified purity",
   methodLine: "HPLC tested · Third-party verified",
 };
@@ -111,7 +111,7 @@ export default function AboutPage() {
             </h2>
             <p className="mt-6 max-w-lg text-sm leading-relaxed text-text-secondary">
               Armoda Labs supplies defined-sequence peptides for laboratory
-              research. Every lot is assayed by an independent laboratory and
+              research. Every lot is tested by an independent laboratory and
               the certificate is published against the lot number on the vial,
               so what you read is the material you received.
             </p>
@@ -198,7 +198,7 @@ export default function AboutPage() {
           >
             <p>
               Every compound we supply is tested by an independent laboratory
-              and published lot by lot. Where an assay comes back below
+              and published lot by lot. Where a result comes back below
               specification, the lot does not ship — the number on the
               certificate is the number we met, not the number we aimed for.
             </p>

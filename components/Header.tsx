@@ -50,7 +50,7 @@ export function Header() {
         className={`announceBar bg-gold text-center transition-all duration-300 ease-in-out overflow-hidden ${showAnnouncement ? "h-9 flex items-center justify-center px-4" : "h-0"}`}
       >
         <p className="hidden sm:block text-sm font-heading font-bold text-text-on-gold whitespace-nowrap tracking-wide">
-          THIRD-PARTY ASSAYED
+          THIRD-PARTY TESTED
           <span className="mx-2 opacity-60">|</span> COA PUBLISHED FOR EVERY LOT
           <span className="mx-2 opacity-60">|</span> SAME-DAY WEEKDAY DISPATCH
         </p>
@@ -60,7 +60,7 @@ export function Header() {
               key={i}
               className="flex-shrink-0 text-xs font-heading font-bold text-text-on-gold whitespace-nowrap tracking-wide"
             >
-              THIRD-PARTY ASSAYED
+              THIRD-PARTY TESTED
               <span className="mx-3 opacity-60">&bull;</span> COA EVERY LOT
               <span className="mx-3 opacity-60">&bull;</span>
             </span>

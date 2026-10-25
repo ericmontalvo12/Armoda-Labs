@@ -67,7 +67,7 @@ export default function AffiliateTermsPage() {
         </p>
         <PolicyList
           items={[
-            "Certificates of analysis — what they contain and how to read an assay.",
+            "Certificates of analysis — what they contain and how to read a certificate.",
             "Third-party testing, lot matching and identity confirmation by mass spectrometry.",
             "Purity figures, quoted exactly as the certificate for that lot states them.",
             "Packaging, labeling and vial quality.",
