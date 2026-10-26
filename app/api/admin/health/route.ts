@@ -15,14 +15,21 @@ import { neon } from "@neondatabase/serverless";
  * to paste into a chat even though reaching it requires the admin password.
  */
 
+// What the site needs to run at all.
 const REQUIRED = [
   "ADMIN_SESSION_SECRET",
   "CUSTOMER_SESSION_SECRET",
   "ADMIN_PASSWORD",
+  "NEXT_PUBLIC_SITE_URL",
+] as const;
+
+// Reported separately from REQUIRED so `ok` does not sit red for as long as
+// the processor decision is open (see decision 1 in CLAUDE.md). A health
+// check that is always failing is one nobody reads.
+const CHECKOUT = [
   "STRIPE_SECRET_KEY",
   "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
   "STRIPE_WEBHOOK_SECRET",
-  "NEXT_PUBLIC_SITE_URL",
 ] as const;
 
 const OPTIONAL = [
@@ -54,6 +61,7 @@ function longEnough(name: string): boolean | null {
 export async function GET() {
   const env = {
     required: Object.fromEntries(REQUIRED.map((k) => [k, present(k)])),
+    checkout: Object.fromEntries(CHECKOUT.map((k) => [k, present(k)])),
     optional: Object.fromEntries(OPTIONAL.map((k) => [k, present(k)])),
     mustBeUnset: Object.fromEntries(MUST_BE_UNSET.map((k) => [k, present(k)])),
     secretsLongEnough: {
@@ -108,5 +116,13 @@ export async function GET() {
     REQUIRED.every((k) => present(k)) &&
     MUST_BE_UNSET.every((k) => !present(k));
 
-  return NextResponse.json({ ok, env, database }, { status: ok ? 200 : 503 });
+  // Missing tables are not a fault: every table is created by the first
+  // request that touches it, so a fresh database legitimately reports
+  // several as absent until the matching page is used.
+  const checkoutReady = CHECKOUT.every((k) => present(k));
+
+  return NextResponse.json(
+    { ok, checkoutReady, env, database },
+    { status: ok ? 200 : 503 }
+  );
 }
