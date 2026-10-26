@@ -121,23 +121,33 @@ def card(name, klass, mol, cas):
     formula = rdMolDescriptors.CalcMolFormula(mol)
     mw = f"{Descriptors.MolWt(mol):.2f}"
     sx, sy, sw, sh = STRUCT_BOX
+    mid = W / 2
 
     stats = [("FORMULA", formula), ("MOL. WEIGHT", f"{mw} g/mol")]
     if cas:
         stats.append(("CAS", cas))
 
-    # Left-aligned columns rather than the reference's centred row — the
-    # whole layout is set left, which is the plainest way to read as
-    # editorial rather than as a HUD.
+    # Centred three-column data row. Columns are spaced evenly about the
+    # centre line so a two-stat card (no CAS) stays balanced rather than
+    # leaving a gap where the third would be.
+    span = 164
+    offsets = [(i - (len(stats) - 1) / 2) * span for i in range(len(stats))]
     cells = []
-    for i, (label, value) in enumerate(stats):
-        cx = PAD + i * 168
+    for off, (label, value) in zip(offsets, stats):
+        cx = mid + off
         cells.append(
-            f'<text x="{cx}" y="492" font-family="ui-monospace,Menlo,monospace" font-size="8.5" '
+            f'<text x="{cx:.1f}" y="500" text-anchor="middle" '
+            f'font-family="ui-monospace,Menlo,monospace" font-size="8.5" '
             f'letter-spacing="1.8" fill="{MUTED}">{esc(label)}</text>'
-            f'<text x="{cx}" y="512" font-family="ui-monospace,Menlo,monospace" font-size="12.5" '
+            f'<text x="{cx:.1f}" y="520" text-anchor="middle" '
+            f'font-family="ui-monospace,Menlo,monospace" font-size="12.5" '
             f'fill="{INK}">{esc(value)}</text>'
         )
+
+    # Long names wrap badly at one size, so step the name down rather than
+    # letting it run into the frame.
+    n = len(name)
+    name_size = 44 if n <= 13 else 36 if n <= 19 else 29 if n <= 26 else 24
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}"
      preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:auto"
@@ -151,31 +161,31 @@ def card(name, klass, mol, cas):
 
   <rect width="{W}" height="{H}" fill="url(#paper)"/>
 
-  <!-- Double inset rule: a bookplate device, not a bracket. The outer is
-       hairline gold, the inner a fine ink line a few px in. -->
-  <rect x="18.5" y="18.5" width="{W-37}" height="{H-37}" fill="none" stroke="{GOLD_RULE}" stroke-width="1"/>
-  <rect x="24.5" y="24.5" width="{W-49}" height="{H-49}" fill="none" stroke="{INK}" stroke-width="0.4" opacity="0.28"/>
+  <!-- Corner rules rather than a closed frame: the card reads as a plate
+       with registration marks, and the eye goes to the centred stack. -->
+  <line x1="26" y1="26.5" x2="112" y2="26.5" stroke="{GOLD_RULE}" stroke-width="2"/>
+  <line x1="{W-112}" y1="26.5" x2="{W-26}" y2="26.5" stroke="{GOLD_RULE}" stroke-width="2"/>
+  <line x1="26" y1="{H-26.5}" x2="112" y2="{H-26.5}" stroke="{GOLD_RULE}" stroke-width="2"/>
+  <line x1="{W-112}" y1="{H-26.5}" x2="{W-26}" y2="{H-26.5}" stroke="{GOLD_RULE}" stroke-width="2"/>
 
-  <text x="{PAD}" y="{PAD+36}" font-family="ui-monospace,Menlo,monospace"
+  <text x="{mid}" y="{PAD+30}" text-anchor="middle" font-family="ui-monospace,Menlo,monospace"
         font-size="9.5" letter-spacing="2.8" fill="{MUTED}">{esc(klass.upper())}</text>
 
-  <text x="{PAD}" y="{PAD+94}" font-family="Georgia,'Times New Roman',serif"
-        font-size="46" fill="{INK}">{esc(name)}</text>
+  <text x="{mid}" y="{PAD+92}" text-anchor="middle" font-family="Georgia,'Times New Roman',serif"
+        font-size="{name_size}" fill="{INK}">{esc(name)}</text>
 
-  <line x1="{PAD}" y1="{PAD+112}" x2="{PAD+70}" y2="{PAD+112}" stroke="{GOLD_RULE}" stroke-width="2"/>
+  <line x1="{mid-32}" y1="{PAD+114}" x2="{mid+32}" y2="{PAD+114}" stroke="{GOLD_RULE}" stroke-width="2"/>
 
   <g transform="translate({sx},{sy})">{structure_svg(mol, sw, sh)}</g>
 
-  <line x1="{PAD}" y1="462" x2="{W-PAD}" y2="462" stroke="{INK}" stroke-width="0.4" opacity="0.2"/>
+  <line x1="{PAD+28}" y1="470" x2="{W-PAD-28}" y2="470" stroke="{INK}" stroke-width="0.4" opacity="0.2"/>
   {''.join(cells)}
 
-  <line x1="{PAD}" y1="548" x2="{W-PAD}" y2="548" stroke="{GOLD_RULE}" stroke-width="1"/>
-
-  <text x="{PAD}" y="578" font-family="Georgia,'Times New Roman',serif"
+  <text x="{mid}" y="564" text-anchor="middle" font-family="Georgia,'Times New Roman',serif"
         font-size="17" letter-spacing="2.5" fill="{INK}">ARMODA<tspan fill="{GOLD_DEEP}">LABS</tspan></text>
 
-  <text x="{W-PAD}" y="578" text-anchor="end" font-family="ui-monospace,Menlo,monospace"
-        font-size="8" letter-spacing="1.1" fill="{MUTED}">RESEARCH USE ONLY &#183; NOT FOR HUMAN CONSUMPTION</text>
+  <text x="{mid}" y="586" text-anchor="middle" font-family="ui-monospace,Menlo,monospace"
+        font-size="8" letter-spacing="1.1" fill="{MUTED}">FOR RESEARCH USE ONLY &#183; NOT FOR HUMAN CONSUMPTION</text>
 </svg>
 '''
 
