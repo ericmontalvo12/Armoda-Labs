@@ -83,13 +83,17 @@ async function ensureTables() {
   // one person's order history.
   await sql`CREATE UNIQUE INDEX IF NOT EXISTS customers_email_key ON customers (lower(email))`;
 
+  // rate_bps defaults to a literal 2000 rather than an interpolated
+  // DEFAULT_REFERRAL_RATE_BPS. The Neon tag turns every interpolation into a
+  // bind parameter and Postgres rejects parameters in DDL, which aborted this
+  // function and failed every registration. Keep the two in step by hand.
   await sql`
     CREATE TABLE IF NOT EXISTS referrals (
       id SERIAL PRIMARY KEY,
       customer_id INTEGER NOT NULL REFERENCES customers(id) ON DELETE CASCADE,
       code TEXT,
       status TEXT NOT NULL DEFAULT 'pending',
-      rate_bps INTEGER NOT NULL DEFAULT ${DEFAULT_REFERRAL_RATE_BPS},
+      rate_bps INTEGER NOT NULL DEFAULT 2000,
       audience TEXT,
       applied_at TIMESTAMPTZ NOT NULL DEFAULT now(),
       approved_at TIMESTAMPTZ
