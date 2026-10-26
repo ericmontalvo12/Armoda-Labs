@@ -35,19 +35,19 @@ export function AccordionItem({
 
   return (
     <div className={cn(
-      "rounded-xl border border-gray-200/80 bg-white shadow-[0_1px_4px_rgba(0,0,0,0.05)] overflow-hidden",
+      "rounded-card border border-border bg-surface overflow-hidden",
       className
     )}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50/50 transition-colors"
+        className="w-full flex items-center justify-between p-4 text-left hover:bg-surface-elevated transition-colors"
       >
-        <span className="text-sm font-medium text-gray-900">{trigger}</span>
+        <span className="text-sm font-medium text-text-primary">{trigger}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="w-4 h-4 text-gray-500" />
+          <ChevronDown className="w-4 h-4 text-gold" />
         </motion.div>
       </button>
 
@@ -59,7 +59,7 @@ export function AccordionItem({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
-            <div className="px-4 pb-4 text-sm text-gray-600">
+            <div className="px-4 pb-4 text-sm text-text-secondary">
               {children}
             </div>
           </motion.div>

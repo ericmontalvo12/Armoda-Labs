@@ -192,7 +192,7 @@ export default function CartPage() {
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="flex gap-4 p-4 sm:p-6 rounded-lg bg-white border border-border"
+                  className="flex gap-4 p-4 sm:p-6 rounded-lg bg-surface border border-border"
                 >
                   {/* Product Image */}
                   <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 rounded-xl bg-background border border-border overflow-hidden">
@@ -269,7 +269,7 @@ export default function CartPage() {
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="sticky top-32 p-6 rounded-lg bg-white border border-border">
+              <div className="sticky top-32 p-6 rounded-lg bg-surface border border-border">
                 <h2 className="font-heading text-xl font-semibold text-text-primary mb-6">
                   Order Summary
                 </h2>

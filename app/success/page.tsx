@@ -164,7 +164,7 @@ function SuccessContent() {
               </p>
             )}
 
-            <div className="bg-white border border-border rounded-lg p-6 mb-8 text-left">
+            <div className="bg-surface border border-border rounded-lg p-6 mb-8 text-left">
               <h2 className="font-heading font-semibold text-text-primary mb-4">
                 What happens next?
               </h2>

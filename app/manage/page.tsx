@@ -53,7 +53,7 @@ export default function ManagePage() {
 
           <form
             onSubmit={handleSubmit}
-            className="p-6 sm:p-8 rounded-lg bg-white border border-border"
+            className="p-6 sm:p-8 rounded-lg bg-surface border border-border"
           >
             <div className="mb-6">
               <label

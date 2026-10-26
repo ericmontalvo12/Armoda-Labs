@@ -150,7 +150,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   return (
                     <div key={i} className="space-y-3 my-2">
                       {section.levels.map((lvl, j) => (
-                        <div key={j} className="border border-border rounded-lg overflow-hidden bg-white">
+                        <div key={j} className="border border-border rounded-lg overflow-hidden bg-surface">
                           <div className="bg-primary/10 border-b border-primary/20 px-4 py-2.5 flex items-center gap-3">
                             <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded">{lvl.level}</span>
                             <span className="font-heading font-semibold text-text-primary text-sm">{lvl.title}</span>
@@ -202,7 +202,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                         </thead>
                         <tbody>
                           {section.foods.map((f, j) => (
-                            <tr key={j} className={j % 2 === 0 ? "bg-white" : "bg-surface/50"}>
+                            <tr key={j} className={j % 2 === 0 ? "bg-surface" : "bg-surface-elevated"}>
                               <td className="px-4 py-2.5 font-medium text-text-primary text-sm">{f.food}</td>
                               <td className="px-4 py-2.5 text-text-muted text-sm">{f.serving}</td>
                               <td className="px-4 py-2.5 text-primary font-semibold text-sm">{f.zinc}</td>
@@ -223,7 +223,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   return (
                     <div key={i} className="space-y-4 my-2">
                       {section.studies.map((study, j) => (
-                        <div key={j} className="border border-border rounded-lg overflow-hidden bg-white">
+                        <div key={j} className="border border-border rounded-lg overflow-hidden bg-surface">
                           <div className="bg-surface border-b border-border px-4 py-3">
                             <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-2">
                               <span className="font-bold text-text-primary text-sm">{study.author}</span>
@@ -266,13 +266,13 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   const colorMap: Record<string, string> = {
                     blue: "bg-blue-500",
                     indigo: "bg-indigo-500",
-                    gray: "bg-gray-400",
+                    gray: "bg-text-muted",
                   };
                   return (
                     <div key={i} className="space-y-3 my-2">
                       {section.stages.map((stage, j) => (
                         <div key={j} className="flex gap-3 p-4 bg-surface border border-border rounded-lg">
-                          <span className={`w-2.5 h-2.5 rounded-full ${colorMap[stage.color] ?? "bg-gray-400"} flex-shrink-0 mt-1.5`} />
+                          <span className={`w-2.5 h-2.5 rounded-full ${colorMap[stage.color] ?? "bg-text-muted"} flex-shrink-0 mt-1.5`} />
                           <div>
                             <p className="font-heading font-semibold text-text-primary text-sm mb-1">{stage.name}</p>
                             <p className="text-text-secondary text-sm leading-relaxed">{stage.text}</p>
@@ -340,7 +340,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   return (
                     <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2">
                       {section.evidence.map((item, j) => (
-                        <div key={j} className="border border-border rounded-lg p-4 bg-white">
+                        <div key={j} className="border border-border rounded-lg p-4 bg-surface">
                           <span className={`inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border mb-2 ${strengthColor[item.strength]}`}>
                             {strengthLabel[item.strength]}
                           </span>

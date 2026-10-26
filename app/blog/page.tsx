@@ -44,7 +44,7 @@ export default function BlogPage() {
             <div className="flex flex-col gap-6">
               {blogPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`}>
-                  <div className="group rounded-lg border border-border overflow-hidden hover:border-primary/30 hover:shadow-md transition-all duration-200 cursor-pointer bg-white">
+                  <div className="group rounded-lg border border-border overflow-hidden hover:border-gold/40 transition-all duration-200 cursor-pointer bg-surface">
                     {/* Cover image */}
                     <div className="w-full aspect-[16/9] bg-surface relative overflow-hidden">
                       <Image
