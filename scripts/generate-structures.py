@@ -63,16 +63,16 @@ GOLD_DEEP_RGB = (0.541, 0.416, 0.078)
 
 # slug: (kind, value, klass, cas, verified, note)
 CATALOG = {
-    "kpv":         ("seq", "KPV", "Tripeptide", "", False, "Lys-Pro-Val"),
+    "kpv":         ("seq", "KPV", "Tripeptide", "", True, "Lys-Pro-Val"),
     "ghk-cu":      ("seq", "GHK", "Copper Tripeptide Complex", "", False,
                     "Draws the GHK tripeptide; the Cu(II) complex is not depicted"),
-    "epitalon":    ("seq", "AEDG", "Regulatory Tetrapeptide", "", False, "Ala-Glu-Asp-Gly"),
-    "semax":       ("seq", "MEHFPGP", "ACTH-Derived Neuropeptide", "", False, "Met-Glu-His-Phe-Pro-Gly-Pro"),
-    "selank":      ("seq", "TKPRPGP", "Tuftsin-Derived Neuropeptide", "", False, "Thr-Lys-Pro-Arg-Pro-Gly-Pro"),
+    "epitalon":    ("seq", "AEDG", "Regulatory Tetrapeptide", "", True, "Ala-Glu-Asp-Gly"),
+    "semax":       ("seq", "MEHFPGP", "ACTH-Derived Neuropeptide", "", True, "Met-Glu-His-Phe-Pro-Gly-Pro"),
+    "selank":      ("seq", "TKPRPGP", "Tuftsin-Derived Neuropeptide", "", True, "Thr-Lys-Pro-Arg-Pro-Gly-Pro"),
     "tb-500":      ("seq", "LKKTETQ", "Thymosin Fragment", "", False, "Confirm the supplied fragment against the CoA"),
-    "bpc-157":     ("seq", "GEPPPGKPADDAGLV", "Pentadecapeptide", "", False, "100 heavy atoms — dense but framed"),
-    "mots-c":      ("seq", "MRWQEMGYIFYPRKLR", "Mitochondrial-Derived Peptide", "", False, "153 heavy atoms"),
-    "glutathione": ("smiles", "NC(CCC(=O)NC(CS)C(=O)NCC(=O)O)C(=O)O", "Tripeptide", "70-18-8", False,
+    "bpc-157":     ("seq", "GEPPPGKPADDAGLV", "Pentadecapeptide", "", True, "100 heavy atoms — dense but framed"),
+    "mots-c":      ("seq", "MRWQEMGYIFYPRKLR", "Mitochondrial-Derived Peptide", "", True, "153 heavy atoms"),
+    "glutathione": ("smiles", "NC(CCC(=O)NC(CS)C(=O)NCC(=O)O)C(=O)O", "Tripeptide", "70-18-8", True,
                     "Gamma-glutamyl linkage cannot be written as a plain sequence"),
 
     "retatrutide":          ("none", "", "GLP Compound", "", False, "Verify against PubChem; non-standard modifications"),

@@ -1,1 +1,38 @@
-{}
+{
+  "bpc-157": {
+    "compoundClass": "Pentadecapeptide",
+    "formula": "C62H98N16O22",
+    "molecularWeight": "1419.56 g/mol"
+  },
+  "epitalon": {
+    "compoundClass": "Regulatory Tetrapeptide",
+    "formula": "C14H22N4O9",
+    "molecularWeight": "390.35 g/mol"
+  },
+  "glutathione": {
+    "cas": "70-18-8",
+    "compoundClass": "Tripeptide",
+    "formula": "C10H17N3O6S",
+    "molecularWeight": "307.33 g/mol"
+  },
+  "kpv": {
+    "compoundClass": "Tripeptide",
+    "formula": "C16H30N4O4",
+    "molecularWeight": "342.44 g/mol"
+  },
+  "mots-c": {
+    "compoundClass": "Mitochondrial-Derived Peptide",
+    "formula": "C101H152N28O22S2",
+    "molecularWeight": "2174.64 g/mol"
+  },
+  "selank": {
+    "compoundClass": "Tuftsin-Derived Neuropeptide",
+    "formula": "C33H57N11O9",
+    "molecularWeight": "751.89 g/mol"
+  },
+  "semax": {
+    "compoundClass": "ACTH-Derived Neuropeptide",
+    "formula": "C37H51N9O10S",
+    "molecularWeight": "813.93 g/mol"
+  }
+}
