@@ -41,9 +41,6 @@ function sortProducts(list: Product[], key: SortKey): Product[] {
   }
 }
 
-const labelClass =
-  "mb-1 block text-[10px] font-heading font-bold uppercase tracking-wider text-text-muted";
-
 const selectClass =
   "w-full appearance-none rounded-[10px] border border-border bg-background px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-gold";
 
@@ -74,91 +71,104 @@ export function ProductsBrowser({
       ? LISTED_PRODUCTS.length
       : LISTED_PRODUCTS.filter((p) => p.categorySlug === category).length;
 
+  // Counts sit on the chips, so they are computed once from the full list
+  // rather than from the filtered results - a chip reading "(0)" because of
+  // the current search would be telling you about the wrong thing.
+  const counts = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const p of LISTED_PRODUCTS) {
+      map.set(p.categorySlug, (map.get(p.categorySlug) ?? 0) + 1);
+    }
+    return map;
+  }, []);
+
+  const chips = [
+    { slug: "all", name: "All", count: LISTED_PRODUCTS.length },
+    ...CATEGORIES.map((c) => ({
+      slug: c.slug,
+      name: c.name,
+      count: counts.get(c.slug) ?? 0,
+    })),
+  ];
+
   return (
     <>
-      <div className="rounded-[20px] border border-border bg-surface p-4 sm:p-5">
-        {/* Every column is label-over-control so the three share a baseline.
-            The search field previously carried only an aria-label, so it sat
-            one label-height higher than the two selects. */}
-        <div className="grid items-end gap-3 lg:grid-cols-[1fr_auto_auto]">
-          <div>
-            <label
-              htmlFor="product-search"
-              className={labelClass}
-            >
-              Search
-            </label>
-            <div className="relative">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
-              <input
-                id="product-search"
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search products…"
-                className="w-full rounded-[10px] border border-border bg-background py-2.5 pl-9 pr-3 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold"
-              />
-            </div>
-          </div>
+      {/* Search leads, full width: on a catalog this is the primary way in,
+          and burying it in a row of three controls understates it. */}
+      <label htmlFor="product-search" className="sr-only">
+        Search products
+      </label>
+      <div className="relative">
+        <Search className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-text-muted" />
+        <input
+          id="product-search"
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for products…"
+          className="h-14 w-full rounded-full border border-border bg-surface pl-14 pr-5 text-base text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold"
+        />
+      </div>
 
-          <div className="lg:w-56">
-            <label
-              htmlFor="category"
-              className={labelClass}
-            >
-              Category
-            </label>
-            <select
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className={selectClass}
-            >
-              <option value="all">All categories</option>
-              {CATEGORIES.map((c) => (
-                <option key={c.slug} value={c.slug}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-          </div>
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+        <p className="text-xs font-heading font-bold uppercase tracking-wider text-gold-text" aria-live="polite">
+          Showing {results.length} of {total} results
+        </p>
 
-          <div className="lg:w-52">
-            <label
-              htmlFor="sort"
-              className={labelClass}
-            >
-              Sort by
-            </label>
-            <select
-              id="sort"
-              value={sort}
-              onChange={(e) => setSort(e.target.value as SortKey)}
-              className={selectClass}
-            >
-              {SORTS.map((s) => (
-                <option key={s.key} value={s.key}>
-                  {s.label}
-                </option>
-              ))}
-            </select>
-          </div>
+        <div>
+          <label htmlFor="sort" className="sr-only">
+            Sort by
+          </label>
+          <select
+            id="sort"
+            value={sort}
+            onChange={(e) => setSort(e.target.value as SortKey)}
+            className={selectClass}
+          >
+            {SORTS.map((s) => (
+              <option key={s.key} value={s.key}>
+                {s.label}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
-      <p className="mt-6 text-sm text-text-muted" aria-live="polite">
-        Showing <span className="text-text-primary">{results.length}</span> of{" "}
-        <span className="text-text-primary">{total}</span> products
-      </p>
+      {/* Chips rather than a select: with six categories the whole taxonomy
+          is visible at once, and the counts tell you where the depth is
+          before you click. */}
+      <div className="mt-6 flex flex-wrap gap-2.5">
+        {chips.map((c) => {
+          const active = category === c.slug;
+          return (
+            <button
+              key={c.slug}
+              type="button"
+              onClick={() => setCategory(c.slug)}
+              aria-pressed={active}
+              className={
+                active
+                  ? "inline-flex items-center gap-2 rounded-full border border-gold bg-gold px-5 py-2.5 text-sm font-heading font-bold text-text-on-gold"
+                  : "inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-heading font-bold text-text-secondary transition-colors hover:border-gold hover:text-text-primary"
+              }
+            >
+              {c.name}
+              <span className={active ? "text-text-on-gold/70" : "text-text-muted"}>
+                ({c.count})
+              </span>
+            </button>
+          );
+        })}
+      </div>
 
       {results.length > 0 ? (
-        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {results.map((p) => (
             <ProductCard key={p.slug} product={p} />
           ))}
         </div>
       ) : (
-        <div className="mt-6 rounded-[20px] border border-border bg-surface p-12 text-center">
+        <div className="mt-8 rounded-[20px] border border-border bg-surface p-12 text-center">
           <p className="font-heading text-base font-extrabold text-text-primary">
             No products match that search
           </p>
