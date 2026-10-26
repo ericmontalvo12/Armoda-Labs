@@ -9,6 +9,12 @@
     "formula": "C14H22N4O9",
     "molecularWeight": "390.35 g/mol"
   },
+  "ghk-cu": {
+    "cas": "89030-95-5",
+    "compoundClass": "Copper-Binding Tripeptide",
+    "formula": "C14H23CuN6O4+",
+    "molecularWeight": "402.92 g/mol"
+  },
   "glutathione": {
     "cas": "70-18-8",
     "compoundClass": "Tripeptide",

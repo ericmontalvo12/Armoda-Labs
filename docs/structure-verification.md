@@ -40,7 +40,7 @@ That writes the SVGs to `public/structures/` and the computed specs to
 |---|---|---|---|---|
 | `glutathione` | SMILES (gamma-glutamyl) | C10H17N3O6S | 307.33 | https://pubchem.ncbi.nlm.nih.gov/compound/124886 |
 | `kpv` | Lys-Pro-Val | C16H30N4O4 | 342.44 | search "KPV tripeptide" |
-| `ghk-cu` | Gly-His-Lys | C14H24N6O4 | 340.38 | https://pubchem.ncbi.nlm.nih.gov/compound/10071107 |
+| `ghk-cu` | Gly-His-Lys + Cu(+) at the C-terminus | C14H23CuN6O4+ | 402.92 | https://pubchem.ncbi.nlm.nih.gov/compound/10071107 |
 | `epitalon` | Ala-Glu-Asp-Gly | C14H22N4O9 | 390.35 | search "Epitalon" |
 | `semax` | Met-Glu-His-Phe-Pro-Gly-Pro | C37H51N9O10S | 813.93 | search "Semax" |
 | `selank` | Thr-Lys-Pro-Arg-Pro-Gly-Pro | C33H57N11O9 | 751.89 | search "Selank" |
@@ -50,20 +50,20 @@ That writes the SVGs to `public/structures/` and the computed specs to
 
 ## Two rows that need a decision, not just a tick
 
-### `ghk-cu` — the card would state the wrong formula
+### `ghk-cu` — RESOLVED
 
-The product is the **copper(II) complex**. The structure drawn is the bare
-GHK tripeptide, so the computed formula C14H24N6O4 and mass 340.38 are
-**GHK's, not GHK-Cu's**. A card titled "GHK-Cu" carrying GHK's formula is
-exactly the checkable error this gate exists to prevent.
+Was drawing the bare tripeptide under a title naming the copper complex,
+which would have printed GHK's formula (C14H24N6O4 / 340.38) on a GHK-Cu
+card. Now drawn from a SMILES with Cu(+) bound at the C-terminal
+carboxylate, so the computed values describe the complex that is sold:
+**C14H23CuN6O4+ / 402.92 g/mol**.
 
-Pick one before shipping this tile:
+Confirmed two independent ways - RDKit's computation from the structure, and
+a published tile for the same compound - which agree to the decimal. The
+arithmetic also checks out by hand: GHK minus one hydrogen plus copper.
 
-- Title the card "GHK" and add "shown as the free tripeptide" to the class
-  line — honest, and the structure stays drawable.
-- Supply a SMILES for the Cu(II) complex so formula and mass describe the
-  actual product.
-- Leave it unverified and ship no image for this SKU.
+Outstanding: the CAS (89030-95-5) came off a third-party listing. Confirm it
+against the CoA.
 
 ### `tb-500` — confirm which fragment you are selling
 

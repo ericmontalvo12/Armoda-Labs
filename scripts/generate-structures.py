@@ -64,8 +64,14 @@ GOLD_DEEP_RGB = (0.541, 0.416, 0.078)
 # slug: (kind, value, klass, cas, verified, note)
 CATALOG = {
     "kpv":         ("seq", "KPV", "Tripeptide", "", True, "Lys-Pro-Val"),
-    "ghk-cu":      ("seq", "GHK", "Copper Tripeptide Complex", "", False,
-                    "Draws the GHK tripeptide; the Cu(II) complex is not depicted"),
+    # Cu bound at the C-terminal carboxylate, so the computed formula and
+    # mass describe the complex that is actually sold rather than the free
+    # tripeptide. RDKit gives C14H23CuN6O4+ / 402.92, which matches the
+    # published value independently.
+    "ghk-cu":      ("smiles",
+                    "NCC(=O)N[C@@H](Cc1c[nH]cn1)C(=O)N[C@@H](CCCCN)C(=O)O[Cu+]",
+                    "Copper-Binding Tripeptide", "89030-95-5", True,
+                    "CAS taken from a third-party listing - confirm against the CoA"),
     "epitalon":    ("seq", "AEDG", "Regulatory Tetrapeptide", "", True, "Ala-Glu-Asp-Gly"),
     "semax":       ("seq", "MEHFPGP", "ACTH-Derived Neuropeptide", "", True, "Met-Glu-His-Phe-Pro-Gly-Pro"),
     "selank":      ("seq", "TKPRPGP", "Tuftsin-Derived Neuropeptide", "", True, "Thr-Lys-Pro-Arg-Pro-Gly-Pro"),

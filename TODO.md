@@ -215,6 +215,33 @@ use regardless of registration.
 
 Mass spec matters as much as purity: purity alone does not confirm identity.
 
+#### Catalog structure images — blocked on information we do not have
+
+Eight of sixteen SKUs now render a tile (`public/structures/`). The rest are
+waiting on facts, not on code. Full worksheet: `docs/structure-verification.md`.
+
+- [ ] **TB-500 — which fragment?** Sold as the bare 7-mer LKKTETQ, N-acetylated,
+      C-amidated, or both, and each has a different mass. The number printed on
+      the tile must match what the supplier actually ships, so this comes off the
+      lot CoA, not a reference site. Once the CoA says which, the sequence string
+      in `scripts/generate-structures.py` gets updated and the flag flipped.
+- [ ] **Retatrutide and tirzepatide — need a SMILES.** Both carry non-standard
+      residues and a fatty-acid chain that the sequence builder cannot express.
+      Either source a SMILES (PubChem, or the supplier's documentation) or accept
+      no image for these two. No reference tile to copy yet.
+- [ ] **Five blends need component lists.** GLOW, KLOW, CJC-1295/Ipamorelin,
+      Semax-Selank, BPC-157/TB-500. A structure is the wrong object for a blend;
+      these want a component-list card in the same frame. The renderer is a small
+      job — the blocker is the per-blend composition, which comes from the
+      supplier's formulation.
+- [ ] **Confirm GHK-Cu's CAS (89030-95-5)** against the CoA. The structure and
+      mass are confirmed two ways; the CAS came off a third-party listing.
+- [ ] **Confirm the eight rendered structures against PubChem** when convenient.
+      Computed formula and mass agree with published values, but PubChem is
+      unreachable from the build container so none were checked against it
+      directly. Two numbers per row — `docs/structure-verification.md` has the list.
+
+
 ### 5. Payment processing — GABE
 
 - [ ] Confirm rolling reserve percentage and hold period — this sets working capital
