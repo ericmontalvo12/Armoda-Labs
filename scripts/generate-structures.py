@@ -53,12 +53,12 @@ DATA = os.path.join(os.path.dirname(__file__), "..", "lib", "structure-data.json
 # to be read.
 IVORY = "#faf8f3"
 IVORY_EDGE = "#f3efe6"
-INK = "#14110e"
+INK = "#0d1f15"
 MUTED = "#6b6459"          # 5.51:1 on ivory
 GOLD_RULE = "#c9a227"      # hairlines only
 GOLD_DEEP = "#8a6a14"      # 4.76:1 — anything that must be read
 
-INK_RGB = (0.078, 0.067, 0.055)
+INK_RGB = (0.051, 0.122, 0.082)
 GOLD_DEEP_RGB = (0.541, 0.416, 0.078)
 
 # slug: (kind, value, klass, cas, verified, note)
