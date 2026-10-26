@@ -15,3 +15,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.lo
 tsconfig.tsbuildinfo
+
+# Python bytecode from scripts/
+__pycache__/
+*.pyc
