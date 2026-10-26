@@ -40,11 +40,27 @@ function Badge({ status }: { status: string }) {
  * Suggests a code from the account's name or email. Only a suggestion - the
  * field stays editable, because a short memorable code is worth more than a
  * derived one.
+ *
+ * Takes whole words rather than slicing at a fixed length: cutting
+ * "Test Applicant" at 12 characters gives TESTAPPLICAN, which reads as a
+ * typo and invites the approver to retype the whole thing anyway.
  */
 function suggestCode(row: ReferralRow, customer?: Customer): string {
-  const base = (customer?.name || row.email.split("@")[0] || "").toUpperCase();
-  const cleaned = base.replace(/[^A-Z0-9]/g, "");
-  return cleaned.slice(0, 12) || `AFF${row.id}`;
+  const source = customer?.name || row.email.split("@")[0] || "";
+  const words = source
+    .toUpperCase()
+    .split(/[^A-Z0-9]+/)
+    .filter(Boolean);
+
+  let code = "";
+  for (const word of words) {
+    // Stop before a word that would push past 14, rather than truncating it.
+    if (code && code.length + word.length > 14) break;
+    code += word;
+  }
+  // A single word longer than the budget is still better whole than cut.
+  if (!code) code = words[0] ?? "";
+  return code || `AFF${row.id}`;
 }
 
 export default function AdminAccountsPage() {

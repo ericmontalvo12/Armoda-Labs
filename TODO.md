@@ -29,6 +29,14 @@ whether Retatrutide and Tirzepatide stay listed.
 
 ### Website — YOU
 
+- [ ] **Remove the test account before launch.** `armoda-labs-prod` holds
+      `armoda-test-20261026@example.com` (approved) and the referral code
+      `ARMODA-TEST` (approved, 20%). Rejecting them from `/admin/accounts`
+      changes their status but leaves the rows, and `ARMODA-TEST` keeps
+      occupying the unique index on referral codes. There is no delete in the
+      admin UI — say the word and I will add one, or clear them with SQL from
+      the Neon console.
+
 - [ ] **Finish the website**
   - [x] Catalog model, `/products`, `/products/category/[slug]`, `/products/[slug]`
   - [x] Homepage, `/about`, `/how-to-pay`, `/how-to-profit`, `/help`, footer
