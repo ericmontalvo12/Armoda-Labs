@@ -18,7 +18,7 @@ export default function ShippingAndClaimsPage() {
     <PolicyPage
       title="Shipping & Claims"
       updated="Draft"
-      intro="All sales are final — we do not accept returns on any product. Where we can verify that something went wrong with an order, we resolve it with store credit. This page explains how that works."
+      intro="All sales are final. We do not accept returns on any product. Where we can verify that something went wrong with an order, we resolve it with store credit. This page explains how that works."
     >
       <PolicySection heading="1. All sales are final">
         <p>
@@ -49,7 +49,7 @@ export default function ShippingAndClaimsPage() {
         <p>We issue credit where:</p>
         <PolicyList
           items={[
-            "The shipment arrives damaged — broken, cracked or compromised packaging.",
+            "The shipment arrives damaged: broken, cracked or compromised packaging.",
             "We picked the wrong product, format or quantity.",
             "The lot you received does not match the certificate published for it.",
             "A shipment is confirmed lost in transit by the carrier.",
@@ -57,7 +57,7 @@ export default function ShippingAndClaimsPage() {
         />
         <p className="text-text-primary">
           In every case we do not want the product back. Keep it or dispose of
-          it — we will not ask you to return it, for the same reason we do not
+          it. We will not ask you to return it, for the same reason we do not
           accept returns at all.
         </p>
         <p>
@@ -79,8 +79,8 @@ export default function ShippingAndClaimsPage() {
 
       <PolicySection heading="4. Making a claim">
         <p>
-          Contact us within <strong>7 days of delivery</strong> — or of the
-          expected delivery date where a shipment has not arrived — with:
+          Contact us within <strong>7 days of delivery</strong>, or of the
+          expected delivery date where a shipment has not arrived, with:
         </p>
         <PolicyList
           items={[
@@ -115,7 +115,7 @@ export default function ShippingAndClaimsPage() {
         <p>
           You are responsible for the accuracy of the address you enter. A
           parcel returned to us as undeliverable, refused, or unclaimed cannot
-          be reshipped — it has left our custody — and is not refundable.
+          be reshipped, because it has left our custody, and is not refundable.
           Contact us before dispatch if an address needs correcting.
         </p>
       </PolicySection>
@@ -131,7 +131,7 @@ export default function ShippingAndClaimsPage() {
 
       <PolicySection heading="8. Cancellations">
         <p>
-          An order can be cancelled before it is dispatched — contact us as
+          An order can be cancelled before it is dispatched. Contact us as
           quickly as you can with your order number. Once a parcel is handed to
           the carrier it cannot be recalled.
         </p>

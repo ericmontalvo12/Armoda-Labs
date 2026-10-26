@@ -104,6 +104,31 @@ tracking must not break order processing.
 
 ## Copy conventions
 
+### Voice
+
+Confidence here comes from specifics and refusals, not from cadence. The
+site's own best line is the model:
+
+> **Can you advise on dosing or protocols?**
+> No. We supply material and its documentation.
+
+Flat, unhedged, slightly cold. It states and stops rather than arguing.
+
+Rules, because an earlier pass read as machine-written:
+
+- **No em-dashes.** There were 106 across the site. Use a full stop, a colon,
+  or a comma. If a sentence needs an em-dash it needs to be two sentences.
+- **No mirrored clauses.** "The certificate is the product. The compound is
+  what it says." sounds composed rather than said. One idea, one sentence.
+- **No "X, not Y" tails.** The distinction is usually real; the construction
+  was a tic and appeared everywhere.
+- **No anaphora.** "Every lot... Every account..." reads as a speech.
+- **Numbers wherever a number exists.** "Ships in 1-2 business days" beats
+  "ships promptly". "Purity by HPLC" beats "rigorous testing".
+- **Say no plainly.** What Armoda will not do is the most credible thing it
+  can state, because nobody writes a refusal they do not mean.
+- Short sentences. A paragraph of three short ones beats one long one.
+
 - **US English.** Armoda is a US business dealing with the FDA and FTC:
   program, organization, labeling, lyophilized, center, fulfillment. An
   earlier pass wrote the site in British spellings and had to be converted.

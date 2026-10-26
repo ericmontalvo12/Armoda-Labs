@@ -28,7 +28,7 @@ const SECTIONS = [
       },
       {
         q: "What is a certificate of analysis?",
-        a: "A report from an independent laboratory stating what a given lot was measured to contain — identity confirmed by mass spectrometry, and purity by HPLC. We publish one per lot and match it to the lot number printed on your vial, so the certificate you read describes the material you received rather than a reference batch.",
+        a: "A report from an independent laboratory stating what a given lot was measured to contain. Identity by mass spectrometry, purity by HPLC. We publish one per lot, filed under the lot number printed on your vial, so what you read describes the material in your hand.",
       },
       {
         q: "Why does identity testing matter as well as purity?",

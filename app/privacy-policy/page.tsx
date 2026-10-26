@@ -92,7 +92,7 @@ export default function PrivacyPolicy() {
                 In general, third-party providers used by us will only collect, use, and disclose your information to the extent necessary to perform the services they provide to us.
               </p>
               <p className="mb-4">
-                Certain third-party service providers—such as payment processors, email platforms, SMS providers, and analytics tools—have their own privacy policies regarding the information we are required to provide to them.
+                Certain third-party service providers, such as payment processors, email platforms, SMS providers and analytics tools, have their own privacy policies regarding the information we are required to provide to them.
               </p>
               <p className="mb-4">
                 We recommend reviewing their privacy policies to understand how your personal information is handled.

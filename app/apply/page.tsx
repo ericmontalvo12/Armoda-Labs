@@ -92,7 +92,7 @@ export default function ApplyPage() {
               </h2>
               <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-text-secondary">
                 You can sign in now and see your orders. We review every
-                application by hand — approval unlocks the referral program,
+                application by hand. Approval unlocks the referral program,
                 and usually takes two business days.
               </p>
               <Link
@@ -166,7 +166,7 @@ export default function ApplyPage() {
                     I certify that I am at least {MINIMUM_AGE} years of age,
                     that I am qualified by training or experience to handle
                     research chemicals, and that material will be used for
-                    laboratory research only — never consumed or administered
+                    laboratory research only. Never consumed or administered
                     to any human or animal.{" "}
                     <Link href="/terms-of-service" target="_blank" className="text-gold hover:underline">
                       Terms of Service

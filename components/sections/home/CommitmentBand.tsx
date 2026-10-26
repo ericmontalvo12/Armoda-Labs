@@ -6,9 +6,9 @@ import { FlaskConical, Truck, Tags, Lock } from "lucide-react";
  * a compound does, which is the line the whole site holds.
  */
 const ITEMS = [
-  { icon: FlaskConical, label: "COA on every lot" },
-  { icon: Truck, label: "Ships in 1–2 business days once payment clears" },
-  { icon: Tags, label: "Proper labeling and handling" },
+  { icon: FlaskConical, label: "A certificate for every lot" },
+  { icon: Truck, label: "Ships in 1 to 2 business days" },
+  { icon: Tags, label: "Lot number on every vial" },
   { icon: Lock, label: "Encrypted checkout" },
 ];
 
@@ -26,11 +26,11 @@ export function CommitmentBand() {
                   aria-hidden="true"
                   className="mr-2 inline-block h-3 w-3 translate-y-[1px] bg-gold"
                 />
-                Our commitment
+                What you can expect
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                Verified material, documented handling and predictable
-                dispatch — every order, every lot.
+                Four things we hold to. If we miss one, tell us and we will
+                make it right.
               </p>
             </div>
 

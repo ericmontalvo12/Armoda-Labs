@@ -29,26 +29,26 @@ export function HeroPanel() {
 
             <div>
               <p className="text-xs font-heading font-bold uppercase tracking-[0.22em] text-gold">
-                Documented before it ships
+                Every lot tested. Every result published.
               </p>
               <h1 className="mt-5 max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] text-text-primary sm:text-5xl">
-                The certificate is the product.
+                You should not have to
                 <br />
-                The compound is what it says.
+                take our word for it.
               </h1>
 
               <div className="mt-10 max-w-xl">
                 <p className="text-base leading-relaxed text-text-secondary">
-                  Defined-sequence research peptides, independently tested for
-                  identity and purity, for laboratory research use.
+                  Research peptides for laboratory use. Identity confirmed by
+                  mass spectrometry, purity by HPLC, both done by a lab that
+                  does not work for us.
                 </p>
 
                 <blockquote className="mt-6 border-l-2 border-gold bg-surface-elevated px-5 py-4">
                   <p className="text-sm leading-relaxed text-text-secondary">
-                    Every account application is reviewed by a person. Every
-                    lot is tested before release, with its certificate
-                    published against the lot number printed on the vial — not
-                    a reference batch from an earlier run.
+                    The certificate you read is for the lot number printed on
+                    your vial. Not a reference batch. Not an earlier run. If
+                    the numbers do not match, do not use it.
                   </p>
                 </blockquote>
               </div>
@@ -90,7 +90,7 @@ export function HeroPanel() {
                 <Link href="/products" className="font-heading font-bold text-gold hover:underline">
                   browse the catalog
                 </Link>{" "}
-                — no account required.
+                No account required.
               </p>
             </div>
           </div>

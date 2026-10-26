@@ -36,7 +36,7 @@ const tested = [
   },
   {
     title: "Peptide content",
-    body: "The net mass of peptide in the vial, which is a separate measurement from purity — a vial can test as highly pure and still contain less material than stated.",
+    body: "The net mass of peptide in the vial, which is a separate measurement from purity. A vial can test as highly pure and still contain less material than stated.",
   },
   {
     title: "Water content and residual solvents",
@@ -61,7 +61,7 @@ export default function LabResults() {
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary">
             Every lot is tested by an independent laboratory before release.
             Certificates are published here against the lot number printed on
-            the vial, so what you read describes the material you received —
+            the vial, so what you read describes the material you received.
             not a reference batch from an earlier run. They are posted
             unedited.
           </p>

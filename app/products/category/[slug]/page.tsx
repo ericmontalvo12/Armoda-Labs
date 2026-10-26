@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!category) return {};
   return {
     title: category.name,
-    description: `${category.name} from Armoda Labs — ${category.blurb} Third-party tested, certificate of analysis published for every lot.`,
+    description: `${category.name} from Armoda Labs. ${category.blurb} Independently tested, with a certificate of analysis published for every lot.`,
     alternates: { canonical: `/products/category/${category.slug}` },
   };
 }

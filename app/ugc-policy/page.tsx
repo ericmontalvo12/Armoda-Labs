@@ -18,7 +18,7 @@ export default function UgcPolicyPage() {
     <PolicyPage
       title="Third-Party Content Policy"
       updated="Draft"
-      intro="This policy covers content about Armoda Labs published by people other than us — customers, commentators, forum posters and paid partners — and sets out what we do and do not stand behind."
+      intro="This policy covers content about Armoda Labs published by people other than us: customers, commentators, forum posters and paid partners. It sets out what we do and do not stand behind."
     >
       <PolicySection heading="1. We do not endorse third-party content">
         <p>

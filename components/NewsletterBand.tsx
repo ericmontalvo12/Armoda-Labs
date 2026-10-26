@@ -40,7 +40,7 @@ export function NewsletterBand() {
 
         {state === "done" ? (
           <p className="mt-6 text-sm text-text-secondary" role="status">
-            Thanks — you&apos;re on the list.
+            Thanks. You&apos;re on the list.
           </p>
         ) : (
           <form

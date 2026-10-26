@@ -25,7 +25,7 @@ export default function TermsOfServicePage() {
         inherited supplement terms: buyer qualification, permitted use, the
         resale restriction and the no-advice clause. A footer disclaimer with
         none of these behind it is the pattern regulators describe as a fig
-        leaf — the restriction has to be a condition of sale, agreed at
+        leaf. The restriction has to be a condition of sale, agreed at
         purchase, not a notice printed nearby.
       */}
 
@@ -44,7 +44,7 @@ export default function TermsOfServicePage() {
           items={[
             "You are at least 21 years of age.",
             "You are acquiring the material for laboratory research purposes only.",
-            "You are a qualified researcher, a laboratory professional, or an institution — or you are acquiring on behalf of one — and are competent by training or experience to handle research chemicals safely.",
+            "You are a qualified researcher, a laboratory professional, or an institution, or you are acquiring on behalf of one, and are competent by training or experience to handle research chemicals safely.",
             "You will handle, store and dispose of the material in accordance with applicable law and good laboratory practice.",
             "You are not acquiring the material for yourself or any other person to consume, administer or otherwise introduce into a human or an animal.",
             "Your purchase and possession of the material is lawful in your jurisdiction.",
@@ -129,7 +129,7 @@ export default function TermsOfServicePage() {
           order is accepted when it is dispatched, not when it is placed.
         </p>
         <p>
-          All sales are final — see{" "}
+          All sales are final. See{" "}
           <Link href="/shipping-and-claims" className="text-gold hover:underline">
             Shipping &amp; Claims
           </Link>{" "}
@@ -141,7 +141,7 @@ export default function TermsOfServicePage() {
         <p>
           We may publish reviews and other content you submit. We will not
           publish, and will remove, content that describes use in a human or an
-          animal, states a dose or protocol, or claims any outcome or effect —
+          animal, states a dose or protocol, or claims any outcome or effect.
           see our{" "}
           <Link href="/ugc-policy" className="text-gold hover:underline">
             third-party content policy
@@ -161,7 +161,7 @@ export default function TermsOfServicePage() {
         <p>
           You agree to indemnify us against claims arising from your use,
           handling, storage, resale or disposal of material in breach of these
-          terms — in particular, any use in a human or an animal.
+          terms. In particular, any use in a human or an animal.
         </p>
       </PolicySection>
 

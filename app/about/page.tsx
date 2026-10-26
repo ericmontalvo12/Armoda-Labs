@@ -28,13 +28,13 @@ const PROMISES = [
     icon: Truck,
     eyebrow: "Fast & reliable",
     title: "Same-day dispatch",
-    body: "Timelines matter in research. Orders placed before the weekday cut-off ship the same day, with express options where the destination allows them.",
+    body: "Orders placed before the weekday cut-off ship the same day. Express is available where the destination allows it.",
   },
   {
     icon: Lock,
     eyebrow: "Private & protected",
     title: "Secure ordering",
-    body: "Checkout is encrypted end to end and card details are handled by the payment processor, never by us.",
+    body: "Checkout is encrypted end to end. Card details go to the payment processor. We never see them.",
     // Rendered only once the processor question is settled — see CLAUDE.md.
     methods: [
       { icon: CreditCard, label: "Card" },
@@ -47,7 +47,7 @@ const PROMISES = [
     icon: Headphones,
     eyebrow: "Always available",
     title: "Support when you need it",
-    body: "Questions about documentation, handling or an order reach a person who can answer them, not a ticket queue.",
+    body: "Questions about documentation, handling or an order reach a person who can answer them.",
   },
 ];
 
@@ -103,7 +103,7 @@ export default function AboutPage() {
               <span aria-hidden="true">◆ </span>Who we are
             </p>
             <p className="mt-4 text-xs font-heading uppercase tracking-[0.2em] text-text-muted">
-              Est. {FACTS.founded} — {FACTS.origin} — Research supply
+              Est. {FACTS.founded} · {FACTS.origin} · Research supply
             </p>
             <h2 className="mt-5 font-heading text-4xl font-extrabold leading-[1.1] text-text-primary sm:text-5xl">
               A research supplier built on{" "}
@@ -172,41 +172,40 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1280px] px-4">
           <Statement
             eyebrow="Our mission"
-            note="Why we exist, and the principle behind every order we ship."
-            title="Earning trust through"
-            accent="transparency"
+            note="What we are here to do."
+            title="A supplier of"
+            accent="record"
           >
             <p>
-              We see ourselves as a supplier of record rather than a storefront.
-              The point is that a researcher can tell exactly what they are
-              working with — identity, purity and lot, documented rather than
+              A researcher should be able to tell exactly what is in the vial
+              before they open it. Identity, purity, lot. Documented, not
               asserted.
             </p>
             <p>
-              Material is supplied for laboratory research use only, to buyers
-              qualified to receive and handle it. It is not supplied for human
-              or veterinary use, and we make no claim about what any compound
-              does.
+              Everything here is for laboratory research use, sold to buyers
+              qualified to handle it. Not for human use. Not for veterinary
+              use. We make no claim about what any compound does, because we
+              are not entitled to.
             </p>
           </Statement>
 
           <Statement
             eyebrow="Our philosophy"
-            note="Documentation is not a feature here — it is the product."
-            title="The certificate is the"
-            accent="product"
+            note="Why we spend money on testing nobody checks."
+            title="We publish the number we"
+            accent="hit"
           >
             <p>
-              Every compound we supply is tested by an independent laboratory
-              and published lot by lot. Where a result comes back below
-              specification, the lot does not ship — the number on the
-              certificate is the number we met, not the number we aimed for.
+              Every lot goes to an independent laboratory before it goes
+              anywhere else. The results are published as they come back. If a
+              lot tests below specification, it does not ship. We do not
+              re-test it until it passes.
             </p>
             <p>
-              We would rather let the documentation speak than lean on
-              marketing claims, which is also the only defensible position in
-              this category: a claim about an effect is a claim we are not
-              entitled to make.
+              This is partly principle and partly arithmetic. Marketing
+              claims in this category are not ours to make, and vendors who
+              make them tend not to be around long. Documentation is the only
+              thing we can honestly sell.
             </p>
             <Link
               href="/lab-results"

@@ -11,15 +11,19 @@ export function WhyArmoda() {
 
           <div className="mt-8 max-w-2xl space-y-4 text-sm leading-relaxed text-text-secondary">
             <p>
-              Analytical documentation is the product. Every lot is tested by
-              an independent laboratory, with identity confirmed by mass
-              spectrometry and purity by HPLC — two measurements, because
-              purity alone cannot establish what a compound is.
+              Most vendors publish a purity number. Purity tells you how much
+              of something is in the vial. It does not tell you what that
+              something is.
             </p>
             <p>
-              Certificates are published per lot and matched to the lot number
-              on the vial you receive. The catalog is built for buyers who read
-              them.
+              So we run two tests on every lot, at an independent laboratory.
+              Mass spectrometry for identity. HPLC for purity. Both results go
+              on the certificate, filed under the lot number stamped on your
+              vial.
+            </p>
+            <p>
+              This costs us money on every batch. We think buyers who read
+              certificates are worth having.
             </p>
           </div>
 

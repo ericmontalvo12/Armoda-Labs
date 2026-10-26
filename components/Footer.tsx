@@ -47,7 +47,7 @@ const LEGAL = [
   },
   {
     h: "Intended Use and Handling",
-    p: "The products we offer are not intended for human use. They are intended for in vitro and pre-clinical research purposes only. The purchaser acknowledges that risks exist in the handling, use and distribution of these products, certifies that it has the equipment, facilities and personnel to manage those risks, and knowingly accepts them. These chemicals are not intended to be used, and should not be used, in inappropriate applications — including, without limitation, as food additives, drugs, cosmetics or household chemicals, or in any application outside of in vitro laboratory research, pre-clinical research, or laboratory chemical synthesis and materials testing.",
+    p: "The products we offer are not intended for human use. They are intended for in vitro and pre-clinical research purposes only. The purchaser acknowledges that risks exist in the handling, use and distribution of these products, certifies that it has the equipment, facilities and personnel to manage those risks, and knowingly accepts them. These chemicals are not intended to be used, and should not be used, in inappropriate applications, including without limitation as food additives, drugs, cosmetics or household chemicals, or in any application outside of in vitro laboratory research, pre-clinical research, or laboratory chemical synthesis and materials testing.",
   },
   {
     h: "Customer Responsibility",

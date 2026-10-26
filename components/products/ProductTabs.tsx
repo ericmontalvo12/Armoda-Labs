@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "Can this be returned?",
-    a: "No. All sales are final. Once material leaves our custody we cannot verify how it was stored or handled, so it can never re-enter inventory — accepting returns would mean either destroying them or reselling material we can no longer stand behind.",
+    a: "No. All sales are final. Once material leaves our custody we cannot verify how it was stored or handled, so it can never re-enter inventory. Accepting a return would mean either destroying it or reselling material we can no longer stand behind.",
   },
   {
     q: "What if my order arrives damaged, or does not arrive?",
@@ -127,8 +127,8 @@ export function ProductTabs({ product }: { product: Product }) {
               </dl>
             ) : (
               <p className="text-sm text-text-secondary">
-                Specification for {product.name} — sequence, molecular formula,
-                mass, purity and storage — is published here once the data is
+                Specification for {product.name}: sequence, molecular formula,
+                mass, purity and storage. Published here once the data is
                 finalised for this SKU.
               </p>
             )}

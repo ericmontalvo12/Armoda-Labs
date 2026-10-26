@@ -7,7 +7,7 @@ import { Building2, Percent, FileText, AlertTriangle } from "lucide-react";
 export const metadata: Metadata = {
   title: "Wholesale",
   description:
-    "Wholesale and institutional accounts at Armoda Labs — purchase-order terms, consolidated invoicing and tiered pricing for qualifying laboratories and distributors.",
+    "Wholesale and institutional accounts at Armoda Labs. Purchase-order terms, consolidated invoicing and tiered pricing for qualifying laboratories and distributors.",
   alternates: { canonical: "/wholesale" },
 };
 

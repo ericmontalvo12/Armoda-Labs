@@ -74,11 +74,11 @@ const faqs = [
   },
   {
     q: "Can I return an order?",
-    a: "No. All sales are final. Once material leaves our custody its storage and handling cannot be verified, so it can never return to inventory. Where we can verify that something went wrong with an order, we resolve it with store credit — and we never ask for the product back.",
+    a: "No. All sales are final. Once material leaves our custody its storage and handling cannot be verified, so it can never return to inventory. Where we can verify that something went wrong with an order, we resolve it with store credit. We never ask for the product back.",
   },
   {
     q: "Can I change or cancel an order?",
-    a: "Before dispatch, yes — contact us as quickly as you can with your order number. Once a parcel is handed to the carrier it cannot be recalled.",
+    a: "Before dispatch, yes. Contact us as quickly as you can with your order number. Once a parcel is handed to the carrier it cannot be recalled.",
   },
   {
     q: "Do you ship internationally?",

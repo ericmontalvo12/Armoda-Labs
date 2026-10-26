@@ -13,27 +13,27 @@ import { PanelHeading } from "@/components/sections/home/PanelHeading";
 const FAQS = [
   {
     q: "What do you supply?",
-    a: "Defined-sequence peptides as lyophilized preparations in sealed vials, for laboratory research use. Each vial is labeled with its compound, net quantity and lot number.",
+    a: "Lyophilized peptides in sealed vials, for laboratory research use. Each vial carries its compound name, net quantity and lot number.",
   },
   {
     q: "How should material be stored?",
-    a: "Storage conditions are printed on the vial and stated on each product page. Lyophilized peptides are generally held frozen for long-term stability and tolerate ambient temperature in transit.",
+    a: "Frozen, for long-term stability. The exact conditions are printed on the vial and listed on the product page. Lyophilized material tolerates ambient temperature in transit, so a warm parcel is not a ruined one.",
   },
   {
     q: "What analytical testing do you perform?",
-    a: "Identity by mass spectrometry and purity by HPLC, with peptide content, water content and residual solvents measured as well. Certificates are published per lot and matched to the lot number on your vial.",
+    a: "Identity by mass spectrometry. Purity by HPLC. We also measure peptide content, water content and residual solvents. Every result is published under the lot number on your vial.",
   },
   {
     q: "Who is eligible to order?",
-    a: "Buyers aged 21 or over who are acquiring material for laboratory research and are qualified to handle it. You confirm this at checkout before an order can be placed.",
+    a: "You must be 21 or over, buying for laboratory research, and qualified to handle the material. You confirm this at checkout. No order goes through without it.",
   },
   {
     q: "Can you advise on dosing or protocols?",
-    a: "No. We supply material and its documentation. We do not provide dosing, protocols or administration guidance, and nothing we publish should be read as such.",
+    a: "No. We supply material and its documentation. We do not give dosing, protocols or administration guidance, and nothing we publish should be read that way. Do not ask.",
   },
   {
     q: "Do you ship internationally?",
-    a: "Where local import rules allow. Duties and customs charges are the recipient's responsibility, and parcels seized or returned by customs are not refundable.",
+    a: "Where local import rules allow. Duties and customs charges are yours. If customs seizes or returns a parcel, we cannot refund it, so check your own rules first.",
   },
 ];
 

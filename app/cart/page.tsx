@@ -181,7 +181,7 @@ export default function CartPage() {
 
           {isSaleActive() && (
             <div className="flex items-center justify-between gap-3 bg-primary/10 border border-primary/20 rounded-lg px-4 py-2.5 mb-6">
-              <p className="text-sm font-semibold text-primary">🔥 20% Off Sale — Ends In</p>
+              <p className="text-sm font-semibold text-primary">20% Off Sale. Ends In</p>
               <SaleCountdown className="text-sm font-bold text-primary tabular-nums" />
             </div>
           )}

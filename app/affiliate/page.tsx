@@ -152,7 +152,7 @@ const FAQS = [
   },
   {
     q: "Can I use my own code?",
-    a: "Not for commission — self-referrals do not earn. Approved partners get separate partner pricing on their own orders.",
+    a: "Not for commission. Self-referrals do not earn. Approved partners get separate partner pricing on their own orders.",
   },
   {
     q: "What exactly can't I say?",
@@ -160,7 +160,7 @@ const FAQS = [
   },
   {
     q: "Why does content need approving first?",
-    a: "It protects you as much as us. A post that breaches the rules has to come down and forfeits its commission, and approval takes about a day — far less than rebuilding a video.",
+    a: "It protects you as much as us. A post that breaches the rules has to come down and forfeits its commission, and approval takes about a day. Rebuilding a video takes longer.",
   },
 ];
 
@@ -218,7 +218,7 @@ export default function AffiliatePage() {
               <p className="mt-5 max-w-lg text-sm leading-relaxed text-text-secondary">
                 Earn {commissionLabel} on every referred order and give your
                 audience {AUDIENCE_DISCOUNT} off. Free to join, no contract, no
-                minimum. You are promoting the certificates, not a claim — which
+                minimum. You are promoting the certificates, not a claim, which
                 is a far easier thing to stand behind.
               </p>
 
@@ -323,7 +323,7 @@ export default function AffiliatePage() {
               <p className="mt-5 max-w-md text-sm leading-relaxed text-text-secondary">
                 Move the slider to the order value you expect to refer each
                 month. At {commissionLabel} commission your income scales
-                directly with it — there is no cap and no tier gate.
+                directly with it. There is no cap and no tier gate.
               </p>
             </div>
 
@@ -485,7 +485,7 @@ export default function AffiliatePage() {
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                   Do not describe using our products yourself, and do not relay
                   anyone else&apos;s account of using them. That includes
-                  framing it as your own experience or knowledge — a testimonial
+                  framing it as your own experience or knowledge. A testimonial
                   is still a claim, and because we pay you it becomes our claim.
                   Everything we supply is for laboratory research only.
                 </p>

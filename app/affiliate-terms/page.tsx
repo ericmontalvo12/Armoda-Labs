@@ -39,7 +39,7 @@ export default function AffiliateTermsPage() {
         </p>
         <PolicyList
           items={[
-            "Any account of using our products yourself, or of anyone else using them — including first-person narratives, logs, cycles or trip reports.",
+            "Any account of using our products yourself, or of anyone else using them, including first-person narratives, logs, cycles or trip reports.",
             "Any dose, dosing schedule, protocol, stack, cycle or route of administration.",
             "Any statement that a product treats, prevents, cures, heals, improves, repairs, boosts, enhances or affects any condition, symptom, body part or bodily function.",
             "Any reference to weight loss, muscle gain, recovery, healing, anti-ageing, cognition, libido, appetite, skin or sleep in connection with a product.",
@@ -67,7 +67,7 @@ export default function AffiliateTermsPage() {
         </p>
         <PolicyList
           items={[
-            "Certificates of analysis — what they contain and how to read a certificate.",
+            "Certificates of analysis: what they contain and how to read one.",
             "Third-party testing, lot matching and identity confirmation by mass spectrometry.",
             "Purity figures, quoted exactly as the certificate for that lot states them.",
             "Packaging, labeling and vial quality.",

@@ -36,7 +36,7 @@ export function PolicyPage({
           {draft && (
             <div className="mt-8 rounded-[20px] border border-danger/40 bg-danger/5 p-5">
               <p className="font-heading text-sm font-extrabold text-danger">
-                Draft — not legal advice, not yet reviewed
+                Draft. Not legal advice, not yet reviewed
               </p>
               <p className="mt-2 text-xs leading-relaxed text-text-secondary">
                 A structural draft written to be reviewed by counsel, not

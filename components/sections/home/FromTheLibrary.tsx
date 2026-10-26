@@ -19,7 +19,7 @@ export function FromTheLibrary() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <p className="text-sm leading-relaxed text-text-secondary">
             Analytical methodology, characterization data and compound
-            background — written for people who read certificates.
+            background, written for people who read certificates.
           </p>
 
           <div className="grid gap-5 sm:grid-cols-2">
