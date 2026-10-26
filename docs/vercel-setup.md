@@ -86,7 +86,7 @@ Each one degrades a feature rather than breaking the app.
 |---|---|
 | `SITE_PASSWORD` | the site-wide password gate is **off** and the site is public. Set it during pre-launch; `/api/site-auth` returns `{ok:true}` to everyone when it is unset. |
 | `STRIPE_SUBSCRIPTION_PRICE_ID` | subscription checkout fails; one-time checkout is unaffected |
-| `PROMO_CODES_JSON` | falls back to the codes compiled into `lib/promo-codes.ts` |
+| ~~`PROMO_CODES_JSON`~~ | **No effect today.** Discount codes are validated against Stripe's promotion-codes API in `/api/validate-promo`; `lib/promo-codes.ts` is not imported by anything. Create codes in the Stripe dashboard instead. |
 | `GHL_ORDER_WEBHOOK_URL` | no order-confirmation email. Also used for renewals. |
 | `GHL_SUBSCRIBER_WELCOME_WEBHOOK_URL` | no subscriber welcome email |
 | `GHL_PAYMENT_FAILED_WEBHOOK_URL` | no dunning email on a declined card |
@@ -101,6 +101,11 @@ design, so a CRM outage cannot block order processing. There is deliberately
 no fallback URL: routing an unconfigured event type at the order-confirmation
 workflow would email "your order shipped" to someone whose card just
 declined.
+
+Note that discount codes therefore live in Stripe, not in this app. If the
+processor changes, they do not come with you - `lib/promo-codes.ts` is a
+processor-independent implementation kept for exactly that case, but it is
+currently unwired.
 
 ## 5. Leave these alone
 

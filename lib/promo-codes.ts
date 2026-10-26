@@ -12,6 +12,12 @@
 // without a hosted promotions feature.
 //
 // Add promo codes here. amountOff is in cents (e.g. 500 = $5.00).
+// NOT CURRENTLY WIRED UP. /api/validate-promo validates codes against
+// Stripe's promotion-codes API, so nothing imports this file and
+// PROMO_CODES_JSON has no effect. Kept because it is processor-independent:
+// if Armoda leaves Stripe (see decision 1 in CLAUDE.md), discount codes do
+// not come along, and this is the starting point for replacing them.
+//
 // Set the env var PROMO_CODES_JSON to override at runtime:
 // PROMO_CODES_JSON='{"SAVE10":{"percentOff":10}}'
 

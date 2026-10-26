@@ -1,41 +1,64 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
+/**
+ * Validates a discount code against Stripe's promotion codes.
+ *
+ * Note that this makes discount codes a Stripe feature rather than an Armoda
+ * one - lib/promo-codes.ts is a processor-independent implementation of the
+ * same idea, but nothing imports it. See decision 1 in CLAUDE.md.
+ */
 export async function POST(req: Request) {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-  const { code } = await req.json();
+  try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+    const { code } = (await req.json()) as { code?: string };
 
-  if (!code) {
-    return NextResponse.json({ error: "No code provided" }, { status: 400 });
+    if (!code) {
+      return NextResponse.json({ error: "No code provided" }, { status: 400 });
+    }
+
+    const promoCodes = await stripe.promotionCodes.list({
+      code,
+      active: true,
+      limit: 1,
+      expand: ["data.promotion.coupon"],
+    });
+
+    if (promoCodes.data.length === 0) {
+      return NextResponse.json(
+        { error: "Invalid or expired discount code." },
+        { status: 400 }
+      );
+    }
+
+    const promo = promoCodes.data[0];
+    const rawCoupon = promo.promotion.coupon;
+
+    // If coupon is a string ID (not expanded), fetch the full coupon object
+    let coupon: Stripe.Coupon;
+    if (typeof rawCoupon === "string") {
+      coupon = await stripe.coupons.retrieve(rawCoupon);
+    } else if (rawCoupon && typeof rawCoupon === "object") {
+      coupon = rawCoupon;
+    } else {
+      return NextResponse.json(
+        { error: "Could not resolve coupon." },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json({
+      promotionCodeId: promo.id,
+      percentOff: coupon.percent_off ?? null,
+      amountOff: coupon.amount_off ?? null,
+    });
+  } catch (err: unknown) {
+    // Previously unhandled: a Stripe outage or a malformed body produced an
+    // unhandled rejection rather than the documented 500 shape.
+    console.error("Promo code validation failed:", err);
+    return NextResponse.json(
+      { error: "Could not check that code." },
+      { status: 500 }
+    );
   }
-
-  const promoCodes = await stripe.promotionCodes.list({
-    code,
-    active: true,
-    limit: 1,
-    expand: ["data.promotion.coupon"],
-  });
-
-  if (promoCodes.data.length === 0) {
-    return NextResponse.json({ error: "Invalid or expired discount code." }, { status: 400 });
-  }
-
-  const promo = promoCodes.data[0];
-  const rawCoupon = promo.promotion.coupon;
-
-  // If coupon is a string ID (not expanded), fetch the full coupon object
-  let coupon: Stripe.Coupon;
-  if (typeof rawCoupon === "string") {
-    coupon = await stripe.coupons.retrieve(rawCoupon);
-  } else if (rawCoupon && typeof rawCoupon === "object") {
-    coupon = rawCoupon;
-  } else {
-    return NextResponse.json({ error: "Could not resolve coupon." }, { status: 400 });
-  }
-
-  return NextResponse.json({
-    promotionCodeId: promo.id,
-    percentOff: coupon.percent_off ?? null,
-    amountOff: coupon.amount_off ?? null,
-  });
 }
