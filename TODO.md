@@ -29,6 +29,15 @@ whether Retatrutide and Tirzepatide stay listed.
 
 ### Website — YOU
 
+- [ ] **Replace manual email confirmation with a verification link.** Nobody
+      proves they own the address they register with, so order history and
+      store credit stay hidden until an admin clicks "Confirm email" on
+      `/admin/accounts`. That is a holding measure: the approver has no way to
+      actually check. The real fix is a signed link mailed to the address,
+      which needs transactional email (GoHighLevel can send it; the workflow
+      has to be built there). Until then, confirm only when you can match the
+      person to an order or have spoken to them.
+
 - [ ] **Store credit redemption at checkout.** The ledger, admin issuance and
       the customer's balance are built. Spending it is not: redemption has to
       be applied inside the checkout session, which is Stripe-specific work,

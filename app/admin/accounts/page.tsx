@@ -101,6 +101,23 @@ export default function AdminAccountsPage() {
     load();
   }, [load]);
 
+  async function setVerified(id: number, emailVerified: boolean) {
+    setBusy(`c${id}`);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/customers", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, emailVerified }),
+      });
+      const data = await res.json();
+      if (!res.ok) setError(data.error || "Failed to update account.");
+      else await load();
+    } finally {
+      setBusy(null);
+    }
+  }
+
   async function setStatus(id: number, status: CustomerStatus) {
     setBusy(`c${id}`);
     setError("");
@@ -354,9 +371,35 @@ export default function AdminAccountsPage() {
                         </td>
                         <td className="px-4 py-3">
                           <Badge status={customer.status} />
+                          <div className="mt-1 text-xs">
+                            {customer.emailVerifiedAt ? (
+                              <span className="text-green-700">
+                                Email confirmed
+                              </span>
+                            ) : (
+                              <span className="text-amber-700">
+                                Email unconfirmed
+                              </span>
+                            )}
+                          </div>
                         </td>
                         <td className="px-4 py-3">
                           <div className="flex justify-end gap-2">
+                            <button
+                              onClick={() =>
+                                setVerified(
+                                  customer.id,
+                                  !customer.emailVerifiedAt
+                                )
+                              }
+                              disabled={busy === `c${customer.id}`}
+                              title="Confirms this person owns this address. Until it is set, their orders and store credit stay hidden."
+                              className="h-9 px-3 rounded-lg border border-gray-300 bg-white text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                            >
+                              {customer.emailVerifiedAt
+                                ? "Unconfirm email"
+                                : "Confirm email"}
+                            </button>
                             {customer.status !== "approved" && (
                               <button
                                 onClick={() => setStatus(customer.id, "approved")}

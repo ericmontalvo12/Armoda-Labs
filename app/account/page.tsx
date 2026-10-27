@@ -31,10 +31,17 @@ export default async function AccountPage() {
   const customer = await getCurrentCustomer();
   if (!customer) redirect("/account/login");
 
+  // Orders and store credit are filed under an email address, and nobody
+  // proves they own the address they typed at registration. Until an admin
+  // confirms it, this account does not get to see what is filed under it:
+  // registering with somebody else's address would otherwise hand over their
+  // order history and spend their credit.
+  const verified = customer.emailVerifiedAt != null;
+
   const [orders, referral, creditCents] = await Promise.all([
-    getOrdersForEmail(customer.email),
+    verified ? getOrdersForEmail(customer.email) : Promise.resolve([]),
     getReferralForCustomer(customer.id),
-    getCreditBalanceCents(customer.email),
+    verified ? getCreditBalanceCents(customer.email) : Promise.resolve(0),
   ]);
 
   let earnings: ReferralEarnings | null = null;
@@ -73,6 +80,20 @@ export default async function AccountPage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
             <section>
+              {!verified && (
+                <div className="mb-6 rounded-[20px] border border-border bg-surface p-6">
+                  <p className="text-xs font-heading font-bold uppercase tracking-wider text-gold-text">
+                    Email not yet confirmed
+                  </p>
+                  <p className="mt-2 text-sm text-text-secondary">
+                    We confirm every address by hand before linking it to
+                    order history or store credit. Until then this page stays
+                    empty. Contact us if it has been more than two business
+                    days.
+                  </p>
+                </div>
+              )}
+
               {/* Shown only when there is a balance. A permanent "$0.00" row
                   invites "how do I get some?", which this policy does not
                   want to encourage. */}

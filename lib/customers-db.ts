@@ -35,6 +35,7 @@ export interface Customer {
   name: string | null;
   organization: string | null;
   role: string | null;
+  emailVerifiedAt: string | null;
   researchUse: string | null;
   expectedVolume: string | null;
   status: CustomerStatus;
@@ -77,6 +78,9 @@ async function ensureTables() {
   // intended research use is the main thing an approval is judged on.
   await sql`ALTER TABLE customers ADD COLUMN IF NOT EXISTS research_use TEXT`;
   await sql`ALTER TABLE customers ADD COLUMN IF NOT EXISTS expected_volume TEXT`;
+  // Nobody proves they own the address they type. Until they do, an account
+  // must not surface the orders or the store credit filed under that email.
+  await sql`ALTER TABLE customers ADD COLUMN IF NOT EXISTS email_verified_at TIMESTAMPTZ`;
 
   // Case-insensitive uniqueness: addresses are not case sensitive in
   // practice, and two accounts differing only in case would silently split
@@ -118,6 +122,7 @@ function mapCustomer(row: any): Customer {
     name: row.name ?? null,
     organization: row.organization ?? null,
     role: row.role ?? null,
+    emailVerifiedAt: row.email_verified_at ? String(row.email_verified_at) : null,
     researchUse: row.research_use ?? null,
     expectedVolume: row.expected_volume ?? null,
     status: (row.status as CustomerStatus) ?? "pending",
@@ -195,6 +200,24 @@ export async function setCustomerStatus(
   await ensureTables();
   const sql = getSql();
   await sql`UPDATE customers SET status = ${status}, updated_at = now() WHERE id = ${id}`;
+}
+
+/**
+ * Marks the address proven. Called from the admin UI today; the same function
+ * serves a verification link when transactional email exists.
+ */
+export async function setEmailVerified(
+  id: number,
+  verified: boolean
+): Promise<void> {
+  await ensureTables();
+  const sql = getSql();
+  await sql`
+    UPDATE customers
+    SET email_verified_at = ${verified ? new Date().toISOString() : null},
+        updated_at = now()
+    WHERE id = ${id}
+  `;
 }
 
 export async function getReferralForCustomer(

@@ -150,12 +150,11 @@ export class InsufficientCreditError extends Error {
 /**
  * Appends an entry. Positive issues credit, negative consumes it.
  *
- * A negative entry is checked against the balance first. That check and the
- * insert are not in one transaction, so two simultaneous deductions could in
- * principle both pass it. Nothing deducts automatically today (redemption is
- * not built), so the only writer is an admin typing into a form, and the race
- * cannot happen. Wrap both in a transaction before anything automated starts
- * deducting.
+ * The overdraft guard is INSIDE the insert, not a read followed by a write.
+ * A read-then-write leaves a window where two deductions each see the same
+ * balance and both pass, spending the credit twice. Here the balance is
+ * recomputed in the same statement that writes the row, so the database
+ * settles it. No rows returned means the guard rejected it.
  */
 export async function addCreditEntry(input: {
   email: string;
@@ -172,17 +171,25 @@ export async function addCreditEntry(input: {
     throw new Error("Credit amount must be a non-zero whole number of cents");
   }
 
-  if (amount < 0) {
-    const balance = await getCreditBalanceCents(input.email);
-    if (balance + amount < 0) throw new InsufficientCreditError(balance);
-  }
+  const email = input.email.trim();
 
   const rows = await sql`
     INSERT INTO store_credit_entries (email, amount_cents, reason, order_id, note)
-    VALUES (${input.email.trim()}, ${amount}, ${input.reason},
-            ${input.orderId ?? null}, ${input.note ?? null})
+    SELECT ${email}, ${amount}, ${input.reason},
+           ${input.orderId ?? null}, ${input.note ?? null}
+    WHERE ${amount} >= 0
+       OR (
+         SELECT COALESCE(SUM(amount_cents), 0)
+         FROM store_credit_entries
+         WHERE lower(email) = lower(${email})
+       ) + ${amount} >= 0
     RETURNING *
   `;
+
+  if (!rows[0]) {
+    // The only way the guard rejects is an overdraft, so report the balance.
+    throw new InsufficientCreditError(await getCreditBalanceCents(email));
+  }
   return mapEntry(rows[0]);
 }
 
