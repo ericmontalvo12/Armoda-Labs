@@ -44,7 +44,13 @@ const MUST_BE_UNSET = [
   "META_CAPI_ACCESS_TOKEN",
 ] as const;
 
-const EXPECTED_TABLES = ["orders", "reviews", "customers", "referrals"];
+const EXPECTED_TABLES = [
+  "orders",
+  "reviews",
+  "customers",
+  "referrals",
+  "store_credit_entries",
+];
 
 function present(name: string): boolean {
   const value = process.env[name];

@@ -14,6 +14,7 @@ import {
   Download,
   ImageDown,
   Users,
+  Wallet,
 } from "lucide-react";
 import type { Order, OrderStatus } from "@/lib/orders-db";
 import { OrderDetail } from "./OrderDetail";
@@ -199,6 +200,13 @@ export default function AdminOrdersPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <Link
+            href="/admin/credit"
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg border border-gray-300 bg-white text-sm text-gray-700 hover:bg-gray-50"
+          >
+            <Wallet className="w-4 h-4" />
+            Credit
+          </Link>
           <Link
             href="/admin/accounts"
             className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg border border-gray-300 bg-white text-sm text-gray-700 hover:bg-gray-50"

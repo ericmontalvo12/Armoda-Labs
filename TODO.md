@@ -29,6 +29,13 @@ whether Retatrutide and Tirzepatide stay listed.
 
 ### Website — YOU
 
+- [ ] **Store credit redemption at checkout.** The ledger, admin issuance and
+      the customer's balance are built. Spending it is not: redemption has to
+      be applied inside the checkout session, which is Stripe-specific work,
+      and the processor is still undecided. Building it now means building it
+      twice. Until then a balance is honored by hand: issue the credit, then
+      apply it as a discount when the customer orders.
+
 - [ ] **Remove the test account before launch.** `armoda-labs-prod` holds
       `armoda-test-20261026@example.com` (approved) and the referral code
       `ARMODA-TEST` (approved, 20%). Rejecting them from `/admin/accounts`

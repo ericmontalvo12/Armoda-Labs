@@ -10,6 +10,7 @@ import {
   getReferralForCustomer,
   type ReferralEarnings,
 } from "@/lib/customers-db";
+import { getCreditBalanceCents, formatCredit } from "@/lib/store-credit-db";
 import { ReferralPanel } from "@/app/account/ReferralPanel";
 import { LogoutButton } from "@/app/account/LogoutButton";
 
@@ -30,9 +31,10 @@ export default async function AccountPage() {
   const customer = await getCurrentCustomer();
   if (!customer) redirect("/account/login");
 
-  const [orders, referral] = await Promise.all([
+  const [orders, referral, creditCents] = await Promise.all([
     getOrdersForEmail(customer.email),
     getReferralForCustomer(customer.id),
+    getCreditBalanceCents(customer.email),
   ]);
 
   let earnings: ReferralEarnings | null = null;
@@ -71,6 +73,24 @@ export default async function AccountPage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
             <section>
+              {/* Shown only when there is a balance. A permanent "$0.00" row
+                  invites "how do I get some?", which this policy does not
+                  want to encourage. */}
+              {creditCents > 0 && (
+                <div className="mb-6 rounded-[20px] border border-gold-muted bg-surface-elevated p-6">
+                  <p className="text-xs font-heading font-bold uppercase tracking-wider text-gold-text">
+                    Store credit
+                  </p>
+                  <p className="mt-2 font-heading text-3xl font-extrabold text-text-primary">
+                    {formatCredit(creditCents)}
+                  </p>
+                  <p className="mt-2 text-sm text-text-secondary">
+                    Applied at checkout. Store credit does not expire and is
+                    not exchangeable for cash.
+                  </p>
+                </div>
+              )}
+
               <h2 className="font-heading text-lg font-extrabold text-text-primary">
                 Your orders
               </h2>
