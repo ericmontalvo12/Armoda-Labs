@@ -10,7 +10,11 @@ import {
   getReferralForCustomer,
   type ReferralEarnings,
 } from "@/lib/customers-db";
-import { getCreditBalanceCents, formatCredit } from "@/lib/store-credit-db";
+import {
+  getCreditBalanceCents,
+  listCreditEntries,
+  formatCredit,
+} from "@/lib/store-credit-db";
 import { ResendVerification } from "@/app/account/ResendVerification";
 import { ReferralPanel } from "@/app/account/ReferralPanel";
 import { LogoutButton } from "@/app/account/LogoutButton";
@@ -25,6 +29,16 @@ export const metadata: Metadata = {
 // is worse than a slow one.
 export const dynamic = "force-dynamic";
 
+const CREDIT_LABELS: Record<string, string> = {
+  damaged_in_transit: "Damaged in transit",
+  not_delivered: "Not delivered",
+  wrong_item: "Wrong item",
+  shipping_error: "Shipping error",
+  goodwill: "Goodwill",
+  correction: "Correction",
+  redeemed: "Redeemed",
+};
+
 const money = (amount: number, currency: string) =>
   `${currency.toUpperCase() === "USD" ? "$" : ""}${amount.toFixed(2)}`;
 
@@ -38,11 +52,15 @@ export default async function AccountPage() {
   // registering with somebody else's address would otherwise hand over their
   // order history and spend their credit.
   const verified = customer.emailVerifiedAt != null;
+  // Whether a link can actually go out. Without it the page must not claim
+  // one was sent: the customer would wait on an email nobody mailed.
+  const canEmail = Boolean(process.env.GHL_VERIFY_WEBHOOK_URL);
 
-  const [orders, referral, creditCents] = await Promise.all([
+  const [orders, referral, creditCents, creditEntries] = await Promise.all([
     verified ? getOrdersForEmail(customer.email) : Promise.resolve([]),
     getReferralForCustomer(customer.id),
     verified ? getCreditBalanceCents(customer.email) : Promise.resolve(0),
+    verified ? listCreditEntries(customer.email) : Promise.resolve([]),
   ]);
 
   let earnings: ReferralEarnings | null = null;
@@ -87,11 +105,22 @@ export default async function AccountPage() {
                     Email not yet confirmed
                   </p>
                   <p className="mt-2 text-sm text-text-secondary">
-                    We sent a confirmation link to {customer.email}. Your
-                    orders and any store credit stay hidden until you open it,
-                    because both are filed under that address.
+                    {canEmail ? (
+                      <>
+                        We sent a confirmation link to {customer.email}. Your
+                        orders and any store credit stay hidden until you open
+                        it, because both are filed under that address.
+                      </>
+                    ) : (
+                      <>
+                        We confirm every address by hand before linking it to
+                        order history or store credit. Contact us and we will
+                        confirm {customer.email}. Nothing is lost in the
+                        meantime.
+                      </>
+                    )}
                   </p>
-                  <ResendVerification />
+                  {canEmail && <ResendVerification />}
                 </div>
               )}
 
@@ -110,6 +139,30 @@ export default async function AccountPage() {
                     Applied at checkout. Store credit does not expire and is
                     not exchangeable for cash.
                   </p>
+
+                  {/* The admin form labels the note "the customer sees this",
+                      so it has to appear somewhere. A balance with no reason
+                      beside it is also the kind of thing people write in
+                      asking about. */}
+                  <ul className="mt-5 space-y-2 border-t border-border pt-4">
+                    {creditEntries.slice(0, 6).map((entry) => (
+                      <li
+                        key={entry.id}
+                        className="flex items-baseline justify-between gap-4 text-sm"
+                      >
+                        <span className="text-text-secondary">
+                          {entry.note ?? CREDIT_LABELS[entry.reason] ?? "Adjustment"}
+                          <span className="ml-2 text-xs text-text-muted">
+                            {new Date(entry.createdAt).toLocaleDateString("en-US")}
+                          </span>
+                        </span>
+                        <span className="shrink-0 font-heading font-bold text-text-primary">
+                          {entry.amountCents > 0 ? "+" : ""}
+                          {formatCredit(entry.amountCents)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
 
@@ -117,7 +170,14 @@ export default async function AccountPage() {
                 Your orders
               </h2>
 
-              {orders.length === 0 ? (
+              {!verified ? (
+                <div className="mt-5 rounded-[20px] border border-border bg-surface p-10 text-center">
+                  <p className="text-sm text-text-secondary">
+                    Hidden until your address is confirmed. This does not mean
+                    you have no orders.
+                  </p>
+                </div>
+              ) : orders.length === 0 ? (
                 <div className="mt-5 rounded-[20px] border border-border bg-surface p-10 text-center">
                   <p className="text-sm text-text-secondary">
                     No orders yet.
