@@ -11,6 +11,7 @@ import {
   type ReferralEarnings,
 } from "@/lib/customers-db";
 import { getCreditBalanceCents, formatCredit } from "@/lib/store-credit-db";
+import { ResendVerification } from "@/app/account/ResendVerification";
 import { ReferralPanel } from "@/app/account/ReferralPanel";
 import { LogoutButton } from "@/app/account/LogoutButton";
 
@@ -86,11 +87,11 @@ export default async function AccountPage() {
                     Email not yet confirmed
                   </p>
                   <p className="mt-2 text-sm text-text-secondary">
-                    We confirm every address by hand before linking it to
-                    order history or store credit. Until then this page stays
-                    empty. Contact us if it has been more than two business
-                    days.
+                    We sent a confirmation link to {customer.email}. Your
+                    orders and any store credit stay hidden until you open it,
+                    because both are filed under that address.
                   </p>
+                  <ResendVerification />
                 </div>
               )}
 

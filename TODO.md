@@ -29,7 +29,12 @@ whether Retatrutide and Tirzepatide stay listed.
 
 ### Website — YOU
 
-- [ ] **Replace manual email confirmation with a verification link.** Nobody
+- [ ] **Build the GoHighLevel workflow for account verification.** The code
+      sends `type: "account_verification"` with a `verify_url` to
+      `GHL_VERIFY_WEBHOOK_URL`. The workflow that mails it has to be created in
+      GoHighLevel, and the URL set in Vercel. Until that exists no mail goes
+      out and every address waits on a manual confirm.
+- [ ] ~~Replace manual email confirmation with a verification link.~~ Done: Nobody
       proves they own the address they register with, so order history and
       store credit stay hidden until an admin clicks "Confirm email" on
       `/admin/accounts`. That is a holding measure: the approver has no way to

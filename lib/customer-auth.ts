@@ -157,3 +157,69 @@ export async function readCustomerToken(
     return null;
   }
 }
+
+/* --------------------------- email verification --------------------------- */
+
+const VERIFY_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+/**
+ * A verification link's token.
+ *
+ * The email address is signed into it, not just the id. A token issued for
+ * one address must stop working if the account's address later changes,
+ * otherwise an old link would confirm an address nobody ever proved. The
+ * purpose string keeps it from being interchangeable with a session token
+ * signed by the same secret.
+ */
+export async function createVerificationToken(
+  customerId: number,
+  email: string
+): Promise<string> {
+  const expiry = Date.now() + VERIFY_TTL_MS;
+  const payload = `verify.${customerId}.${expiry}`;
+  const key = await importKey(getSecret());
+  const signature = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    encoder.encode(`${payload}.${email.trim().toLowerCase()}`)
+  );
+  return `${payload}.${toHex(signature)}`;
+}
+
+/**
+ * Returns the customer id a valid token names, or null. The caller passes the
+ * address currently on that account: a token signed for a different address
+ * fails here rather than confirming the new one.
+ */
+export async function readVerificationToken(
+  token: string | undefined | null,
+  emailFor: (customerId: number) => Promise<string | null>
+): Promise<number | null> {
+  if (!token) return null;
+  const [purpose, idPart, expiryPart, signaturePart] = token.split(".");
+  if (purpose !== "verify" || !idPart || !expiryPart || !signaturePart) return null;
+
+  const id = Number(idPart);
+  const expiry = Number(expiryPart);
+  if (!Number.isInteger(id) || id < 1) return null;
+  if (!Number.isFinite(expiry) || expiry < Date.now()) return null;
+
+  const signature = fromHex(signaturePart);
+  if (!signature) return null;
+
+  const email = await emailFor(id);
+  if (!email) return null;
+
+  try {
+    const key = await importKey(getSecret());
+    const ok = await crypto.subtle.verify(
+      "HMAC",
+      key,
+      signature as unknown as BufferSource,
+      encoder.encode(`verify.${idPart}.${expiryPart}.${email.trim().toLowerCase()}`)
+    );
+    return ok ? id : null;
+  } catch {
+    return null;
+  }
+}

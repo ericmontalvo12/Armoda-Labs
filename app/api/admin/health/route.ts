@@ -36,6 +36,7 @@ const OPTIONAL = [
   "SITE_PASSWORD",
   "STRIPE_SUBSCRIPTION_PRICE_ID",
   "GHL_ORDER_WEBHOOK_URL",
+  "GHL_VERIFY_WEBHOOK_URL",
 ] as const;
 
 // Must stay unset: Meta prohibits peptides. See decision 2 in CLAUDE.md.
@@ -46,6 +47,7 @@ const MUST_BE_UNSET = [
 
 const EXPECTED_TABLES = [
   "orders",
+  "customer_login_attempts",
   "reviews",
   "customers",
   "referrals",

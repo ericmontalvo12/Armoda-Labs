@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { hashPassword } from "@/lib/customer-auth";
 import { createCustomer, getCustomerByEmail } from "@/lib/customers-db";
+import { sendVerificationEmail } from "@/lib/send-verification";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_PASSWORD_LENGTH = 10;
@@ -53,6 +54,15 @@ export async function POST(req: Request) {
       if (existing) return NextResponse.json({ ok: true });
       return NextResponse.json({ error: "Could not create the account." }, { status: 500 });
     }
+
+    // Fire and forget by design: sendVerificationEmail never throws, and a
+    // mail failure must not fail a registration that already succeeded.
+    await sendVerificationEmail({
+      customerId: customer.id,
+      email: customer.email,
+      name: customer.name,
+      siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? new URL(req.url).origin,
+    });
 
     return NextResponse.json({ ok: true });
   } catch (err: unknown) {

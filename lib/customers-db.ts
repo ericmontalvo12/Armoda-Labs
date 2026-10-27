@@ -82,6 +82,22 @@ async function ensureTables() {
   // must not surface the orders or the store credit filed under that email.
   await sql`ALTER TABLE customers ADD COLUMN IF NOT EXISTS email_verified_at TIMESTAMPTZ`;
 
+  // Customer login had no throttle at all, while admin login did. Separate
+  // from admin_login_attempts so a customer guessing cannot lock the admin
+  // out of their own dashboard, or the reverse.
+  await sql`
+    CREATE TABLE IF NOT EXISTS customer_login_attempts (
+      id SERIAL PRIMARY KEY,
+      ip TEXT NOT NULL,
+      succeeded BOOLEAN NOT NULL,
+      attempted_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    )
+  `;
+  await sql`
+    CREATE INDEX IF NOT EXISTS customer_login_attempts_idx
+      ON customer_login_attempts (ip, attempted_at DESC)
+  `;
+
   // Case-insensitive uniqueness: addresses are not case sensitive in
   // practice, and two accounts differing only in case would silently split
   // one person's order history.
@@ -371,4 +387,37 @@ export async function getApprovedReferralByCode(
     LIMIT 1
   `;
   return rows[0] ? mapReferral(rows[0]) : null;
+}
+
+/* ------------------------- customer login throttling ----------------------- */
+
+const MAX_LOGIN_FAILURES = 8;
+const LOGIN_WINDOW_MINUTES = 15;
+
+export async function isCustomerLoginRateLimited(ip: string): Promise<boolean> {
+  await ensureTables();
+  const sql = getSql();
+  const rows = await sql`
+    SELECT count(*)::int AS failures
+    FROM customer_login_attempts
+    WHERE ip = ${ip}
+      AND succeeded = false
+      AND attempted_at > now() - (${LOGIN_WINDOW_MINUTES} || ' minutes')::interval
+  `;
+  return ((rows[0] as { failures: number })?.failures ?? 0) >= MAX_LOGIN_FAILURES;
+}
+
+export async function recordCustomerLoginAttempt(
+  ip: string,
+  succeeded: boolean
+): Promise<void> {
+  await ensureTables();
+  const sql = getSql();
+  await sql`
+    INSERT INTO customer_login_attempts (ip, succeeded) VALUES (${ip}, ${succeeded})
+  `;
+  // Keep the table from growing without bound, as admin_login_attempts does.
+  await sql`
+    DELETE FROM customer_login_attempts WHERE attempted_at < now() - interval '1 day'
+  `;
 }

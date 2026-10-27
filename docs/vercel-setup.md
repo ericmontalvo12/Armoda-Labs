@@ -93,6 +93,7 @@ Each one degrades a feature rather than breaking the app.
 | `GHL_CANCELLATION_WEBHOOK_URL` | no cancellation-pending email |
 | `GHL_SUBSCRIPTION_ENDED_WEBHOOK_URL` | no subscription-ended email |
 | `GHL_EMAIL_WEBHOOK_URL` | newsletter signups are not forwarded |
+| `GHL_VERIFY_WEBHOOK_URL` | **no account verification email is sent.** Registrations still work, but every address stays unconfirmed until an admin confirms it by hand on `/admin/accounts`, and the customer sees no orders or store credit until then. The GoHighLevel workflow behind it receives `verify_url` and mails it. |
 | `GHL_CART_ABANDONMENT_WEBHOOK_URL` | no abandoned-cart email |
 | `GHL_TRACKING_WEBHOOK_URL` | no shipment-tracking email |
 
