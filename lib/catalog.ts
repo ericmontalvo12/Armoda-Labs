@@ -485,7 +485,8 @@ export function formatPrice(cents: number): string {
 /** Lowest variant price, for range display on cards and listings. */
 export function priceRange(product: Product): string {
   const prices = product.variants.map((v) => v.priceCents).filter((c) => c > 0);
-  if (prices.length === 0) return "Price on request";
+  // Unpriced reads as a reason to sign in rather than a reason to email.
+  if (prices.length === 0) return "Sign in for access";
   const min = Math.min(...prices);
   const max = Math.max(...prices);
   return min === max ? formatPrice(min) : `${formatPrice(min)} – ${formatPrice(max)}`;

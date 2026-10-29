@@ -129,7 +129,7 @@ export function ProductPurchase({ product }: { product: Product }) {
             className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-[10px] bg-primary px-6 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
           >
             <ShoppingCart className="h-4 w-4" />
-            {purchasable ? "Add to cart" : "Price on request"}
+            {purchasable ? "Add to cart" : "Sign in for access"}
           </button>
           <Link
             href="/lab-results"

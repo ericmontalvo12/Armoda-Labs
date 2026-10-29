@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { CommissionCalculator } from "@/app/affiliate/CommissionCalculator";
 import {
   Check,
   Percent,
@@ -206,7 +207,7 @@ export default function AffiliatePage() {
       <main>
         {/* Hero */}
         <section className="page-top bg-surface pb-16">
-          <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-4 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="mx-auto max-w-[760px] px-4 text-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-gold-muted bg-background px-3 py-1.5 text-xs font-heading font-bold uppercase tracking-wider text-gold">
                 Armoda Labs partner program
@@ -215,14 +216,14 @@ export default function AffiliatePage() {
                 Get paid on{" "}
                 <span className="text-gold">every order you refer</span>
               </h1>
-              <p className="mt-5 max-w-lg text-sm leading-relaxed text-text-secondary">
+              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-text-secondary">
                 Earn {commissionLabel} on every referred order and give your
                 audience {AUDIENCE_DISCOUNT} off. Free to join, no contract, no
                 minimum. You are promoting the certificates, not a claim, which
                 is a far easier thing to stand behind.
               </p>
 
-              <ul className="mt-7 flex flex-wrap gap-2">
+              <ul className="mt-7 flex flex-wrap justify-center gap-2">
                 {HERO_CHIPS.map((chip) => (
                   <li
                     key={chip}
@@ -234,7 +235,7 @@ export default function AffiliatePage() {
                 ))}
               </ul>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Link
                   href="/contact"
                   className="inline-flex h-12 items-center rounded-[10px] bg-primary px-7 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover"
@@ -253,33 +254,7 @@ export default function AffiliatePage() {
               </div>
             </div>
 
-            {/* Growth illustration — bars are decorative, not data */}
-            <div className="rounded-[20px] border border-border bg-background p-7">
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-heading font-bold uppercase tracking-wider text-text-muted">
-                  Commission growth
-                </p>
-                <span className="rounded-full bg-surface-accent px-3 py-1 text-xs font-heading font-bold text-gold">
-                  Up to {commissionLabel}
-                </span>
-              </div>
-              <div
-                className="mt-8 flex h-44 items-end justify-between gap-3"
-                aria-hidden="true"
-              >
-                {[34, 48, 62, 78, 100].map((h, i) => (
-                  <div
-                    key={h}
-                    className="flex-1 rounded-t-[6px] bg-gold"
-                    style={{ height: `${h}%`, opacity: 0.45 + i * 0.14 }}
-                  />
-                ))}
-              </div>
-              <p className="mt-6 text-center text-xs leading-relaxed text-text-muted">
-                Earnings scale with referred orders. There is no upper limit and
-                no tier you have to reach first.
-              </p>
-            </div>
+            <CommissionCalculator rateBps={COMMISSION_RATE * 10_000} />
           </div>
         </section>
 

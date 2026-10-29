@@ -43,23 +43,50 @@ OUT = os.path.join(os.path.dirname(__file__), "..", "public", "structures")
 # spec table and the picture cannot disagree, and neither can be typo'd.
 DATA = os.path.join(os.path.dirname(__file__), "..", "lib", "structure-data.json")
 
-# Light tile, deliberately. The site is dark, so an ivory card reads as a
-# framed object on the page rather than another dark panel — and it is the
-# clearest separation from the reference, which is near-black with violet.
+# The tile palette follows the site's chosen theme (app/themes/slate-sky.css),
+# the way the reference site's cards follow its own. A catalog tile that does
+# not share the page's colours reads as a stock image.
 #
-# Gold has to change value on a light ground. #d4af37 measures 1.98:1 on
-# ivory and cannot carry text or an atom symbol; #8a6a14 is 4.76:1 and can.
-# The bright gold survives only as a decorative hairline, where nothing has
-# to be read.
-IVORY = "#faf8f3"
-IVORY_EDGE = "#f3efe6"
-INK = "#0d1f15"
-MUTED = "#6b6459"          # 5.51:1 on ivory
-GOLD_RULE = "#c9a227"      # hairlines only
-GOLD_DEEP = "#8a6a14"      # 4.76:1 — anything that must be read
+# Dark card on a dark page, separated by a hairline rather than by value: the
+# structure is the only bright thing in the frame, so it carries the eye.
+#
+# Switch palette by changing PALETTE below and re-running. If the site ever
+# settles on white-gold instead, use the IVORY set, where the gold has to
+# darken to #8a6a14 to be readable at all.
+PALETTES = {
+    "slate-sky": {
+        "paper":      "#121a2b",   # card ground, surface
+        "paper_edge": "#0e1524",
+        "ink":        "#e2e8f0",   # 14.10:1 on the card
+        "muted":      "#94a3b8",   #  6.80:1
+        "rule":       "#38bdf8",   # hairlines and the structure itself
+        "deep":       "#7dd3fc",   # anything that must be read as colour
+        "ink_rgb":    (0.886, 0.910, 0.941),
+        "deep_rgb":   (0.220, 0.741, 0.973),
+    },
+    "ivory": {
+        "paper":      "#faf8f3",
+        "paper_edge": "#f3efe6",
+        "ink":        "#0d1f15",
+        "muted":      "#6b6459",
+        "rule":       "#c9a227",
+        "deep":       "#8a6a14",   # 4.76:1 - the bright gold is 1.98 and unusable
+        "ink_rgb":    (0.051, 0.122, 0.082),
+        "deep_rgb":   (0.541, 0.416, 0.078),
+    },
+}
 
-INK_RGB = (0.051, 0.122, 0.082)
-GOLD_DEEP_RGB = (0.541, 0.416, 0.078)
+PALETTE = PALETTES["slate-sky"]
+
+IVORY = PALETTE["paper"]
+IVORY_EDGE = PALETTE["paper_edge"]
+INK = PALETTE["ink"]
+MUTED = PALETTE["muted"]
+GOLD_RULE = PALETTE["rule"]
+GOLD_DEEP = PALETTE["deep"]
+
+INK_RGB = PALETTE["ink_rgb"]
+GOLD_DEEP_RGB = PALETTE["deep_rgb"]
 
 # slug: (kind, value, klass, cas, verified, note)
 CATALOG = {

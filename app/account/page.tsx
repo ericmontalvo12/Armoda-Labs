@@ -312,7 +312,7 @@ export default async function AccountPage() {
                   <p className="mt-3 font-heading text-sm font-bold text-gold-text">
                     {product.priceCents > 0
                       ? formatPrice(product.priceCents)
-                      : "Price on request"}
+                      : "Sign in for access"}
                   </p>
                 </Link>
               ))}
