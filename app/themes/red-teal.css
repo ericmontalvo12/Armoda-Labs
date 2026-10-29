@@ -1,0 +1,82 @@
+/* Armoda Labs - warm near-black ground with a signal red, teal as the
+   contrast. Swap themes by changing the one @import line in app/globals.css. */
+
+@theme {
+  /* ------------------------------------------------------------------
+     Red behaves differently from gold and blue, for a reason worth knowing
+     before anyone "fixes" these values.
+
+     LUMINANCE IS MOSTLY GREEN. In the contrast formula red carries a
+     coefficient of 0.2126 against green's 0.7152, so a true red cannot
+     physically reach the ratios the other palettes hit. Pure #ff0000
+     measures 4.92:1 on this ground. Forcing a red to 7:1 turns it salmon:
+     #ff8178 gets there at 8.11 and no longer reads as red. #f0645f at
+     6.26:1 is the compromise, comfortably past the 4.5 floor and still
+     unmistakably red. Do not "improve" it by lightening; that trade is
+     contrast for the colour itself.
+
+     A RED BRAND LOSES RED AS A WARNING. Danger is amber here, not red,
+     because an error message in the brand colour is not an error message.
+     This is the one token that must not be changed back.
+
+     Teal is the contrast: hue 174, almost opposite the red, so the two
+     never read as the same decoration. It is used on badges and highlights,
+     never on a button a person is meant to press.
+
+     Backgrounds are warm near-blacks with a red cast, not neutral greys. A
+     cool grey under a warm red reads as a browser default.
+     ------------------------------------------------------------------ */
+
+  --color-background: #0f0a0b;
+  --color-surface: #171011;
+  --color-surface-elevated: #1f1618;
+  --color-surface-accent: #2a1d20;
+  --color-border: #3a2a2d;
+  --color-border-subtle: #241a1c;
+
+  /* Kept so components written against the green theme still resolve. */
+  --color-green: #2a1d20;
+  --color-green-deep: #090606;
+
+  /* The primary. Named gold-* because the components reference those tokens;
+     renaming them across the site would be a large diff for no visual gain. */
+  --color-gold: #f0645f;         /* fills, rules, icons        6.26:1 */
+  --color-gold-text: #f0645f;    /* red type - same value works here */
+  --color-gold-hover: #f5736d;   /*                            7.07:1 */
+  --color-gold-muted: #6b3330;   /* hairlines, inactive, decorative only */
+
+  --color-primary: #f0645f;
+  --color-primary-hover: #f5736d;
+  --color-on-primary: #190b0c;   /*  6.12:1 on --color-primary */
+  --color-secondary: #1f1618;
+  --color-secondary-hover: #2a1d20;
+
+  /* The contrast, at hue 174: almost opposite the red, so the two never
+     read as the same decoration. Badges and highlights, not buttons. */
+  --color-accent: #4fd1c5;       /* 10.54:1 */
+
+  --color-text-primary: #f0eae9;   /* 16.53:1 */
+  --color-text-secondary: #bdafae; /*  9.33:1 */
+  --color-text-muted: #9a8c8b;     /*  6.21:1 - AA floor, do not go darker */
+  --color-text-on-dark: #f0eae9;
+  --color-text-on-dark-muted: #bdafae;
+  --color-text-on-gold: #190b0c;   /*  6.12:1 on --color-gold */
+
+  --color-dark-bg: #0f0a0b;
+  --color-dark-surface: #1f1618;
+
+  --color-star: #f0645f;
+  --color-success: #5fc39a;        /*  8.87:1 */
+  /* Amber, NOT red. See the note above: the brand colour cannot also be the
+     error colour, or an error stops reading as one. */
+  --color-danger: #f0b14a;         /* 10.38:1 */
+
+  /* Catalog geometry: flat surfaces, hairline borders, generous radii. */
+  --radius-card: 20px;
+  --radius-control: 10px;
+  --container-max: 1280px;
+  --grid-gap: 20px;
+
+  --font-sans: "Outfit", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}

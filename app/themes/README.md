@@ -13,6 +13,7 @@ the app is written against tokens rather than hex values.
 |---|---|---|---|
 | `green-gold.css` | deep green `#0a1a12` | gold `#d4af37` | none |
 | `blue-coral.css` | ink navy `#080e18` | blue `#5aa6f0` | coral `#ff8f6b` |
+| `red-teal.css` | warm black `#0f0a0b` | red `#f0645f` | teal `#4fd1c5` |
 
 ## Writing another one
 
@@ -32,6 +33,12 @@ people get wrong.
    1.7 to 2.0. Push an accent lighter to "make it pop" and it converges with
    the body text and reads as tinted white. The gold sits at 1.75, the blue
    at 2.20, the coral at 1.90.
+
+A red palette has two constraints the others do not. Luminance is mostly
+green in the contrast formula (red's coefficient is 0.2126 against green's
+0.7152), so a true red cannot reach the ratios gold and blue hit: forcing one
+past 7:1 turns it salmon. And a red brand cannot use red for errors, so
+`--color-danger` moves to amber.
 
 Hue matters separately from luminance, and the two are easy to confuse. A
 previous pass hit the right luminance for gold at 40 degrees and produced
