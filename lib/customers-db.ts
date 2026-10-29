@@ -389,6 +389,52 @@ export async function getApprovedReferralByCode(
   return rows[0] ? mapReferral(rows[0]) : null;
 }
 
+/**
+ * Lets an account owner change their own details.
+ *
+ * The email address is deliberately NOT changeable here. Orders and store
+ * credit are filed under an address, so letting someone retype it would hand
+ * them whatever is filed under the new one. Changing an address is a support
+ * request, and it has to clear email_verified_at.
+ */
+export async function updateCustomerProfile(
+  id: number,
+  input: { name?: string | null; organization?: string | null; role?: string | null }
+): Promise<void> {
+  await ensureTables();
+  const sql = getSql();
+  await sql`
+    UPDATE customers
+    SET name = ${input.name ?? null},
+        organization = ${input.organization ?? null},
+        role = ${input.role ?? null},
+        updated_at = now()
+    WHERE id = ${id}
+  `;
+}
+
+export async function updateCustomerPassword(
+  id: number,
+  passwordHash: string
+): Promise<void> {
+  await ensureTables();
+  const sql = getSql();
+  await sql`
+    UPDATE customers SET password_hash = ${passwordHash}, updated_at = now()
+    WHERE id = ${id}
+  `;
+}
+
+export async function getCustomerWithHash(
+  id: number
+): Promise<(Customer & { passwordHash: string }) | null> {
+  await ensureTables();
+  const sql = getSql();
+  const rows = await sql`SELECT * FROM customers WHERE id = ${id} LIMIT 1`;
+  if (!rows[0]) return null;
+  return { ...mapCustomer(rows[0]), passwordHash: rows[0].password_hash };
+}
+
 /* ------------------------- customer login throttling ----------------------- */
 
 const MAX_LOGIN_FAILURES = 8;
