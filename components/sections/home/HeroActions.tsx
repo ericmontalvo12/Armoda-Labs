@@ -20,16 +20,19 @@ export function HeroActions() {
     );
   }, []);
 
-  const secondary =
-    "inline-flex h-12 items-center rounded-full border border-border px-8 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold";
-  const primary =
-    "inline-flex h-12 items-center rounded-full bg-primary px-8 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover";
+  // The two labels are different lengths, so sizing each to its own text
+  // made them visibly unequal. basis-0 + grow gives both the same width on a
+  // row, and they go full width when they stack.
+  const base =
+    "inline-flex h-12 w-full items-center justify-center rounded-full px-8 font-heading text-base font-bold transition-colors sm:w-auto sm:flex-1 sm:basis-0";
+  const secondary = `${base} border border-border text-text-primary hover:border-gold hover:text-gold`;
+  const primary = `${base} bg-primary text-on-primary hover:bg-primary-hover`;
 
   // Until the cookie has been read, render the signed-out pair. It is the
   // right answer for most visitors and avoids a flash of empty space.
   if (signedIn) {
     return (
-      <div className="mt-9 flex flex-wrap items-center gap-3">
+      <div className="mt-9 flex max-w-md flex-col items-stretch gap-3 sm:flex-row sm:items-center">
         <Link href="/products" className={primary}>
           Shop the catalog
         </Link>
@@ -41,7 +44,7 @@ export function HeroActions() {
   }
 
   return (
-    <div className="mt-9 flex flex-wrap items-center gap-3">
+    <div className="mt-9 flex max-w-md flex-col items-stretch gap-3 sm:flex-row sm:items-center">
       <Link href="/products" className={primary}>
         Shop the catalog
       </Link>
