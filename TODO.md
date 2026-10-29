@@ -29,6 +29,14 @@ whether Retatrutide and Tirzepatide stay listed.
 
 ### Website — YOU
 
+- [ ] **The hero promises nootropics and naturals that the catalog does not
+      stock.** The headline reads "Peptides, SARMs, Nootropics and Naturals",
+      and the six categories are Receptor Modulators, Metabolic & Weight
+      Management, Copper & Tripeptide Complexes, Neuropeptides & Regulatory
+      Peptides, Sequence Specific Peptides and Growth Hormone Secretagogues.
+      Someone searching either term finds nothing. Either add the SKUs or cut
+      the words.
+
 - [ ] **Build the GoHighLevel workflow for account verification.** The code
       sends `type: "account_verification"` with a `verify_url` to
       `GHL_VERIFY_WEBHOOK_URL`. The workflow that mails it has to be created in

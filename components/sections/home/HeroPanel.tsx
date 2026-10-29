@@ -46,9 +46,10 @@ export function HeroPanel() {
                   figure cannot be promised before the lot is tested, and we
                   do not certify anything, an outside laboratory reports. */}
               <h1 className="mt-6 max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] text-text-primary sm:text-5xl">
-                Peptides and SARMs for
+                Peptides, SARMs, Nootropics
                 <br />
-                <span className="text-gold-text">laboratory research</span>
+                and Naturals{" "}
+                <span className="text-gold-text">for laboratory research</span>
               </h1>
 
               <div className="mt-8 max-w-xl">
