@@ -1,4 +1,10 @@
 {
+  "ac-262": {
+    "cas": "870888-46-3",
+    "compoundClass": "Androgen Receptor Ligand",
+    "formula": "C18H18N2O",
+    "molecularWeight": "278.36 g/mol"
+  },
   "bpc-157": {
     "compoundClass": "Pentadecapeptide",
     "formula": "C62H98N16O22",
@@ -21,6 +27,12 @@
     "formula": "C10H17N3O6S",
     "molecularWeight": "307.33 g/mol"
   },
+  "gw-0742": {
+    "cas": "317318-84-6",
+    "compoundClass": "PPAR-delta Agonist",
+    "formula": "C21H17F4NO3S2",
+    "molecularWeight": "471.50 g/mol"
+  },
   "kpv": {
     "compoundClass": "Tripeptide",
     "formula": "C16H30N4O4",
@@ -31,6 +43,17 @@
     "formula": "C101H152N28O22S2",
     "molecularWeight": "2174.64 g/mol"
   },
+  "rad-150": {
+    "compoundClass": "Androgen Receptor Ligand",
+    "formula": "C27H20ClN5O3",
+    "molecularWeight": "497.94 g/mol"
+  },
+  "s4-andarine": {
+    "cas": "401900-40-1",
+    "compoundClass": "Androgen Receptor Ligand",
+    "formula": "C19H18F3N3O6",
+    "molecularWeight": "441.36 g/mol"
+  },
   "selank": {
     "compoundClass": "Tuftsin-Derived Neuropeptide",
     "formula": "C33H57N11O9",
@@ -40,5 +63,22 @@
     "compoundClass": "ACTH-Derived Neuropeptide",
     "formula": "C37H51N9O10S",
     "molecularWeight": "813.93 g/mol"
+  },
+  "sr9009": {
+    "cas": "1379686-30-2",
+    "compoundClass": "Rev-ErbA Agonist",
+    "formula": "C20H24ClN3O4S",
+    "molecularWeight": "437.95 g/mol"
+  },
+  "tirzepatide": {
+    "cas": "2023788-19-2",
+    "compoundClass": "GLP Compound",
+    "formula": "C225H348N48O68",
+    "molecularWeight": "4813.53 g/mol"
+  },
+  "yk11": {
+    "compoundClass": "Androgen Receptor Ligand",
+    "formula": "C25H34O6",
+    "molecularWeight": "430.54 g/mol"
   }
 }

@@ -128,8 +128,11 @@ CATALOG = {
     "glutathione": ("smiles", "NC(CCC(=O)NC(CS)C(=O)NCC(=O)O)C(=O)O", "Tripeptide", "70-18-8", True,
                     "Gamma-glutamyl linkage cannot be written as a plain sequence"),
 
-    "retatrutide":          ("none", "", "GLP Compound", "", False, "Verify against PubChem; non-standard modifications"),
-    "tirzepatide":          ("none", "", "GLP Compound", "", False, "Verify against PubChem; fatty-acid chain"),
+    "retatrutide":          ("none", "", "GLP Compound", "", False, "No PubChem structure record under this name; supplier SMILES needed"),
+    "tirzepatide":          ("smiles",
+                    "CC[C@H](C)[C@@H](C(=O)N[C@@H](C)C(=O)N[C@@H](CCC(=O)N)C(=O)N[C@@H](CCCCNC(=O)COCCOCCNC(=O)COCCOCCNC(=O)CC[C@@H](C(=O)O)NC(=O)CCCCCCCCCCCCCCCCCCC(=O)O)C(=O)N[C@@H](C)C(=O)N[C@@H](CC1=CC=CC=C1)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](CCC(=O)N)C(=O)N[C@@H](CC2=CNC3=CC=CC=C32)C(=O)N[C@@H](CC(C)C)C(=O)N[C@@H]([C@@H](C)CC)C(=O)N[C@@H](C)C(=O)NCC(=O)NCC(=O)N4CCC[C@H]4C(=O)N[C@@H](CO)C(=O)N[C@@H](CO)C(=O)NCC(=O)N[C@@H](C)C(=O)N5CCC[C@H]5C(=O)N6CCC[C@H]6C(=O)N7CCC[C@H]7C(=O)N[C@@H](CO)C(=O)N)NC(=O)[C@H](CCCCN)NC(=O)[C@H](CC(=O)O)NC(=O)[C@H](CC(C)C)NC(=O)C(C)(C)NC(=O)[C@H]([C@@H](C)CC)NC(=O)[C@H](CO)NC(=O)[C@H](CC8=CC=C(C=C8)O)NC(=O)[C@H](CC(=O)O)NC(=O)[C@H](CO)NC(=O)[C@H]([C@@H](C)O)NC(=O)[C@H](CC9=CC=CC=C9)NC(=O)[C@H]([C@@H](C)O)NC(=O)CNC(=O)[C@H](CCC(=O)O)NC(=O)C(C)(C)NC(=O)[C@H](CC1=CC=C(C=C1)O)N",
+                    "GLP Compound", "2023788-19-2", True,
+                    "PubChem CID 166567236 | expect C225H348N48O68 4813"),
     "cjc-1295-ipamorelin":  ("none", "", "Growth Hormone Secretagogue", "", False, "Blend; Ipamorelin has Aib and D-residues"),
     "semax-selank-complex": ("none", "", "Neuropeptide Blend", "", False, "Blend — no single structure"),
     "bpc-157-tb-500-blend": ("none", "", "Peptide Blend", "", False, "Blend — no single structure"),
@@ -137,22 +140,35 @@ CATALOG = {
     "klow-blend":           ("none", "", "Copper Peptide Blend", "", False, "Blend — no single structure"),
 
     # Receptor modulators. Small molecules, so these take a SMILES rather
-    # than a sequence. The SMILES are deliberately blank: PubChem is
-    # unreachable from the build container, and a structure typed from memory
-    # is exactly the checkable error this catalog cannot afford. Paste each
-    # one from its PubChem page (Canonical SMILES), then set verified=True.
-    "rad-150":     ("smiles", "", "Androgen Receptor Ligand", "", False,
-                    "SMILES needed — PubChem: RAD-150 / TLB-150 benzoate"),
-    "yk11":        ("smiles", "", "Androgen Receptor Ligand", "", False,
-                    "SMILES needed — PubChem: YK-11"),
-    "s4-andarine": ("smiles", "", "Androgen Receptor Ligand", "", False,
-                    "SMILES needed — PubChem: Andarine, CID 9824562"),
-    "sr9009":      ("smiles", "", "Rev-ErbA Agonist", "", False,
-                    "SMILES needed — PubChem: SR9009 / Stenabolic"),
-    "ac-262":      ("smiles", "", "Androgen Receptor Ligand", "", False,
-                    "SMILES needed — PubChem: AC-262536"),
-    "gw-0742":     ("smiles", "", "PPAR-delta Agonist", "", False,
-                    "SMILES needed — PubChem: GW-0742, CID 9934458"),
+    # than a sequence. Every string below was copied from PubChem by hand and
+    # byte-checked against the source; the generator then cross-checks the
+    # formula and mass it computes against the values PubChem reported, so a
+    # transcription error shows up as a mismatch rather than as a wrong
+    # picture. Expected values are in the note field.
+    "rad-150":     ("smiles",
+                    "CC1=C(C=CC(=C1Cl)C#N)N[C@@H](C2=NN=C(O2)C3=CC=C(C=C3)C#N)[C@H](C)OC(=O)C4=CC=CC=C4",
+                    "Androgen Receptor Ligand", "", True,
+                    "PubChem CID 68547459 'TLB 150 Benzoate' | expect C27H20ClN5O3 497.9"),
+    "yk11":        ("smiles",
+                    "C[C@]12CC[C@H]3[C@H]([C@@H]1CC[C@@]24/C(=C\\C(=O)OC)/OC(O4)(C)OC)CCC5=CC(=O)CC[C@H]35",
+                    "Androgen Receptor Ligand", "", True,
+                    "PubChem CID 119058028 | expect C25H34O6 430.5"),
+    "s4-andarine": ("smiles",
+                    "CC(=O)NC1=CC=C(C=C1)OC[C@@](C)(C(=O)NC2=CC(=C(C=C2)[N+](=O)[O-])C(F)(F)F)O",
+                    "Androgen Receptor Ligand", "401900-40-1", True,
+                    "PubChem CID 9824562 | expect C19H18F3N3O6 441.4"),
+    "sr9009":      ("smiles",
+                    "CCOC(=O)N1CCC(C1)CN(CC2=CC=C(C=C2)Cl)CC3=CC=C(S3)[N+](=O)[O-]",
+                    "Rev-ErbA Agonist", "1379686-30-2", True,
+                    "PubChem CID 57394020 | expect C20H24ClN3O4S 437.9"),
+    "ac-262":      ("smiles",
+                    "C1C[C@H]2CC(C[C@@H]1N2C3=CC=C(C4=CC=CC=C43)C#N)O",
+                    "Androgen Receptor Ligand", "870888-46-3", True,
+                    "PubChem CID 44512434 | expect C18H18N2O 278.3"),
+    "gw-0742":     ("smiles",
+                    "CC1=C(C=CC(=C1)SCC2=C(N=C(S2)C3=CC(=C(C=C3)C(F)(F)F)F)C)OCC(=O)O",
+                    "PPAR-delta Agonist", "317318-84-6", True,
+                    "PubChem CID 9934458 | expect C21H17F4NO3S2 471.5"),
 }
 
 W, H = 620, 620
