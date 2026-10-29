@@ -26,6 +26,7 @@ the app is written against tokens rather than hex values.
 | **`slate-sky.css`** | slate `#0b1120` | sky `#38bdf8` | none (single accent) | **CHOSEN** |
 | `white-gold.css` | ivory `#faf8f3` | gold fill `#d4af37` / bronze type `#8a6a14` | none | the only LIGHT theme |
 | `graphite-violet.css` | graphite `#101014` | violet `#a78bfa` | none | the only NEUTRAL ground |
+| `ink-emerald.css` | ink `#0a0f0d` | emerald `#10b981` | none | clinical green |
 
 ## Writing another one
 

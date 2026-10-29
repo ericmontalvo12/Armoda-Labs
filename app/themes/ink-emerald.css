@@ -1,0 +1,75 @@
+/* Armoda Labs - near-black ink ground with an emerald primary.
+   Swap themes by changing the one @import line in app/globals.css. */
+
+@theme {
+  /* ------------------------------------------------------------------
+     Green again, but nothing like the first one. The original was a deep
+     saturated green ground carrying gold. This is a near-black ground
+     carrying a cool bright green, which reads clinical rather than
+     expensive.
+
+     TWO THINGS HERE WERE WRONG ON THE FIRST PASS AND ARE WORTH KNOWING.
+
+     The obvious emerald, #34d399, measures 10.05:1 on this ground. Secondary
+     text measures 9.90:1. Those are the same brightness: the ratio between
+     them is 1.015, so the accent would have separated from secondary copy by
+     hue alone and read as another tier of text. Checking an accent against
+     body text is not enough; check it against every text tier. #10b981 sits
+     1.30:1 from secondary, which is a visible step.
+
+     Success cannot be the brand colour. A confirmation rendered in the same
+     green as every link and button stops reading as a confirmation, which is
+     the same fault the red theme had with its error colour. Success is a
+     lighter mint here, 1.66:1 from the primary.
+     ------------------------------------------------------------------ */
+
+  --color-background: #0a0f0d;
+  --color-surface: #111917;
+  --color-surface-elevated: #182220;
+  --color-surface-accent: #1f2d29;
+  --color-border: #293a35;
+  --color-border-subtle: #182220;
+
+  /* Kept so components written against the first green theme still resolve. */
+  --color-green: #1f2d29;
+  --color-green-deep: #060a08;
+
+  /* The primary. Named gold-* because the components reference those tokens;
+     renaming them across the site would be a large diff for no visual gain. */
+  --color-gold: #10b981;         /* fills, rules, icons        7.62:1 */
+  --color-gold-text: #10b981;    /* emerald type - same value works here */
+  --color-gold-hover: #34d399;   /* hover only                10.05:1 */
+  --color-gold-muted: #1d5a46;   /* hairlines, inactive  2.39:1, decorative
+                                    only - never text */
+
+  --color-primary: #10b981;
+  --color-primary-hover: #34d399;
+  --color-on-primary: #04140d;   /*  7.45:1 on --color-primary */
+  --color-secondary: #182220;
+  --color-secondary-hover: #1f2d29;
+  --color-accent: #10b981;
+
+  --color-text-primary: #e8f0ec;   /* 16.66:1 */
+  --color-text-secondary: #aebdb7; /*  9.90:1 */
+  --color-text-muted: #8d9d97;     /*  6.81:1 - AA floor, do not go darker */
+  --color-text-on-dark: #e8f0ec;
+  --color-text-on-dark-muted: #aebdb7;
+  --color-text-on-gold: #04140d;   /*  7.45:1 on --color-gold */
+
+  --color-dark-bg: #0a0f0d;
+  --color-dark-surface: #182220;
+
+  --color-star: #10b981;
+  /* Mint, NOT the primary. See the note above. */
+  --color-success: #6ee7b7;        /* 12.67:1 */
+  --color-danger: #fb7185;         /*  7.18:1 */
+
+  /* Catalog geometry: flat surfaces, hairline borders, generous radii. */
+  --radius-card: 20px;
+  --radius-control: 10px;
+  --container-max: 1280px;
+  --grid-gap: 20px;
+
+  --font-sans: "Outfit", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}
