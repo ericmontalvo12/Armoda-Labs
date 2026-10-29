@@ -88,6 +88,24 @@ CATALOG = {
     "bpc-157-tb-500-blend": ("none", "", "Peptide Blend", "", False, "Blend — no single structure"),
     "glow-blend":           ("none", "", "Copper Peptide Blend", "", False, "Blend — no single structure"),
     "klow-blend":           ("none", "", "Copper Peptide Blend", "", False, "Blend — no single structure"),
+
+    # Receptor modulators. Small molecules, so these take a SMILES rather
+    # than a sequence. The SMILES are deliberately blank: PubChem is
+    # unreachable from the build container, and a structure typed from memory
+    # is exactly the checkable error this catalog cannot afford. Paste each
+    # one from its PubChem page (Canonical SMILES), then set verified=True.
+    "rad-150":     ("smiles", "", "Androgen Receptor Ligand", "", False,
+                    "SMILES needed — PubChem: RAD-150 / TLB-150 benzoate"),
+    "yk11":        ("smiles", "", "Androgen Receptor Ligand", "", False,
+                    "SMILES needed — PubChem: YK-11"),
+    "s4-andarine": ("smiles", "", "Androgen Receptor Ligand", "", False,
+                    "SMILES needed — PubChem: Andarine, CID 9824562"),
+    "sr9009":      ("smiles", "", "Rev-ErbA Agonist", "", False,
+                    "SMILES needed — PubChem: SR9009 / Stenabolic"),
+    "ac-262":      ("smiles", "", "Androgen Receptor Ligand", "", False,
+                    "SMILES needed — PubChem: AC-262536"),
+    "gw-0742":     ("smiles", "", "PPAR-delta Agonist", "", False,
+                    "SMILES needed — PubChem: GW-0742, CID 9934458"),
 }
 
 W, H = 620, 620

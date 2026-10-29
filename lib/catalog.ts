@@ -79,6 +79,16 @@ export interface Product {
 
 export const CATEGORIES: Category[] = [
   {
+    // NOT named "SARMs": SR9009 is a Rev-ErbA agonist and GW-0742 a PPAR-delta
+    // agonist, neither of which is a selective androgen receptor modulator.
+    // A category name is read as a factual claim about what is in it, and
+    // this brand sells documentation accuracy.
+    slug: "receptor-modulators",
+    name: "Receptor Modulators",
+    blurb:
+      "Small-molecule nuclear and androgen receptor ligands, supplied for laboratory research use.",
+  },
+  {
     // NOTE: this name describes an intended effect rather than a compound
     // class, unlike the other five. See the taxonomy note above — category
     // names are read as evidence of intended use, and "weight management"
@@ -114,6 +124,96 @@ export const CATEGORIES: Category[] = [
 const PLACEHOLDER = "/product-placeholder.svg";
 
 export const PRODUCTS: Product[] = [
+  {
+    slug: "rad-150",
+    sku: "RAD150",
+    name: "RAD-150",
+    // Format and quantity come from the supplier; these are commonly sold as
+    // solutions rather than lyophilized vials, so the spec line is not a
+    // guess to be made here.
+    spec: "Specification pending",
+    categorySlug: "receptor-modulators",
+    priceCents: 0,
+    variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
+    image: PLACEHOLDER,
+    complianceNote:
+      "Small molecule, not a peptide. FDA has issued warning letters over this class sold as a research chemical, and it is prohibited in sport by WADA. Confirm processor acceptance before listing.",
+  },
+  {
+    slug: "yk11",
+    sku: "YK11",
+    name: "YK11",
+    // Format and quantity come from the supplier; these are commonly sold as
+    // solutions rather than lyophilized vials, so the spec line is not a
+    // guess to be made here.
+    spec: "Specification pending",
+    categorySlug: "receptor-modulators",
+    priceCents: 0,
+    variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
+    image: PLACEHOLDER,
+    complianceNote:
+      "Small molecule, not a peptide. FDA has issued warning letters over this class sold as a research chemical, and it is prohibited in sport by WADA. Confirm processor acceptance before listing.",
+  },
+  {
+    slug: "s4-andarine",
+    sku: "S4",
+    name: "S4 (Andarine)",
+    // Format and quantity come from the supplier; these are commonly sold as
+    // solutions rather than lyophilized vials, so the spec line is not a
+    // guess to be made here.
+    spec: "Specification pending",
+    categorySlug: "receptor-modulators",
+    priceCents: 0,
+    variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
+    image: PLACEHOLDER,
+    complianceNote:
+      "Small molecule, not a peptide. FDA has issued warning letters over this class sold as a research chemical, and it is prohibited in sport by WADA. Confirm processor acceptance before listing.",
+  },
+  {
+    slug: "sr9009",
+    sku: "SR9009",
+    name: "SR9009 (Stenabolic)",
+    // Format and quantity come from the supplier; these are commonly sold as
+    // solutions rather than lyophilized vials, so the spec line is not a
+    // guess to be made here.
+    spec: "Specification pending",
+    categorySlug: "receptor-modulators",
+    priceCents: 0,
+    variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
+    image: PLACEHOLDER,
+    complianceNote:
+      "Small molecule, not a peptide, and not a SARM: a Rev-ErbA agonist. Prohibited in sport by WADA. Confirm processor acceptance before listing.",
+  },
+  {
+    slug: "ac-262",
+    sku: "AC262",
+    name: "AC-262",
+    // Format and quantity come from the supplier; these are commonly sold as
+    // solutions rather than lyophilized vials, so the spec line is not a
+    // guess to be made here.
+    spec: "Specification pending",
+    categorySlug: "receptor-modulators",
+    priceCents: 0,
+    variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
+    image: PLACEHOLDER,
+    complianceNote:
+      "Small molecule, not a peptide. FDA has issued warning letters over this class sold as a research chemical, and it is prohibited in sport by WADA. Confirm processor acceptance before listing.",
+  },
+  {
+    slug: "gw-0742",
+    sku: "GW0742",
+    name: "GW-0742",
+    // Format and quantity come from the supplier; these are commonly sold as
+    // solutions rather than lyophilized vials, so the spec line is not a
+    // guess to be made here.
+    spec: "Specification pending",
+    categorySlug: "receptor-modulators",
+    priceCents: 0,
+    variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
+    image: PLACEHOLDER,
+    complianceNote:
+      "Small molecule, not a peptide, and not a SARM: a PPAR-delta agonist, the same target as GW-501516, whose development was halted after animal carcinogenicity findings. Highest-exposure SKU in the catalog. Review with counsel and confirm processor acceptance before listing.",
+  },
   {
     slug: "retatrutide",
     sku: "RETATRUTIDE",
