@@ -5,10 +5,7 @@ import Link from "next/link";
 import { CommissionCalculator } from "@/app/affiliate/CommissionCalculator";
 import {
   Check,
-  Percent,
   Tag,
-  DollarSign,
-  Clock,
   Package,
   Wallet,
   TrendingUp,
@@ -44,12 +41,40 @@ const HERO_CHIPS = [
   "No earnings cap",
 ];
 
-const STATS = [
-  { icon: Percent, label: "Commission", value: commissionLabel },
-  { icon: Tag, label: "Audience code", value: AUDIENCE_DISCOUNT },
-  { icon: DollarSign, label: "To join", value: "$0" },
-  { icon: Clock, label: "Approval", value: APPROVAL_WINDOW },
+const TERMS: { term: string; value: string; note?: string }[] = [
+  {
+    term: "Commission",
+    value: `${commissionLabel} of net order value`,
+    note: "Net means after discounts and after refunds. It is recalculated from the orders themselves, so a reversed sale stops counting rather than being clawed back later.",
+  },
+  {
+    term: "Your audience pays",
+    value: `${AUDIENCE_DISCOUNT} less`,
+    note: "The same code that pays you discounts them.",
+  },
+  {
+    term: "Attribution",
+    value: "By code, not cookie",
+    note: "Nothing depends on a browser keeping a cookie for thirty days, and an order placed on a different device still counts.",
+  },
+  { term: "Cost to join", value: "None", note: "No fee and no contract term." },
+  {
+    term: "Earnings cap",
+    value: "None",
+    note: "No tiers to reach and no ceiling once you do.",
+  },
+  {
+    term: "Approval",
+    value: APPROVAL_WINDOW,
+    note: "We look at who you are and where you publish.",
+  },
+  {
+    term: "What you promote",
+    value: "Certificates, not claims",
+    note: "You point people at published test results. You never describe what a compound does, and that rule is the reason this program can exist at all.",
+  },
 ];
+
 
 const STEPS = [
   {
@@ -194,12 +219,7 @@ function Section({
 }
 
 export default function AffiliatePage() {
-  const [monthly, setMonthly] = useState(3000);
   const [openFaq, setOpenFaq] = useState<string | null>(null);
-
-  const perMonth = Math.round(monthly * COMMISSION_RATE);
-  const perYear = perMonth * 12;
-  const money = (n: number) => `$${n.toLocaleString("en-US")}`;
 
   return (
     <div className="w-full max-w-full overflow-x-hidden">
@@ -258,142 +278,43 @@ export default function AffiliatePage() {
           </div>
         </section>
 
-        {/* Stat strip */}
+        {/* Program terms, as a sheet rather than four numbers under icons.
+            The icon strip is the shape every affiliate page uses, and this
+            business publishes specifications for a living. */}
         <section className="border-y border-border bg-surface-elevated">
-          <dl className="mx-auto grid max-w-[1280px] grid-cols-2 gap-px bg-border sm:grid-cols-4">
-            {STATS.map(({ icon: Icon, label, value }) => (
-              <div
-                key={label}
-                className="bg-surface-elevated px-4 py-8 text-center"
-              >
-                <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-[10px] bg-surface-accent">
-                  <Icon className="h-4 w-4 text-gold" />
-                </span>
-                <dt className="mt-4 text-[10px] font-heading font-bold uppercase tracking-[0.18em] text-text-muted">
-                  {label}
-                </dt>
-                <dd className="mt-2 font-heading text-3xl font-extrabold text-gold">
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-          <p className="px-4 pb-6 text-center text-xs text-text-muted">
-            Rates shown are indicative while the program is being finalised
-            and are confirmed in writing on approval.
-          </p>
-        </section>
+          <div className="mx-auto max-w-[900px] px-4 py-16">
+            <h2 className="font-heading text-2xl font-extrabold text-text-primary">
+              Program terms
+            </h2>
+            <p className="mt-3 text-sm text-text-secondary">
+              The whole arrangement, on one screen. Confirmed in writing on
+              approval.
+            </p>
 
-        {/* Estimator */}
-        <section className="bg-background">
-          <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-4 py-16 lg:grid-cols-2">
-            <div>
-              <p className="text-xs font-heading font-bold uppercase tracking-[0.14em] text-gold">
-                <span aria-hidden="true">— </span>See the maths
-              </p>
-              <h2 className="mt-3 font-heading text-2xl font-extrabold text-text-primary sm:text-3xl">
-                Estimate your monthly earnings
-              </h2>
-              <div className="mt-3 h-[3px] w-14 rounded-full bg-gold" />
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-text-secondary">
-                Move the slider to the order value you expect to refer each
-                month. At {commissionLabel} commission your income scales
-                directly with it. There is no cap and no tier gate.
-              </p>
-            </div>
-
-            <div className="rounded-[20px] border border-border bg-surface p-7">
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="monthly-referred"
-                  className="text-sm font-heading font-bold text-text-primary"
+            <dl className="mt-8 divide-y divide-border border-y border-border">
+              {TERMS.map(({ term, value, note }) => (
+                <div
+                  key={term}
+                  className="grid gap-1 py-5 sm:grid-cols-[220px_1fr] sm:gap-6"
                 >
-                  Monthly orders you refer
-                </label>
-                <span className="font-heading text-lg font-extrabold text-gold">
-                  {money(monthly)}
-                </span>
-              </div>
-              <input
-                id="monthly-referred"
-                type="range"
-                min={500}
-                max={25000}
-                step={500}
-                value={monthly}
-                onChange={(e) => setMonthly(Number(e.target.value))}
-                className="mt-4 w-full accent-[var(--color-gold)]"
-              />
-
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                <div className="rounded-[10px] bg-gold p-5 text-center">
-                  <p className="font-heading text-3xl font-extrabold text-text-on-gold">
-                    {money(perMonth)}
-                  </p>
-                  <p className="mt-1 text-[10px] font-heading font-bold uppercase tracking-[0.18em] text-text-on-gold/70">
-                    Per month
-                  </p>
+                  <dt className="font-heading text-sm font-bold text-text-primary">
+                    {term}
+                  </dt>
+                  <dd>
+                    <span className="font-heading text-base font-bold text-gold-text">
+                      {value}
+                    </span>
+                    {note && (
+                      <span className="mt-1 block text-sm leading-relaxed text-text-secondary">
+                        {note}
+                      </span>
+                    )}
+                  </dd>
                 </div>
-                <div className="rounded-[10px] border border-border bg-background p-5 text-center">
-                  <p className="font-heading text-3xl font-extrabold text-text-primary">
-                    {money(perYear)}
-                  </p>
-                  <p className="mt-1 text-[10px] font-heading font-bold uppercase tracking-[0.18em] text-text-muted">
-                    Per year
-                  </p>
-                </div>
-              </div>
-
-              <p className="mt-5 text-center text-xs leading-relaxed text-text-muted">
-                An illustration at {commissionLabel} of net order value, not a
-                projection. What you actually earn depends on your reach and how
-                well it converts.
-              </p>
-            </div>
+              ))}
+            </dl>
           </div>
         </section>
-
-        <Section eyebrow="Getting started" title="How the program works" tinted>
-          <div className="grid gap-5 lg:grid-cols-3">
-            {STEPS.map(({ n, title, body }) => (
-              <div
-                key={n}
-                className="rounded-[20px] border border-border bg-background p-7"
-              >
-                <span className="inline-flex items-center justify-center rounded-[10px] bg-surface-accent px-3 py-1.5 font-heading text-sm font-extrabold text-gold">
-                  {n}
-                </span>
-                <h3 className="mt-5 font-heading text-base font-extrabold text-text-primary">
-                  {title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                  {body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section eyebrow="Why partner with us" title="What partners get">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {PERKS.map(({ icon: Icon, title, body }) => (
-              <div
-                key={title}
-                className="rounded-[20px] border border-border bg-surface p-7"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-surface-accent">
-                  <Icon className="h-5 w-5 text-gold" />
-                </span>
-                <h3 className="mt-5 font-heading text-base font-extrabold text-text-primary">
-                  {title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                  {body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Section>
 
         {/* Rules */}
         <section className="bg-surface">
