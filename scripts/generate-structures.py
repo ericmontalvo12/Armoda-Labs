@@ -64,6 +64,16 @@ PALETTES = {
         "ink_rgb":    (0.886, 0.910, 0.941),
         "deep_rgb":   (0.220, 0.741, 0.973),
     },
+    "graphite-violet": {
+        "paper":      "#1a1a20",
+        "paper_edge": "#141418",
+        "ink":        "#eceaf0",
+        "muted":      "#9b9aa6",
+        "rule":       "#a78bfa",
+        "deep":       "#c0aefc",
+        "ink_rgb":    (0.925, 0.918, 0.941),
+        "deep_rgb":   (0.655, 0.545, 0.980),
+    },
     "ivory": {
         "paper":      "#faf8f3",
         "paper_edge": "#f3efe6",
@@ -76,7 +86,7 @@ PALETTES = {
     },
 }
 
-PALETTE = PALETTES["slate-sky"]
+PALETTE = PALETTES["graphite-violet"]
 
 IVORY = PALETTE["paper"]
 IVORY_EDGE = PALETTE["paper_edge"]
