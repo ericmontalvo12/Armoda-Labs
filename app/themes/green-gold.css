@@ -1,0 +1,92 @@
+/* Armoda Labs - deep green ground with metallic gold.
+   The palette as shipped on 2026-10-26. Swap by changing the one @import
+   line in app/globals.css. */
+
+@theme {
+  /* ------------------------------------------------------------------
+     Armoda Labs - deep green ground with metallic gold (#d4af37).
+
+     Green and gold is a long-standing luxury pairing, and green carries a
+     second meaning that suits this business: it reads laboratory and
+     verified rather than merely expensive. The greens here are our own
+     values, chosen for contrast, not sampled from another brand - a
+     watchmaker's signature green next to a crown-like mark is trade dress,
+     and we are not in that business.
+
+     The gold is unchanged from the near-black palette, and deliberately so.
+     Two axes govern it and they are independent.
+
+     LUMINANCE decides whether the gold registers as a colour. #d4af37 is
+     8.54:1 on the background (still AAA for text) and 1.75:1 against body
+     copy. That second number is the one that matters: pop comes from
+     separating a colour from its SURROUNDINGS, not from maxing it against
+     the background. An earlier pass pushed gold to 16.91:1, body text sits
+     at ~15:1, the two converged, and the gold read as warm white. Do not
+     lighten it past roughly 12:1.
+
+     HUE decides whether it looks like gold at all. Metallic gold lives
+     around 45-50 degrees; this is 45.9. An earlier pass hit the right
+     luminance at 40 degrees (#e8a317) and read as orange. Below ~44 turns
+     orange, above ~52 turns sickly yellow-green.
+
+     Backgrounds are green-black, and the text is a warm-neutral ivory
+     rather than a cool grey: a cool grey over green goes blue-ish and
+     fights the gold.
+     ------------------------------------------------------------------ */
+
+  --color-background: #0a1a12;
+  --color-surface: #0f2419;
+  --color-surface-elevated: #143021;
+  --color-surface-accent: #1a3a28;
+  --color-border: #23492f;
+  --color-border-subtle: #16301f;
+
+  /* The brand green itself, for fills and marks that should read green
+     rather than as the ground. */
+  --color-green: #0f3d26;
+  --color-green-deep: #08150f;
+
+  /* Gold - usable as text on these grounds, unlike on white. */
+  --color-gold: #d4af37;         /* fills, rules, icons        8.54:1 */
+  --color-gold-text: #d4af37;    /* gold type - same value works here */
+  --color-gold-hover: #e0be4e;   /*                            9.96:1 */
+  --color-gold-muted: #6b5a1f;   /* hairlines, inactive  2.66:1, decorative
+                                    only - never text */
+
+  /* Primary action is a gold fill carrying dark-green ink (8.16:1). White
+     on gold fails, so --color-on-primary exists to stop that happening. */
+  --color-primary: #d4af37;
+  --color-primary-hover: #e0be4e;
+  --color-on-primary: #0d1f15;
+  --color-secondary: #143021;
+  --color-secondary-hover: #1a3a28;
+  --color-accent: #d4af37;
+
+  /* Text - warm-neutral ivory with a faint green cast in the lower tiers,
+     so secondary copy sits in the palette instead of beside it. */
+  --color-text-primary: #eceae6;   /* 14.95:1 */
+  --color-text-secondary: #b2bdb3; /*  9.26:1 */
+  --color-text-muted: #8e9a90;     /*  6.14:1 - AA floor, do not go darker */
+  --color-text-on-dark: #eceae6;
+  --color-text-on-dark-muted: #b2bdb3;
+  --color-text-on-gold: #0d1f15;   /*  8.16:1 on --color-gold */
+
+  --color-dark-bg: #0a1a12;
+  --color-dark-surface: #143021;
+
+  --color-star: #d4af37;
+  /* Success is a bright mint rather than the mid-green used before: on a
+     green ground a mid-green reads as more ground, not as a signal. */
+  --color-success: #6fbf92;        /*  8.16:1 */
+  --color-danger: #e8837a;         /*  6.81:1 - the near-black palette's
+                                      #e26b63 drops under 6:1 here */
+
+  /* Catalog geometry: flat surfaces, hairline borders, generous radii. */
+  --radius-card: 20px;
+  --radius-control: 10px;
+  --container-max: 1280px;
+  --grid-gap: 20px;
+
+  --font-sans: "Outfit", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}

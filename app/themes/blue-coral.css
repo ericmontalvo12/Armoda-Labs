@@ -1,0 +1,82 @@
+/* Armoda Labs - ink navy ground with a clean blue, coral as the contrast.
+   Swap themes by changing the one @import line in app/globals.css. */
+
+@theme {
+  /* ------------------------------------------------------------------
+     Blue carries a different claim from gold. Gold says expensive; blue
+     says instrument, and this catalog is sold on measurement.
+
+     Two colors, two jobs. BLUE is the primary: fills, links, rules, the
+     things a person clicks. CORAL is the contrast, used sparingly on
+     badges and highlights. A scheme with one accent has nothing to point
+     with; a scheme with two that sit near each other on the wheel has two
+     accents that both read as decoration.
+
+     Why coral and not amber. Amber measured well (10.21:1) but sits at hue
+     37 degrees, close enough to the gold palette's 46 that the site would
+     look barely changed. Coral is at 15 degrees, clearly its own color, and
+     separates from body text at 1.90:1 against the gold's 1.75.
+
+     The separation number is the one that matters and the easiest to get
+     wrong. An accent needs distance from BODY TEXT, not maximum contrast
+     with the background: push either accent lighter and it converges with
+     the ivory and reads as tinted white rather than as a color.
+
+     Backgrounds are blue-black rather than neutral grey, so the ground and
+     the primary belong to the same family and the coral has something to
+     push against.
+     ------------------------------------------------------------------ */
+
+  --color-background: #080e18;
+  --color-surface: #0e1624;
+  --color-surface-elevated: #141e30;
+  --color-surface-accent: #1b2742;
+  --color-border: #243352;
+  --color-border-subtle: #16203a;
+
+  /* Kept so components written against the green theme still resolve.
+     Under this palette they are blue: the token names outlived the color. */
+  --color-green: #1b2742;
+  --color-green-deep: #060a12;
+
+  /* The primary. Named gold-* because the components reference those tokens;
+     renaming them across the site would be a large diff for no visual gain. */
+  --color-gold: #5aa6f0;         /* fills, rules, icons        7.50:1 */
+  --color-gold-text: #5aa6f0;    /* blue type - same value works here */
+  --color-gold-hover: #7bbcf7;   /*                            9.55:1 */
+  --color-gold-muted: #2b4a74;   /* hairlines, inactive  2.15:1, decorative
+                                    only - never text */
+
+  --color-primary: #5aa6f0;
+  --color-primary-hover: #7bbcf7;
+  --color-on-primary: #07101d;   /*  7.40:1 on --color-primary */
+  --color-secondary: #141e30;
+  --color-secondary-hover: #1b2742;
+
+  /* The contrast. Deliberately NOT the primary: used on badges, counts and
+     the occasional highlight, never on a button a person is meant to press. */
+  --color-accent: #ff8f6b;       /*  8.65:1, hue 15 degrees */
+
+  --color-text-primary: #e9edf4;   /* 16.46:1 */
+  --color-text-secondary: #a9b5c9; /*  9.33:1 */
+  --color-text-muted: #8795ad;     /*  6.38:1 - AA floor, do not go darker */
+  --color-text-on-dark: #e9edf4;
+  --color-text-on-dark-muted: #a9b5c9;
+  --color-text-on-gold: #07101d;   /*  7.40:1 on --color-gold */
+
+  --color-dark-bg: #080e18;
+  --color-dark-surface: #141e30;
+
+  --color-star: #ff8f6b;
+  --color-success: #5fc39a;        /*  9.03:1 */
+  --color-danger: #f07a7a;         /*  7.15:1 */
+
+  /* Catalog geometry: flat surfaces, hairline borders, generous radii. */
+  --radius-card: 20px;
+  --radius-control: 10px;
+  --container-max: 1280px;
+  --grid-gap: 20px;
+
+  --font-sans: "Outfit", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}
