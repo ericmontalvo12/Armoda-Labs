@@ -315,7 +315,7 @@ export default function CartPage() {
                     placeholder="you@example.com"
                     value={emailInput}
                     onChange={(e) => handleEmailChange(e.target.value)}
-                    className="w-full px-3 py-2 rounded-[5px] bg-surface border border-border text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                    className="w-full px-3 py-2 rounded-[5px] bg-surface border border-border text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-base"
                   />
                   {emailInput.trim().length > 0 && !isValidEmail && (
                     <p className="text-text-muted text-xs mt-1">That doesn't look like a valid email.</p>
@@ -333,7 +333,7 @@ export default function CartPage() {
                     placeholder="(555) 123-4567"
                     value={phoneInput}
                     onChange={(e) => handlePhoneChange(e.target.value)}
-                    className="w-full px-3 py-2 rounded-[5px] bg-surface border border-border text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                    className="w-full px-3 py-2 rounded-[5px] bg-surface border border-border text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-base"
                   />
                   <label className={`flex items-start gap-2 mt-3 text-xs text-text-muted ${phoneInput.trim() ? "" : "opacity-50"}`}>
                     <input
@@ -363,7 +363,7 @@ export default function CartPage() {
                       placeholder="Enter code"
                       value={promoInput}
                       onChange={(e) => { setPromoInput(e.target.value.toUpperCase()); setPromoError(""); }}
-                      className="flex-1 px-3 py-2 rounded-[5px] bg-surface border border-border text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                      className="flex-1 px-3 py-2 rounded-[5px] bg-surface border border-border text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-base"
                     />
                     <Button variant="outline" className="px-4 py-2 h-auto text-sm" onClick={handleApplyPromo} disabled={promoLoading}>
                       {promoLoading ? "..." : "Apply"}

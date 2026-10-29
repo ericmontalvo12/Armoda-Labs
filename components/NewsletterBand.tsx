@@ -45,7 +45,7 @@ export function NewsletterBand() {
         ) : (
           <form
             onSubmit={submit}
-            className="mx-auto mt-7 flex max-w-md flex-col gap-3 sm:flex-row"
+            className="mx-auto mt-7 flex max-w-lg flex-col gap-3 sm:flex-row"
           >
             <label htmlFor="newsletter-email" className="sr-only">
               Email address
@@ -57,12 +57,16 @@ export function NewsletterBand() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="h-12 flex-1 rounded-[10px] border border-border bg-background px-4 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold"
+              /* Matches the button: same height, same text size. It was
+                 text-sm against the button's text-base, and bg-background on
+                 an already dark band left it reading as a hairline rather
+                 than a field. */
+              className="h-14 w-full flex-1 rounded-[12px] border border-border bg-surface px-5 text-base text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold"
             />
             <button
               type="submit"
               disabled={state === "sending"}
-              className="inline-flex h-12 items-center justify-center rounded-[10px] bg-primary px-7 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover disabled:opacity-60"
+              className="inline-flex h-14 w-full shrink-0 items-center justify-center rounded-[12px] bg-primary px-8 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover disabled:opacity-60 sm:w-auto"
             >
               {state === "sending" ? "Signing up…" : "Sign up"}
             </button>

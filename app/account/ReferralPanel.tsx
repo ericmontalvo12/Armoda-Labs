@@ -174,7 +174,7 @@ export function ReferralPanel({
           value={audience}
           onChange={(e) => setAudience(e.target.value)}
           placeholder="Where you publish, roughly how many people you reach, and the kind of content you make."
-          className="w-full rounded-[10px] border border-border bg-background px-4 py-3 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold"
+          className="w-full rounded-[10px] border border-border bg-background px-4 py-3 text-base text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold"
         />
 
         <p className="mt-4 rounded-[10px] border border-danger/40 bg-danger/5 px-4 py-3 text-xs leading-relaxed text-text-secondary">

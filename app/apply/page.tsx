@@ -61,7 +61,7 @@ export default function ApplyPage() {
   }
 
   const field =
-    "w-full rounded-[10px] border border-border bg-surface px-4 py-3 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold";
+    "w-full rounded-[10px] border border-border bg-surface px-4 py-3 text-base text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-gold";
   const label =
     "mb-1.5 block text-[10px] font-heading font-bold uppercase tracking-wider text-text-muted";
 
