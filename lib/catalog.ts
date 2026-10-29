@@ -79,47 +79,42 @@ export interface Product {
 
 export const CATEGORIES: Category[] = [
   {
-    // NOT named "SARMs": SR9009 is a Rev-ErbA agonist and GW-0742 a PPAR-delta
-    // agonist, neither of which is a selective androgen receptor modulator.
-    // A category name is read as a factual claim about what is in it, and
-    // this brand sells documentation accuracy.
-    slug: "receptor-modulators",
-    name: "Receptor Modulators",
-    blurb:
-      "Small-molecule nuclear and androgen receptor ligands, supplied for laboratory research use.",
+    // NOTE: two SKUs in here are not selective androgen receptor modulators.
+    // SR9009 is a Rev-ErbA agonist and GW-0742 a PPAR-delta agonist. They sit
+    // here because it is where buyers look for them, which makes the category
+    // name a commercial label rather than a chemical one. The product pages
+    // and compliance notes stay precise.
+    slug: "sarms",
+    name: "SARMs",
+    blurb: "Androgen and nuclear receptor ligands, supplied for laboratory research use.",
   },
   {
-    // NOTE: this name describes an intended effect rather than a compound
-    // class, unlike the other five. See the taxonomy note above — category
-    // names are read as evidence of intended use, and "weight management"
-    // names a disease indication. Requested deliberately; flagged here so
-    // the inconsistency is visible to whoever reviews this file. The
-    // class-based alternative was "GLP Compounds".
-    slug: "metabolic-and-weight-management",
-    name: "Metabolic & Weight Management",
-    blurb: "Incretin receptor-binding and mitochondrial-derived peptides.",
+    slug: "peptides",
+    name: "Peptides",
+    blurb: "Defined-sequence peptides as lyophilized preparations in sealed vials.",
   },
   {
-    slug: "copper-and-tripeptide-complexes",
-    name: "Copper & Tripeptide Complexes",
-    blurb: "Copper-complexed peptides and two- to four-residue sequences.",
+    slug: "bioregulator",
+    name: "Bioregulator",
+    blurb: "Short regulatory peptides studied for their activity on gene expression.",
   },
   {
-    slug: "neuropeptides-and-regulatory-peptides",
-    name: "Neuropeptides & Regulatory Peptides",
-    blurb: "ACTH- and tuftsin-derived analogs and peptide bioregulators.",
+    slug: "nootropics",
+    name: "Nootropics",
+    blurb: "Peptides studied in neurological and cognitive research contexts.",
   },
   {
-    slug: "sequence-specific-peptides",
-    name: "Sequence Specific Peptides",
-    blurb: "Defined-sequence gastric and thymosin-derived fragments.",
+    slug: "powders",
+    name: "Powders",
+    blurb: "Bulk preparations supplied by net weight rather than per vial.",
   },
   {
-    slug: "growth-hormone-secretagogues",
-    name: "Growth Hormone Secretagogues (GHS)",
-    blurb: "GHRH analogs and ghrelin receptor-binding peptides.",
+    slug: "bundles",
+    name: "Bundles",
+    blurb: "Multi-component preparations. Each card lists what is in the vial.",
   },
 ];
+
 
 const PLACEHOLDER = "/product-placeholder.svg";
 
@@ -132,7 +127,7 @@ export const PRODUCTS: Product[] = [
     // solutions rather than lyophilized vials, so the spec line is not a
     // guess to be made here.
     spec: "Specification pending",
-    categorySlug: "receptor-modulators",
+    categorySlug: "sarms",
     priceCents: 0,
     variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
     image: PLACEHOLDER,
@@ -147,7 +142,7 @@ export const PRODUCTS: Product[] = [
     // solutions rather than lyophilized vials, so the spec line is not a
     // guess to be made here.
     spec: "Specification pending",
-    categorySlug: "receptor-modulators",
+    categorySlug: "sarms",
     priceCents: 0,
     variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
     image: PLACEHOLDER,
@@ -162,7 +157,7 @@ export const PRODUCTS: Product[] = [
     // solutions rather than lyophilized vials, so the spec line is not a
     // guess to be made here.
     spec: "Specification pending",
-    categorySlug: "receptor-modulators",
+    categorySlug: "sarms",
     priceCents: 0,
     variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
     image: PLACEHOLDER,
@@ -177,7 +172,7 @@ export const PRODUCTS: Product[] = [
     // solutions rather than lyophilized vials, so the spec line is not a
     // guess to be made here.
     spec: "Specification pending",
-    categorySlug: "receptor-modulators",
+    categorySlug: "sarms",
     priceCents: 0,
     variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
     image: PLACEHOLDER,
@@ -192,7 +187,7 @@ export const PRODUCTS: Product[] = [
     // solutions rather than lyophilized vials, so the spec line is not a
     // guess to be made here.
     spec: "Specification pending",
-    categorySlug: "receptor-modulators",
+    categorySlug: "sarms",
     priceCents: 0,
     variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
     image: PLACEHOLDER,
@@ -207,7 +202,7 @@ export const PRODUCTS: Product[] = [
     // solutions rather than lyophilized vials, so the spec line is not a
     // guess to be made here.
     spec: "Specification pending",
-    categorySlug: "receptor-modulators",
+    categorySlug: "sarms",
     priceCents: 0,
     variants: [{ label: "Vial", skuSuffix: "", priceCents: 0 }],
     image: PLACEHOLDER,
@@ -219,7 +214,7 @@ export const PRODUCTS: Product[] = [
     sku: "RETATRUTIDE",
     name: "Retatrutide",
     spec: "10mg / vial",
-    categorySlug: "metabolic-and-weight-management",
+    categorySlug: "peptides",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -234,7 +229,7 @@ export const PRODUCTS: Product[] = [
     sku: "TIRZEPATIDE",
     name: "Tirzepatide",
     spec: "10mg / vial",
-    categorySlug: "metabolic-and-weight-management",
+    categorySlug: "peptides",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -249,7 +244,7 @@ export const PRODUCTS: Product[] = [
     sku: "MOTSC",
     name: "MOTS-c",
     spec: "10mg / vial",
-    categorySlug: "metabolic-and-weight-management",
+    categorySlug: "peptides",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -262,7 +257,7 @@ export const PRODUCTS: Product[] = [
     sku: "GHKCU",
     name: "GHK-Cu",
     spec: "50mg / vial",
-    categorySlug: "copper-and-tripeptide-complexes",
+    categorySlug: "peptides",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -275,7 +270,7 @@ export const PRODUCTS: Product[] = [
     sku: "GLOWBLEND",
     name: "GLOW Blend",
     spec: "Blend / vial",
-    categorySlug: "copper-and-tripeptide-complexes",
+    categorySlug: "bundles",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -288,7 +283,7 @@ export const PRODUCTS: Product[] = [
     sku: "KLOWBLEND",
     name: "KLOW Blend",
     spec: "Blend / vial",
-    categorySlug: "copper-and-tripeptide-complexes",
+    categorySlug: "bundles",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -301,7 +296,7 @@ export const PRODUCTS: Product[] = [
     sku: "SEMAX",
     name: "Semax",
     spec: "10mg / vial",
-    categorySlug: "neuropeptides-and-regulatory-peptides",
+    categorySlug: "nootropics",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -314,7 +309,7 @@ export const PRODUCTS: Product[] = [
     sku: "SELANK",
     name: "Selank",
     spec: "10mg / vial",
-    categorySlug: "neuropeptides-and-regulatory-peptides",
+    categorySlug: "nootropics",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -327,7 +322,7 @@ export const PRODUCTS: Product[] = [
     sku: "SEMAXSELANKC",
     name: "Semax / Selank Complex",
     spec: "Blend / vial",
-    categorySlug: "neuropeptides-and-regulatory-peptides",
+    categorySlug: "bundles",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -340,7 +335,7 @@ export const PRODUCTS: Product[] = [
     sku: "BPC157",
     name: "BPC-157",
     spec: "5mg / vial",
-    categorySlug: "sequence-specific-peptides",
+    categorySlug: "peptides",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -353,7 +348,7 @@ export const PRODUCTS: Product[] = [
     sku: "TB500",
     name: "TB-500",
     spec: "5mg / vial",
-    categorySlug: "sequence-specific-peptides",
+    categorySlug: "peptides",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -366,7 +361,7 @@ export const PRODUCTS: Product[] = [
     sku: "BPC157TB500B",
     name: "BPC-157 / TB-500 Blend",
     spec: "Blend / vial",
-    categorySlug: "sequence-specific-peptides",
+    categorySlug: "bundles",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -379,7 +374,7 @@ export const PRODUCTS: Product[] = [
     sku: "CJC1295IPAMO",
     name: "CJC-1295 (No DAC) / Ipamorelin Blend",
     spec: "Blend / vial",
-    categorySlug: "growth-hormone-secretagogues",
+    categorySlug: "bundles",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -392,7 +387,7 @@ export const PRODUCTS: Product[] = [
     sku: "KPV",
     name: "KPV",
     spec: "10mg / vial",
-    categorySlug: "copper-and-tripeptide-complexes",
+    categorySlug: "peptides",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -405,7 +400,7 @@ export const PRODUCTS: Product[] = [
     sku: "EPITALON",
     name: "Epitalon",
     spec: "10mg / vial",
-    categorySlug: "neuropeptides-and-regulatory-peptides",
+    categorySlug: "bioregulator",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },
@@ -418,7 +413,7 @@ export const PRODUCTS: Product[] = [
     sku: "GLUTATHIONE",
     name: "Glutathione",
     spec: "600mg / vial",
-    categorySlug: "copper-and-tripeptide-complexes",
+    categorySlug: "powders",
     priceCents: 0,
     variants: [
       { label: "Vial", skuSuffix: "", priceCents: 0 },

@@ -29,8 +29,16 @@ whether Retatrutide and Tirzepatide stay listed.
 
 ### Website — YOU
 
-- [ ] **The hero promises nootropics and naturals that the catalog does not
-      stock.** The headline reads "Peptides, SARMs, Nootropics and Naturals",
+- [ ] **The hero still promises "Naturals", which the catalog does not
+      stock.** Nootropics now exist as a category (Semax, Selank). Naturals
+      do not. Either add the SKUs or cut the word.
+- [ ] **"SARMs" is a commercial label, not a chemical one.** SR9009 is a
+      Rev-ErbA agonist and GW-0742 a PPAR-delta agonist, and neither is a
+      selective androgen receptor modulator. They sit in that category
+      because it is where buyers look. The product pages and compliance notes
+      stay precise, but be aware the category name overstates two of its six.
+- [ ] ~~The hero promises nootropics and naturals that the catalog does not
+      stock.~~ Partly resolved: The headline reads "Peptides, SARMs, Nootropics and Naturals",
       and the six categories are Receptor Modulators, Metabolic & Weight
       Management, Copper & Tripeptide Complexes, Neuropeptides & Regulatory
       Peptides, Sequence Specific Peptides and Growth Hormone Secretagogues.

@@ -3,7 +3,7 @@
 22 SKUs across 6 categories. 15 have a verified structure image.
 
 
-## Receptor Modulators
+## SARMs
 
 | Product | SKU | Spec | Image |
 |---|---|---|---|
@@ -14,53 +14,53 @@
 | SR9009 (Stenabolic) | SR9009 | Specification pending | yes |
 | YK11 | YK11 | Specification pending | yes |
 
-## Metabolic & Weight Management
-
-| Product | SKU | Spec | Image |
-|---|---|---|---|
-| MOTS-c | MOTSC | 10mg / vial | yes |
-| Retatrutide | RETATRUTIDE | 10mg / vial | no |
-| Tirzepatide | TIRZEPATIDE | 10mg / vial | yes |
-
-## Copper & Tripeptide Complexes
-
-| Product | SKU | Spec | Image |
-|---|---|---|---|
-| GHK-Cu | GHKCU | 50mg / vial | yes |
-| GLOW Blend | GLOWBLEND | Blend / vial | no |
-| Glutathione | GLUTATHIONE | 600mg / vial | yes |
-| KLOW Blend | KLOWBLEND | Blend / vial | no |
-| KPV | KPV | 10mg / vial | yes |
-
-## Neuropeptides & Regulatory Peptides
-
-| Product | SKU | Spec | Image |
-|---|---|---|---|
-| Epitalon | EPITALON | 10mg / vial | yes |
-| Selank | SELANK | 10mg / vial | yes |
-| Semax | SEMAX | 10mg / vial | yes |
-| Semax / Selank Complex | SEMAXSELANKC | Blend / vial | no |
-
-## Sequence Specific Peptides
+## Peptides
 
 | Product | SKU | Spec | Image |
 |---|---|---|---|
 | BPC-157 | BPC157 | 5mg / vial | yes |
-| BPC-157 / TB-500 Blend | BPC157TB500B | Blend / vial | no |
+| GHK-Cu | GHKCU | 50mg / vial | yes |
+| KPV | KPV | 10mg / vial | yes |
+| MOTS-c | MOTSC | 10mg / vial | yes |
+| Retatrutide | RETATRUTIDE | 10mg / vial | no |
 | TB-500 | TB500 | 5mg / vial | no |
+| Tirzepatide | TIRZEPATIDE | 10mg / vial | yes |
 
-## Growth Hormone Secretagogues (GHS)
+## Bioregulator
 
 | Product | SKU | Spec | Image |
 |---|---|---|---|
+| Epitalon | EPITALON | 10mg / vial | yes |
+
+## Nootropics
+
+| Product | SKU | Spec | Image |
+|---|---|---|---|
+| Selank | SELANK | 10mg / vial | yes |
+| Semax | SEMAX | 10mg / vial | yes |
+
+## Powders
+
+| Product | SKU | Spec | Image |
+|---|---|---|---|
+| Glutathione | GLUTATHIONE | 600mg / vial | yes |
+
+## Bundles
+
+| Product | SKU | Spec | Image |
+|---|---|---|---|
+| BPC-157 / TB-500 Blend | BPC157TB500B | Blend / vial | no |
 | CJC-1295 (No DAC) / Ipamorelin Blend | CJC1295IPAMO | Blend / vial | no |
+| GLOW Blend | GLOWBLEND | Blend / vial | no |
+| KLOW Blend | KLOWBLEND | Blend / vial | no |
+| Semax / Selank Complex | SEMAXSELANKC | Blend / vial | no |
 
 ## Still needed
 
-- **Prices.** Every SKU is $0. Nothing can sell until these are set.
-- **Specs** for the six receptor modulators. Listed as "Specification pending" because these usually ship as solutions rather than lyophilized vials, and the supplier decides the format.
-- **TB-500 fragment.** Sold as the bare 7-mer, N-acetylated, C-amidated, or both, each with a different mass. Comes off the lot CoA, not a reference site.
-- **Retatrutide structure.** No public database holds a full one. Needs a SMILES from the supplier.
-- **Blend compositions** for the five blends, so their cards can list components instead of a structure.
-- **COA per lot** for all of it.
+- **Prices.** Every SKU is $0.
+- **Specs** for the six SARMs, listed as "Specification pending".
+- **TB-500 fragment**, from the lot CoA.
+- **Retatrutide structure**: no public database holds one.
+- **Bundle compositions** for the five bundles.
+- **COA per lot.**
 
