@@ -18,6 +18,13 @@ SKU drawn by the same code so the grid reads as one system — and formula and
 molecular mass are COMPUTED from the structure rather than typed, so they
 cannot drift out of agreement with it.
 
+FORMULA AND MASS DO NOT IDENTIFY A MOLECULE. Checking the computed formula
+and mass against the source catches a mistyped SMILES, and nothing else. It
+passed cleanly on a tirzepatide structure taken from the wrong PubChem
+record: same formula, same mass, fatty-acid linker on a different lysine
+and running the other way. An InChIKey distinguishes those; a mass does not.
+Where a source gives one, check it.
+
 ACCURACY IS THE WHOLE POINT. This brand sells documentation, so a wrong
 structure is a visible, checkable error in the one field it claims
 competence in — worse than no image. Every entry carries `verified` and
@@ -130,9 +137,9 @@ CATALOG = {
 
     "retatrutide":          ("none", "", "GLP Compound", "", False, "No PubChem structure record under this name; supplier SMILES needed"),
     "tirzepatide":          ("smiles",
-                    "CC[C@H](C)[C@@H](C(=O)N[C@@H](C)C(=O)N[C@@H](CCC(=O)N)C(=O)N[C@@H](CCCCNC(=O)COCCOCCNC(=O)COCCOCCNC(=O)CC[C@@H](C(=O)O)NC(=O)CCCCCCCCCCCCCCCCCCC(=O)O)C(=O)N[C@@H](C)C(=O)N[C@@H](CC1=CC=CC=C1)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](CCC(=O)N)C(=O)N[C@@H](CC2=CNC3=CC=CC=C32)C(=O)N[C@@H](CC(C)C)C(=O)N[C@@H]([C@@H](C)CC)C(=O)N[C@@H](C)C(=O)NCC(=O)NCC(=O)N4CCC[C@H]4C(=O)N[C@@H](CO)C(=O)N[C@@H](CO)C(=O)NCC(=O)N[C@@H](C)C(=O)N5CCC[C@H]5C(=O)N6CCC[C@H]6C(=O)N7CCC[C@H]7C(=O)N[C@@H](CO)C(=O)N)NC(=O)[C@H](CCCCN)NC(=O)[C@H](CC(=O)O)NC(=O)[C@H](CC(C)C)NC(=O)C(C)(C)NC(=O)[C@H]([C@@H](C)CC)NC(=O)[C@H](CO)NC(=O)[C@H](CC8=CC=C(C=C8)O)NC(=O)[C@H](CC(=O)O)NC(=O)[C@H](CO)NC(=O)[C@H]([C@@H](C)O)NC(=O)[C@H](CC9=CC=CC=C9)NC(=O)[C@H]([C@@H](C)O)NC(=O)CNC(=O)[C@H](CCC(=O)O)NC(=O)C(C)(C)NC(=O)[C@H](CC1=CC=C(C=C1)O)N",
+                    "CC[C@H](C)[C@@H](C(=O)N[C@@H](C)C(=O)N[C@@H](CCC(=O)N)C(=O)N[C@@H](CCCCN)C(=O)N[C@@H](C)C(=O)N[C@@H](CC1=CC=CC=C1)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](CCC(=O)N)C(=O)N[C@@H](CC2=CNC3=CC=CC=C32)C(=O)N[C@@H](CC(C)C)C(=O)N[C@@H]([C@@H](C)CC)C(=O)N[C@@H](C)C(=O)NCC(=O)NCC(=O)N4CCC[C@H]4C(=O)N[C@@H](CO)C(=O)N[C@@H](CO)C(=O)NCC(=O)N[C@@H](C)C(=O)N5CCC[C@H]5C(=O)N6CCC[C@H]6C(=O)N7CCC[C@H]7C(=O)N[C@@H](CO)C(=O)N)NC(=O)[C@H](CCCCNC(=O)CCCCCCCCCCCCCCCCCCC(=O)N[C@@H](CCC(=O)NCCOCCOCC(=O)NCCOCCOCC(=O)O)C(=O)O)NC(=O)[C@H](CC(=O)O)NC(=O)[C@H](CC(C)C)NC(=O)C(C)(C)NC(=O)[C@H]([C@@H](C)CC)NC(=O)[C@H](CO)NC(=O)[C@H](CC8=CC=C(C=C8)O)NC(=O)[C@H](CC(=O)O)NC(=O)[C@H](CO)NC(=O)[C@H]([C@@H](C)O)NC(=O)[C@H](CC9=CC=CC=C9)NC(=O)[C@H]([C@@H](C)O)NC(=O)CNC(=O)[C@H](CCC(=O)O)NC(=O)C(C)(C)NC(=O)[C@H](CC1=CC=C(C=C1)O)N",
                     "GLP Compound", "2023788-19-2", True,
-                    "PubChem CID 166567236 | expect C225H348N48O68 4813"),
+                    "PubChem CID 156588324, the annotated record | expect C225H348N48O68 4813, InChIKey AAPYRSPHYSKGIS"),
     "cjc-1295-ipamorelin":  ("none", "", "Growth Hormone Secretagogue", "", False, "Blend; Ipamorelin has Aib and D-residues"),
     "semax-selank-complex": ("none", "", "Neuropeptide Blend", "", False, "Blend — no single structure"),
     "bpc-157-tb-500-blend": ("none", "", "Peptide Blend", "", False, "Blend — no single structure"),
