@@ -1,0 +1,80 @@
+/* Armoda Labs - ivory ground with gold. The only LIGHT theme here.
+   Swap themes by changing the one @import line in app/globals.css. */
+
+@theme {
+  /* ------------------------------------------------------------------
+     THIS IS A LIGHT THEME. Every other file here is dark, and the site was
+     built dark, so read the two notes below before judging the result.
+
+     GOLD HAS TO PLAY TWO ROLES AT TWO VALUES. #d4af37 measures 1.98:1 on
+     this ground and cannot carry text at all. It survives only as a FILL
+     with dark ink on it, where it reaches 8.95:1. Gold TYPE has to be a
+     deep bronze, #8a6a14 at 4.76:1. On the dark themes one value did both
+     jobs; here it cannot, which is the whole reason gold-on-black is the
+     luxury pairing and gold-on-white is a harder problem.
+
+     Do not "unify" --color-gold and --color-gold-text back to one value.
+     Setting both to the bright gold puts 1.98:1 text on the page; setting
+     both to the bronze makes every fill look like mud.
+
+     SEPARATION WORKS IN REVERSE HERE. On a dark ground an accent must stay
+     clear of the body text by staying darker. Here the bronze sits 3.72:1
+     from the body text, which is a wider gap than the dark themes use and
+     is correct: on a light ground a mid-tone accent reads as a colour, not
+     as tinted text.
+
+     Backgrounds are warm ivories rather than pure white. Pure white under a
+     warm gold reads cold, and #ffffff is kept for raised cards only, where
+     the lift is the point.
+     ------------------------------------------------------------------ */
+
+  --color-background: #faf8f3;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #f3efe6;
+  --color-surface-accent: #ebe5d9;
+  --color-border: #e5ded0;
+  --color-border-subtle: #efe9dd;
+
+  /* Kept so components written against the green theme still resolve. */
+  --color-green: #ebe5d9;
+  --color-green-deep: #14110e;
+
+  /* Two golds, two jobs. See the note above before touching either. */
+  --color-gold: #d4af37;         /* FILLS, rules, icons. 1.98:1 - never text */
+  --color-gold-text: #8a6a14;    /* gold TYPE            4.76:1              */
+  --color-gold-hover: #c9a227;   /* fill hover                               */
+  --color-gold-muted: #d8c88c;   /* hairlines  1.58:1, decorative only       */
+
+  --color-primary: #d4af37;
+  --color-primary-hover: #c9a227;
+  --color-on-primary: #14110e;   /*  8.95:1 on --color-primary */
+  --color-secondary: #f3efe6;
+  --color-secondary-hover: #ebe5d9;
+  --color-accent: #8a6a14;
+
+  --color-text-primary: #14110e;   /* 17.73:1 */
+  --color-text-secondary: #4a443a; /*  9.08:1 */
+  --color-text-muted: #6b6459;     /*  5.51:1 - AA floor, do not go lighter */
+
+  /* These two are for text sitting on a DARK band inside a light page, so
+     they stay light. The names say on-dark and mean it. */
+  --color-text-on-dark: #f5f2ec;
+  --color-text-on-dark-muted: #c9c3b6;
+  --color-text-on-gold: #14110e;   /*  8.95:1 on --color-gold */
+
+  --color-dark-bg: #14110e;
+  --color-dark-surface: #221d17;
+
+  --color-star: #d4af37;
+  --color-success: #15653f;        /*  6.67:1 */
+  --color-danger: #b3261e;         /*  6.16:1 */
+
+  /* Catalog geometry: flat surfaces, hairline borders, generous radii. */
+  --radius-card: 20px;
+  --radius-control: 10px;
+  --container-max: 1280px;
+  --grid-gap: 20px;
+
+  --font-sans: "Outfit", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}

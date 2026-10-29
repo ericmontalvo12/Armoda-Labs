@@ -24,6 +24,7 @@ the app is written against tokens rather than hex values.
 | `blue-coral.css` | ink navy `#080e18` | blue `#5aa6f0` | coral `#ff8f6b` |
 | `red-teal.css` | warm black `#0f0a0b` | red `#f0645f` | teal `#4fd1c5` |
 | **`slate-sky.css`** | slate `#0b1120` | sky `#38bdf8` | none (single accent) | **CHOSEN** |
+| `white-gold.css` | ivory `#faf8f3` | gold fill `#d4af37` / bronze type `#8a6a14` | none | the only LIGHT theme |
 
 ## Writing another one
 
