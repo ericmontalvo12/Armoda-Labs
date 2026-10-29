@@ -24,12 +24,16 @@ export function ProductCard({ product }: { product: Product }) {
         href={`/products/${product.slug}`}
         className="block bg-surface-elevated"
       >
+        {/* Square box for a square tile. It was h-[200px] w-full, so a
+            620x620 tile fitted by height and left gaps down both sides, and
+            p-4 shrank it again. The tile carries its own inset rules, so it
+            needs no outer padding. */}
         <Image
           src={productImage(product)}
           alt={product.name}
-          width={294}
-          height={260}
-          className="h-[200px] w-full object-contain p-4 sm:h-[240px]"
+          width={620}
+          height={620}
+          className="aspect-square w-full object-cover"
         />
       </Link>
 

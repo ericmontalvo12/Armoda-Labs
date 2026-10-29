@@ -24,10 +24,10 @@ export function ProductPurchase({ product }: { product: Product }) {
         <Image
           src={productImage(product)}
           alt={product.name}
-          width={600}
-          height={600}
+          width={620}
+          height={620}
           priority
-          className="h-full max-h-[460px] w-full object-contain p-8"
+          className="aspect-square w-full object-cover"
         />
       </div>
 
