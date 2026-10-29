@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FlaskConical } from "lucide-react";
+import { HeroActions } from "@/components/sections/home/HeroActions";
 
 /**
  * Hero as an inset panel rather than a full-bleed band, with gold rules
@@ -67,20 +68,7 @@ export function HeroPanel() {
                 </p>
               </div>
 
-              <div className="mt-9 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/account/login"
-                  className="inline-flex h-12 items-center rounded-full border border-border px-8 font-heading text-base font-bold text-text-primary transition-colors hover:border-gold hover:text-gold"
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/apply"
-                  className="inline-flex h-12 items-center rounded-full bg-primary px-8 font-heading text-base font-bold text-on-primary transition-colors hover:bg-primary-hover"
-                >
-                  Apply for account
-                </Link>
-              </div>
+              <HeroActions />
 
               {/* The catalog is not gated, so it still needs a route from the
                   hero. Kept as a tertiary link rather than a third button so

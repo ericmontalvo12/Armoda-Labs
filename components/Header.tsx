@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingCart, ChevronDown } from "lucide-react";
+import { Menu, X, ShoppingCart, ChevronDown, UserRound } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 
 type NavLink = {
@@ -27,10 +27,28 @@ const navLinks: NavLink[] = [
     ],
   },
   { href: "/help", label: "Help" },
-  { href: "/account/login", label: "Account" },
 ];
 
+/**
+ * Reads the signed-in hint cookie. It is a display name and nothing else:
+ * what the account actually shows is decided server-side from the signed
+ * session cookie, so a forged value changes a label and grants nothing.
+ */
+function useAccountHint(): string | null {
+  const [name, setName] = useState<string | null>(null);
+  useEffect(() => {
+    const match = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("armoda_account="));
+    if (!match) return;
+    const value = match.slice("armoda_account=".length);
+    if (value) setName(decodeURIComponent(value));
+  }, []);
+  return name;
+}
+
 export function Header() {
+  const accountName = useAccountHint();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [showAnnouncement, setShowAnnouncement] = useState(true);
@@ -147,6 +165,16 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-4">
+              {/* Signed in or not, there is always a link here. Before, the
+                  header pointed at /account/login from every page, so
+                  reaching the homepage looked like being logged out. */}
+              <Link
+                href={accountName ? "/account" : "/account/login"}
+                className="hidden lg:inline-flex items-center gap-2 text-sm font-heading font-bold uppercase tracking-wide text-text-primary transition-colors hover:text-gold-text"
+              >
+                <UserRound className="h-4 w-4" />
+                {accountName ?? "Account"}
+              </Link>
               <Link href="/cart" className="relative">
                 <button
                   aria-label="Cart"
@@ -254,6 +282,15 @@ export function Header() {
                   </Link>
                 )
               )}
+              <Link
+                href={accountName ? "/account" : "/account/login"}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 py-3 font-heading font-bold uppercase text-sm tracking-wide text-text-primary transition-colors hover:text-gold-text border-b border-border-subtle"
+              >
+                <UserRound className="h-4 w-4" />
+                {accountName ? `Your account (${accountName})` : "Account"}
+              </Link>
+
               <div className="pt-4">
                 <Link
                   href="/products"

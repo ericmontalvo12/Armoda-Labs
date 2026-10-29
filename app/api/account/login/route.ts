@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   CUSTOMER_COOKIE,
+  CUSTOMER_HINT_COOKIE,
   CUSTOMER_SESSION_MAX_AGE_SECONDS,
   createCustomerToken,
   verifyPassword,
@@ -73,6 +74,17 @@ export async function POST(req: NextRequest) {
       path: "/",
       maxAge: CUSTOMER_SESSION_MAX_AGE_SECONDS,
     });
+    res.cookies.set(
+      CUSTOMER_HINT_COOKIE,
+      encodeURIComponent(customer.name?.split(" ")[0] ?? "Account"),
+      {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        path: "/",
+        maxAge: CUSTOMER_SESSION_MAX_AGE_SECONDS,
+      }
+    );
     return res;
   } catch (err: unknown) {
     console.error("Account login failed:", err);

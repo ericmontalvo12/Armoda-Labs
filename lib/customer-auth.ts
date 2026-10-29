@@ -19,6 +19,17 @@
 const encoder = new TextEncoder();
 
 export const CUSTOMER_COOKIE = "armoda_session";
+
+/**
+ * A readable hint that someone is signed in, so the header can say so
+ * without a round trip on every page.
+ *
+ * Deliberately NOT httpOnly and deliberately worthless: it holds a display
+ * name and nothing else. Forging it changes what the header renders and
+ * grants nothing, because every page and route that returns data reads the
+ * signed session cookie on the server.
+ */
+export const CUSTOMER_HINT_COOKIE = "armoda_account";
 const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 export const CUSTOMER_SESSION_MAX_AGE_SECONDS = SESSION_TTL_MS / 1000;
 
