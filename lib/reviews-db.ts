@@ -26,7 +26,21 @@ export interface Review {
   verifiedPurchase: boolean;
 }
 
-async function ensureTable() {
+// Cached in-flight promise: this ran its DDL on every call before, and a
+// boolean would still let concurrent first callers each run it.
+let tableReady: Promise<void> | null = null;
+
+function ensureTable(): Promise<void> {
+  if (!tableReady) {
+    tableReady = createTable().catch((err) => {
+      tableReady = null;
+      throw err;
+    });
+  }
+  return tableReady;
+}
+
+async function createTable() {
   const sql = getSql();
   await sql`
     CREATE TABLE IF NOT EXISTS reviews (

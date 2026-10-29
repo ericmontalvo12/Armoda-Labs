@@ -53,10 +53,21 @@ export interface Referral {
   approvedAt: string | null;
 }
 
-let tablesReady = false;
+// The in-flight promise, not a boolean: a boolean is only set after the
+// DDL finishes, so concurrent first callers each run it.
+let tablesReady: Promise<void> | null = null;
 
-async function ensureTables() {
-  if (tablesReady) return;
+function ensureTables(): Promise<void> {
+  if (!tablesReady) {
+    tablesReady = createTables().catch((err) => {
+      tablesReady = null;
+      throw err;
+    });
+  }
+  return tablesReady;
+}
+
+async function createTables() {
   const sql = getSql();
 
   await sql`
@@ -127,7 +138,6 @@ async function ensureTables() {
   await sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS referral_code TEXT`;
   await sql`CREATE INDEX IF NOT EXISTS orders_referral_code_idx ON orders (upper(referral_code))`;
 
-  tablesReady = true;
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

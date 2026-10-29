@@ -53,10 +53,24 @@ export interface CreditEntry {
   createdAt: string;
 }
 
-let tablesReady = false;
+// The in-flight promise, not a boolean. A boolean is only set after the DDL
+// finishes, so concurrent first callers each see false and each run it. That
+// is not hypothetical: /account loads the balance and the history in one
+// Promise.all, so a cold start always had two callers here at once.
+let tablesReady: Promise<void> | null = null;
 
-async function ensureTables() {
-  if (tablesReady) return;
+function ensureTables(): Promise<void> {
+  if (!tablesReady) {
+    tablesReady = createTables().catch((err) => {
+      // Let the next request retry rather than caching a rejected promise.
+      tablesReady = null;
+      throw err;
+    });
+  }
+  return tablesReady;
+}
+
+async function createTables() {
   const sql = getSql();
 
   // No parameters anywhere in this DDL: the Neon tag binds every ${} and
@@ -76,18 +90,20 @@ async function ensureTables() {
     CREATE INDEX IF NOT EXISTS store_credit_email_idx
       ON store_credit_entries (lower(email))
   `;
-  // A zero entry is always a mistake, and would clutter a statement that a
-  // customer reads. Enforced here rather than only in the route.
+  // A zero entry is always a mistake, and would clutter a statement a
+  // customer reads. Added only when absent: DROP then ADD leaves a window
+  // with no constraint, and two of them racing is what threw on cold start.
   await sql`
-    ALTER TABLE store_credit_entries
-      DROP CONSTRAINT IF EXISTS store_credit_amount_nonzero
+    DO $$
+    BEGIN
+      IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint WHERE conname = 'store_credit_amount_nonzero'
+      ) THEN
+        ALTER TABLE store_credit_entries
+          ADD CONSTRAINT store_credit_amount_nonzero CHECK (amount_cents <> 0);
+      END IF;
+    END $$
   `;
-  await sql`
-    ALTER TABLE store_credit_entries
-      ADD CONSTRAINT store_credit_amount_nonzero CHECK (amount_cents <> 0)
-  `;
-
-  tablesReady = true;
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

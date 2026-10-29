@@ -44,10 +44,21 @@ export interface Order {
   createdAt: string;
 }
 
-let tableReady = false;
+// The in-flight promise, not a boolean: a boolean is only set after the
+// DDL finishes, so concurrent first callers each run it.
+let tableReady: Promise<void> | null = null;
 
-async function ensureTables() {
-  if (tableReady) return;
+function ensureTables(): Promise<void> {
+  if (!tableReady) {
+    tableReady = createTables().catch((err) => {
+      tableReady = null;
+      throw err;
+    });
+  }
+  return tableReady;
+}
+
+async function createTables() {
   const sql = getSql();
   await sql`
     CREATE TABLE IF NOT EXISTS orders (
@@ -97,7 +108,6 @@ async function ensureTables() {
     )
   `;
   await sql`CREATE INDEX IF NOT EXISTS admin_login_attempts_idx ON admin_login_attempts (ip, attempted_at DESC)`;
-  tableReady = true;
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
