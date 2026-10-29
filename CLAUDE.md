@@ -102,6 +102,21 @@ NextResponse.json({ error: ... }, { status: 500 }) }`. Validate input and return
 try/catch so one failure doesn't block the others. `meta-capi.ts` never throws —
 tracking must not break order processing.
 
+## Brand palette
+
+**Slate and sky (`app/themes/slate-sky.css`) is the chosen palette.** Picked
+by the user on 2026-10-29 after comparing green/gold, blue/coral, red/teal
+and ten measured candidates. Do not change it without being asked.
+
+Switching is one `@import` line in `app/globals.css`; every surface is
+written against tokens, so no component carries a hex value. The rejected
+palettes stay in `app/themes/` rather than being deleted, so going back
+costs nothing.
+
+One thing that confuses people reading the CSS: the token names did not
+change when the palette did. `--color-gold-*` holds the sky blue. Renaming
+them across every component would be a large diff for no visual change.
+
 ## Copy conventions
 
 ### Voice

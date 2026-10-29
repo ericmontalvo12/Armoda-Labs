@@ -6,15 +6,24 @@ The whole palette lives in one file. `app/globals.css` imports exactly one:
 @import "./themes/blue-coral.css";
 ```
 
+**`slate-sky.css` is the chosen brand palette** (picked 2026-10-29). The
+others are kept for reference, not for rotation: change the import only when
+asked.
+
+Note that `blue-coral.css` is nearly the same colour. Its background is
+1.027:1 from slate-sky's, which is to say indistinguishable, and its primary
+differs by 12 degrees of hue. The real difference is that it carries a coral
+second accent. Keep that in mind before offering it as an alternative.
+
 Change that line and rebuild. Nothing else moves, because every surface in
 the app is written against tokens rather than hex values.
 
-| File | Ground | Primary | Contrast |
-|---|---|---|---|
+| File | Ground | Primary | Contrast | |
+|---|---|---|---|---|
 | `green-gold.css` | deep green `#0a1a12` | gold `#d4af37` | none |
 | `blue-coral.css` | ink navy `#080e18` | blue `#5aa6f0` | coral `#ff8f6b` |
 | `red-teal.css` | warm black `#0f0a0b` | red `#f0645f` | teal `#4fd1c5` |
-| `slate-sky.css` | slate `#0b1120` | sky `#38bdf8` | none (single accent) |
+| **`slate-sky.css`** | slate `#0b1120` | sky `#38bdf8` | none (single accent) | **CHOSEN** |
 
 ## Writing another one
 
