@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FlaskConical } from "lucide-react";
+import { Check, FlaskConical } from "lucide-react";
 import { HeroActions } from "@/components/sections/home/HeroActions";
 
 /**
@@ -29,20 +29,29 @@ export function HeroPanel() {
             </div>
 
             <div>
-              <p className="text-xs font-heading font-bold uppercase tracking-[0.22em] text-gold">
-                Every lot tested. Every result published.
-              </p>
-              <h1 className="mt-5 max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] text-text-primary sm:text-5xl">
-                You should not have to
+              {/* A badge, then the claims stacked. The reference leads with
+                  what it does rather than what it believes, which is the
+                  right order: a thesis has to be read, a fact is scanned.
+                  Nothing here is a guarantee, because a purity figure cannot
+                  be promised in advance of testing the lot. */}
+              <span className="inline-flex items-center gap-2 rounded-full border border-gold-muted bg-surface-elevated px-4 py-2 text-xs font-heading font-bold uppercase tracking-wider text-gold-text">
+                <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                Certificate on every lot
+              </span>
+
+              <h1 className="mt-6 max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] text-text-primary sm:text-5xl">
+                Independently tested.
                 <br />
-                take our word for it.
+                <span className="text-gold-text">Published per lot.</span>
+                <br />
+                Shipped in 1 to 2 days.
               </h1>
 
-              <div className="mt-10 max-w-xl">
+              <div className="mt-8 max-w-xl">
                 <p className="text-base leading-relaxed text-text-secondary">
-                  Research peptides for laboratory use. Identity confirmed by
-                  mass spectrometry, purity by HPLC, both done by a lab that
-                  does not work for us.
+                  Research peptides and receptor modulators for laboratory use.
+                  Identity by mass spectrometry, purity by HPLC, both done by a
+                  lab that does not work for us.
                 </p>
 
                 <blockquote className="mt-6 border-l-2 border-gold bg-surface-elevated px-5 py-4">
@@ -75,10 +84,10 @@ export function HeroPanel() {
                   the two account CTAs stay the primary pair. */}
               <p className="mt-5 text-sm text-text-secondary">
                 Or{" "}
-                <Link href="/products" className="font-heading font-bold text-gold hover:underline">
-                  browse the catalog
-                </Link>{" "}
-                No account required.
+                <Link href="/lab-results" className="font-heading font-bold text-gold hover:underline">
+                  read a certificate first
+                </Link>
+                . No account required.
               </p>
             </div>
           </div>

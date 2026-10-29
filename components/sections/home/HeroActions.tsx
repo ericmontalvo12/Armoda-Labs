@@ -30,10 +30,10 @@ export function HeroActions() {
   if (signedIn) {
     return (
       <div className="mt-9 flex flex-wrap items-center gap-3">
-        <Link href="/products" className={secondary}>
-          Browse catalog
+        <Link href="/products" className={primary}>
+          Shop the catalog
         </Link>
-        <Link href="/account" className={primary}>
+        <Link href="/account" className={secondary}>
           Your account
         </Link>
       </div>
@@ -42,11 +42,11 @@ export function HeroActions() {
 
   return (
     <div className="mt-9 flex flex-wrap items-center gap-3">
-      <Link href="/account/login" className={secondary}>
-        Login
+      <Link href="/products" className={primary}>
+        Shop the catalog
       </Link>
-      <Link href="/apply" className={primary}>
-        Apply for account
+      <Link href="/apply" className={secondary}>
+        Apply for an account
       </Link>
     </div>
   );
