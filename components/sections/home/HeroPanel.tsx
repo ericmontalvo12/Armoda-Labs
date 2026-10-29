@@ -36,22 +36,27 @@ export function HeroPanel() {
                   be promised in advance of testing the lot. */}
               <span className="inline-flex items-center gap-2 rounded-full border border-gold-muted bg-surface-elevated px-4 py-2 text-xs font-heading font-bold uppercase tracking-wider text-gold-text">
                 <Check className="h-3.5 w-3.5" strokeWidth={3} />
-                Certificate on every lot
+                Independently tested
               </span>
 
+              {/* Says what is sold, then how it is proven. The previous
+                  headline argued a position before naming the product, and
+                  "independently tested" and "published per lot" were one
+                  idea written twice. Nothing here is a guarantee: a purity
+                  figure cannot be promised before the lot is tested, and we
+                  do not certify anything, an outside laboratory reports. */}
               <h1 className="mt-6 max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] text-text-primary sm:text-5xl">
-                Independently tested.
+                Peptides and SARMs for
                 <br />
-                <span className="text-gold-text">Published per lot.</span>
-                <br />
-                Shipped in 1 to 2 days.
+                <span className="text-gold-text">laboratory research</span>
               </h1>
 
               <div className="mt-8 max-w-xl">
                 <p className="text-base leading-relaxed text-text-secondary">
-                  Research peptides and receptor modulators for laboratory use.
-                  Identity by mass spectrometry, purity by HPLC, both done by a
-                  lab that does not work for us.
+                  Every lot is tested by an independent laboratory and its
+                  certificate published against the lot number on your vial.
+                  No account needed to read one. Orders ship in 1 to 2
+                  business days.
                 </p>
 
                 <blockquote className="mt-6 border-l-2 border-gold bg-surface-elevated px-5 py-4">
