@@ -1,0 +1,79 @@
+/* Armoda Labs - slate ground with a sky-blue primary.
+   Swap themes by changing the one @import line in app/globals.css. */
+
+@theme {
+  /* ------------------------------------------------------------------
+     The cool technical default: a blue-grey ground and one bright accent.
+
+     Chosen on one number. An accent has to stand apart from BODY TEXT, not
+     from the background, and sky sits 1.74:1 from the text here. That is
+     almost exactly where the gold palette landed (1.75), so this carries
+     the same visual weight as the look that was approved, in a different
+     colour.
+
+     Brighter is not better, and this is where palettes from the web go
+     wrong. Lime at 12.92:1 and sand at 13.27:1 both beat sky's 8.79 against
+     the background, yet both sit under 1.4 from the body text and read as
+     tinted white rather than as a colour. Raise sky past about 10:1 and it
+     does the same thing.
+
+     Backgrounds are blue-greys rather than neutral: a neutral grey under a
+     blue accent reads as an unstyled page.
+
+     Danger stays rose and success stays green, because neither collides
+     with a blue brand. A red palette cannot do that, which is why its
+     danger token is amber.
+     ------------------------------------------------------------------ */
+
+  --color-background: #0b1120;
+  --color-surface: #121a2b;
+  --color-surface-elevated: #1a2436;
+  --color-surface-accent: #232f45;
+  --color-border: #2c3a52;
+  --color-border-subtle: #1a2436;
+
+  /* Kept so components written against the green theme still resolve. */
+  --color-green: #232f45;
+  --color-green-deep: #060a14;
+
+  /* The primary. Named gold-* because the components reference those tokens;
+     renaming them across the site would be a large diff for no visual gain. */
+  --color-gold: #38bdf8;         /* fills, rules, icons        8.79:1 */
+  --color-gold-text: #38bdf8;    /* sky type - same value works here */
+  --color-gold-hover: #5fcbfa;   /*                           10.23:1 */
+  --color-gold-muted: #1d4e6b;   /* hairlines, inactive  2.11:1, decorative
+                                    only - never text */
+
+  --color-primary: #38bdf8;
+  --color-primary-hover: #5fcbfa;
+  --color-on-primary: #071018;   /*  8.94:1 on --color-primary */
+  --color-secondary: #1a2436;
+  --color-secondary-hover: #232f45;
+
+  /* One accent only. A second colour here would compete with the primary
+     rather than point at anything. */
+  --color-accent: #38bdf8;
+
+  --color-text-primary: #e2e8f0;   /* 15.27:1 */
+  --color-text-secondary: #b4c0d0; /* 10.21:1 */
+  --color-text-muted: #94a3b8;     /*  7.34:1 */
+  --color-text-on-dark: #e2e8f0;
+  --color-text-on-dark-muted: #b4c0d0;
+  --color-text-on-gold: #071018;   /*  8.94:1 on --color-gold */
+
+  --color-dark-bg: #0b1120;
+  --color-dark-surface: #1a2436;
+
+  --color-star: #38bdf8;
+  --color-success: #4ade80;        /* 10.81:1 */
+  --color-danger: #fb7185;         /*  7.00:1 */
+
+  /* Catalog geometry: flat surfaces, hairline borders, generous radii. */
+  --radius-card: 20px;
+  --radius-control: 10px;
+  --container-max: 1280px;
+  --grid-gap: 20px;
+
+  --font-sans: "Outfit", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}
