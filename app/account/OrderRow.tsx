@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import type { CustomerOrder } from "@/lib/customers-db";
 
 const STATUS_STYLES: Record<string, string> = {
@@ -19,7 +21,11 @@ export function OrderRow({ order }: { order: CustomerOrder }) {
   const extra = items.length > 1 ? items.length - 1 : 0;
 
   return (
-    <li className="rounded-[18px] border border-border bg-surface p-5">
+    <li>
+      <Link
+        href={`/account/orders/${order.id}`}
+        className="group block rounded-[18px] border border-border bg-surface p-5 transition-colors hover:border-gold"
+      >
       <div className="flex items-center justify-between gap-3">
         <span
           className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-heading font-bold ${
@@ -54,10 +60,14 @@ export function OrderRow({ order }: { order: CustomerOrder }) {
             </p>
           )}
         </div>
-        <p className="shrink-0 font-heading text-lg font-extrabold text-text-primary">
-          ${order.amountTotal.toFixed(2)}
-        </p>
+        <div className="flex shrink-0 items-center gap-2">
+          <p className="font-heading text-lg font-extrabold text-text-primary">
+            ${order.amountTotal.toFixed(2)}
+          </p>
+          <ChevronRight className="h-4 w-4 text-text-muted transition-colors group-hover:text-gold" />
+        </div>
       </div>
+      </Link>
     </li>
   );
 }

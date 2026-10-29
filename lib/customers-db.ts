@@ -389,6 +389,71 @@ export async function getApprovedReferralByCode(
   return rows[0] ? mapReferral(rows[0]) : null;
 }
 
+export interface CustomerOrderDetail extends CustomerOrder {
+  shippingName: string | null;
+  addressLine1: string | null;
+  addressLine2: string | null;
+  city: string | null;
+  state: string | null;
+  postalCode: string | null;
+  country: string | null;
+  lineItemsDetailed: { description: string; quantity: number; amountTotal: number }[];
+}
+
+/**
+ * One order, for the account it belongs to.
+ *
+ * The email is part of the WHERE clause rather than checked after loading.
+ * An id alone would let anyone read any order by incrementing a number, and a
+ * check that runs after the read is one early return away from being skipped.
+ */
+export async function getOrderForEmail(
+  email: string,
+  orderId: number
+): Promise<CustomerOrderDetail | null> {
+  await ensureTables();
+  const sql = getSql();
+  const rows = await sql`
+    SELECT id, created_at, amount_total, currency, status, carrier,
+           tracking_number, line_items, shipping_name, address_line1,
+           address_line2, city, state, postal_code, country
+    FROM orders
+    WHERE id = ${orderId} AND lower(email) = lower(${email.trim()})
+    LIMIT 1
+  `;
+  const row = rows[0];
+  if (!row) return null;
+
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const items = Array.isArray(row.line_items) ? row.line_items : [];
+  return {
+    id: Number(row.id),
+    createdAt: String(row.created_at),
+    amountTotal: Number(row.amount_total),
+    currency: row.currency ?? "usd",
+    status: row.status ?? "unfulfilled",
+    carrier: row.carrier ?? null,
+    trackingNumber: row.tracking_number ?? null,
+    lineItems: items.map((item: any) => ({
+      description: String(item?.description ?? "Item"),
+      quantity: Number(item?.quantity ?? 1),
+    })),
+    lineItemsDetailed: items.map((item: any) => ({
+      description: String(item?.description ?? "Item"),
+      quantity: Number(item?.quantity ?? 1),
+      amountTotal: Number(item?.amountTotal ?? 0),
+    })),
+    shippingName: row.shipping_name ?? null,
+    addressLine1: row.address_line1 ?? null,
+    addressLine2: row.address_line2 ?? null,
+    city: row.city ?? null,
+    state: row.state ?? null,
+    postalCode: row.postal_code ?? null,
+    country: row.country ?? null,
+  };
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+}
+
 /**
  * Lets an account owner change their own details.
  *
